@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sekolah Interaktif - Website Sekolah Modern</title>
+    <title>Sekolah Interaktif - Portal Sekolah</title>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -22,698 +22,628 @@
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
         }
         
-        /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-color: var(--primary-color);
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .header-container {
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
         
         .logo img {
-            height: 60px;
-            width: auto;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        
-        .logo span {
-            color: var(--accent-color);
-        }
-        
-        /* Navigation Styles */
-        nav {
-            background-color: var(--dark-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .main-menu {
-            display: flex;
-            list-style: none;
-        }
-        
-        .main-menu > li {
-            position: relative;
-        }
-        
-        .main-menu > li > a {
-            display: block;
-            padding: 15px 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .main-menu > li > a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .main-menu > li:hover .sub-menu {
-            display: block;
-        }
-        
-        .sub-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            min-width: 220px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 5px 5px;
-            overflow: hidden;
-            z-index: 100;
-        }
-        
-        .sub-menu li {
-            list-style: none;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .sub-menu li:last-child {
-            border-bottom: none;
-        }
-        
-        .sub-menu li a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            color: var(--dark-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .sub-menu li a:hover {
-            background-color: #f5f7fa;
-            color: var(--secondary-color);
-        }
-        
-        .edit-icon {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .sub-menu li a:hover .edit-icon {
-            opacity: 1;
-        }
-        
-        /* Main Content Styles */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 30px;
-        }
-        
-        .main-content {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            padding: 25px;
-        }
-        
-        .sidebar {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-        }
-        
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--light-color);
-        }
-        
-        .welcome-section {
-            background: linear-gradient(135deg, var(--secondary-color), #5dade2);
-            color: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-        
-        .welcome-section h2 {
-            color: white;
-            border-bottom: none;
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .content-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .content-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        .content-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .sidebar-widget {
-            margin-bottom: 25px;
-        }
-        
-        .sidebar-widget:last-child {
-            margin-bottom: 0;
-        }
-        
-        .event-list, .news-list {
-            list-style: none;
-        }
-        
-        .event-list li, .news-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .event-list li:last-child, .news-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .event-date {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
+            height: 50px;
             margin-right: 10px;
         }
         
-        /* Footer Styles */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 40px;
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .footer-section h3 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-section p, .footer-section a {
-            color: #bdc3c7;
-            margin-bottom: 10px;
-            display: block;
-            text-decoration: none;
-        }
-        
-        .footer-section a:hover {
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bdc3c7;
-            font-size: 0.9rem;
-        }
-        
-        /* Modal Edit Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background-color: white;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .modal-header h3 {
-            color: var(--primary-color);
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
+        .logo h1 {
             font-size: 1.5rem;
-            cursor: pointer;
-            color: #777;
         }
         
-        .form-group {
-            margin-bottom: 15px;
+        nav ul {
+            display: flex;
+            list-style: none;
         }
         
-        .form-group label {
+        nav ul li {
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
             display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
             color: var(--dark-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
         }
         
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .admin-controls {
+            background-color: var(--accent-color);
+            padding: 5px 10px;
             border-radius: 4px;
-            font-size: 1rem;
+            margin-left: 5px;
+            font-size: 0.8rem;
+            display: none;
         }
         
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
+        .admin-login {
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-login button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .admin-login button:hover {
+            background-color: #2980b9;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://source.unsplash.com/random/1200x600/?school') no-repeat center center/cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
         
         .btn {
             display: inline-block;
-            padding: 10px 20px;
             background-color: var(--secondary-color);
             color: white;
-            border: none;
+            padding: 10px 20px;
             border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
         
         .btn:hover {
             background-color: #2980b9;
         }
         
-        .btn-danger {
-            background-color: var(--accent-color);
+        .content-section {
+            padding: 3rem 0;
         }
         
-        .btn-danger:hover {
-            background-color: #c0392b;
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
         }
         
-        .btn-group {
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .edit-icon {
+            color: var(--accent-color);
+            cursor: pointer;
+            float: right;
+            display: none;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-menu {
-                flex-wrap: wrap;
-            }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+        
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .modal-content h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        .cancel-btn {
+            background-color: #95a5a6;
+        }
+        
+        .cancel-btn:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .editable {
+            position: relative;
+        }
+        
+        .edit-form {
+            display: none;
+            margin-top: 10px;
+        }
+        
+        .edit-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .edit-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        
+        .edit-buttons button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .save-btn {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .cancel-edit-btn {
+            background-color: #95a5a6;
+            color: white;
         }
         
         @media (max-width: 768px) {
-            .header-container {
+            .header-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 10px;
             }
             
-            .main-menu {
+            nav ul {
                 flex-direction: column;
-            }
-            
-            .main-menu > li {
                 width: 100%;
             }
             
-            .sub-menu {
+            .dropdown-content {
                 position: static;
-                display: none;
-                width: 100%;
                 box-shadow: none;
-                border-radius: 0;
             }
             
-            .content-grid {
-                grid-template-columns: 1fr;
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <div class="logo-placeholder">
-                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="60" height="60" rx="10" fill="#3498db"/>
-                        <path d="M30 15L40 25V45H20V25L30 15Z" fill="white"/>
-                        <rect x="25" y="25" width="10" height="15" fill="#3498db"/>
-                        <rect x="25" y="35" width="10" height="5" fill="white"/>
-                    </svg>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Logo Sekolah">
+                    <h1>Sekolah Interaktif</h1>
                 </div>
-                <h1>Sekolah <span>Interaktif</span></h1>
-            </div>
-            <div class="search-login">
-                <button class="btn" id="loginBtn">Login</button>
+                <nav>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li class="dropdown">
+                            <a href="#">Profil <span class="admin-controls">✏️</span></a>
+                            <div class="dropdown-content">
+                                <a href="#">Sejarah Sekolah <span class="admin-controls">✏️</span></a>
+                                <a href="#">Visi & Misi <span class="admin-controls">✏️</span></a>
+                                <a href="#">Struktur Organisasi <span class="admin-controls">✏️</span></a>
+                                <a href="#">Guru & Staf <span class="admin-controls">✏️</span></a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Akademik <span class="admin-controls">✏️</span></a>
+                            <div class="dropdown-content">
+                                <a href="#">Kurikulum <span class="admin-controls">✏️</span></a>
+                                <a href="#">Jadwal Pelajaran <span class="admin-controls">✏️</span></a>
+                                <a href="#">Kalender Akademik <span class="admin-controls">✏️</span></a>
+                                <a href="#">Ekstrakurikuler <span class="admin-controls">✏️</span></a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Siswa <span class="admin-controls">✏️</span></a>
+                            <div class="dropdown-content">
+                                <a href="#">Prestasi Siswa <span class="admin-controls">✏️</span></a>
+                                <a href="#">Kegiatan Siswa <span class="admin-controls">✏️</span></a>
+                                <a href="#">Pengumuman <span class="admin-controls">✏️</span></a>
+                                <a href="#">Galeri <span class="admin-controls">✏️</span></a>
+                            </div>
+                        </li>
+                        <li><a href="#">Berita</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </nav>
+                <div class="admin-login">
+                    <button id="login-btn">Login Admin</button>
+                </div>
             </div>
         </div>
     </header>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <ul class="main-menu">
-                <li>
-                    <a href="#">Beranda</a>
-                </li>
-                <li>
-                    <a href="#">Profil Sekolah</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Sejarah Sekolah <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Visi & Misi <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Struktur Organisasi <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Fasilitas <span class="edit-icon">✏️ Edit</span></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Akademik</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Kurikulum <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Jadwal Pelajaran <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Guru & Staf <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Program Unggulan <span class="edit-icon">✏️ Edit</span></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Siswa</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Data Siswa <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Ekstrakurikuler <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Prestasi <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Kegiatan Siswa <span class="edit-icon">✏️ Edit</span></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Informasi</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Berita <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Pengumuman <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Agenda <span class="edit-icon">✏️ Edit</span></a></li>
-                        <li><a href="#">Galeri <span class="edit-icon">✏️ Edit</span></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Kontak</a>
-                </li>
-            </ul>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Selamat Datang di Website Sekolah Interaktif</h2>
+            <p>Mewujudkan generasi cerdas, berkarakter, dan berprestasi dalam lingkungan yang kondusif dan menyenangkan.</p>
+            <a href="#" class="btn">Jelajahi Sekolah Kami</a>
         </div>
-    </nav>
-    
-    <!-- Main Content -->
-    <div class="container">
-        <main class="main-content">
-            <section class="welcome-section">
-                <h2>Selamat Datang di Website Sekolah Interaktif</h2>
-                <p>Website ini menyediakan informasi lengkap tentang kegiatan akademik dan non-akademik di sekolah kami. Jelajahi berbagai fitur yang tersedia untuk mendapatkan pengalaman terbaik.</p>
-            </section>
-            
-            <section>
-                <h2>Fitur Utama</h2>
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Portal Akademik</h3>
-                        <p>Akses informasi akademik, jadwal pelajaran, dan materi pembelajaran secara online.</p>
-                    </div>
-                    <div class="content-card">
-                        <h3>E-Learning</h3>
-                        <p>Sistem pembelajaran daring yang memudahkan siswa dan guru dalam proses belajar mengajar.</p>
-                    </div>
-                    <div class="content-card">
-                        <h3>Perpustakaan Digital</h3>
-                        <p>Akses koleksi buku digital dan sumber belajar lainnya kapan saja dan di mana saja.</p>
-                    </div>
-                    <div class="content-card">
-                        <h3>Forum Diskusi</h3>
-                        <p>Platform diskusi untuk siswa, guru, dan orang tua dalam membahas berbagai topik pendidikan.</p>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Informasi Sekolah</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Visi Sekolah <span class="edit-icon">✏️</span></h3>
+                    <div class="editable">
+                        <div class="content">
+                            Menjadi sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan mampu bersaing di era global.
+                        </div>
+                        <div class="edit-form">
+                            <textarea>Menjadi sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan mampu bersaing di era global.</textarea>
+                            <div class="edit-buttons">
+                                <button class="cancel-edit-btn">Batal</button>
+                                <button class="save-btn">Simpan</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </main>
-        
-        <aside class="sidebar">
-            <div class="sidebar-widget">
-                <h2>Agenda Terdekat</h2>
-                <ul class="event-list">
-                    <li>
-                        <span class="event-date">15 Okt</span>
-                        UTS Semester Ganjil
-                    </li>
-                    <li>
-                        <span class="event-date">20 Okt</span>
-                        Field Trip Kelas 7
-                    </li>
-                    <li>
-                        <span class="event-date">25 Okt</span>
-                        Lomba Seni antar Kelas
-                    </li>
-                    <li>
-                        <span class="event-date">30 Okt</span>
-                        Rapat Orang Tua
-                    </li>
-                </ul>
+                <div class="feature-card">
+                    <h3>Misi Sekolah <span class="edit-icon">✏️</span></h3>
+                    <div class="editable">
+                        <div class="content">
+                            <ul>
+                                <li>Menyelenggarakan pendidikan yang berkualitas dan berkarakter</li>
+                                <li>Mengembangkan potensi siswa secara optimal</li>
+                                <li>Menciptakan lingkungan belajar yang kondusif dan menyenangkan</li>
+                                <li>Membangun kerjasama yang harmonis antara sekolah, orang tua, dan masyarakat</li>
+                            </ul>
+                        </div>
+                        <div class="edit-form">
+                            <textarea><ul>
+<li>Menyelenggarakan pendidikan yang berkualitas dan berkarakter</li>
+<li>Mengembangkan potensi siswa secara optimal</li>
+<li>Menciptakan lingkungan belajar yang kondusif dan menyenangkan</li>
+<li>Membangun kerjasama yang harmonis antara sekolah, orang tua, dan masyarakat</li>
+</ul></textarea>
+                            <div class="edit-buttons">
+                                <button class="cancel-edit-btn">Batal</button>
+                                <button class="save-btn">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Pengumuman Terbaru <span class="edit-icon">✏️</span></h3>
+                    <div class="editable">
+                        <div class="content">
+                            <p><strong>Pendaftaran Siswa Baru</strong></p>
+                            <p>Pendaftaran siswa baru tahun ajaran 2023/2024 akan dibuka mulai tanggal 1 Maret 2023. Informasi lebih lanjut dapat dilihat di menu PPDB.</p>
+                        </div>
+                        <div class="edit-form">
+                            <textarea><p><strong>Pendaftaran Siswa Baru</strong></p>
+<p>Pendaftaran siswa baru tahun ajaran 2023/2024 akan dibuka mulai tanggal 1 Maret 2023. Informasi lebih lanjut dapat dilihat di menu PPDB.</p></textarea>
+                            <div class="edit-buttons">
+                                <button class="cancel-edit-btn">Batal</button>
+                                <button class="save-btn">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="sidebar-widget">
-                <h2>Berita Terbaru</h2>
-                <ul class="news-list">
-                    <li>Siswa Kita Raih Juara Olimpiade Sains Nasional</li>
-                    <li>Workshop Teknologi Pendidikan untuk Guru</li>
-                    <li>Penerimaan Peserta Didik Baru Tahun Ajaran 2024</li>
-                    <li>Program Beasiswa untuk Siswa Berprestasi</li>
-                </ul>
-            </div>
-        </aside>
-    </div>
-    
-    <!-- Footer -->
+        </div>
+    </section>
+
     <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Tentang Kami</h3>
-                <p>Sekolah Interaktif adalah lembaga pendidikan yang berkomitmen untuk memberikan pendidikan terbaik dengan memanfaatkan teknologi modern.</p>
-                <div class="social-links">
-                    <a href="#" title="Facebook">FB</a>
-                    <a href="#" title="Instagram">IG</a>
-                    <a href="#" title="Twitter">TW</a>
-                    <a href="#" title="YouTube">YT</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <p>Jl. Pendidikan No. 123, Kota Pendidikan</p>
+                    <p>Telepon: (021) 1234567</p>
+                    <p>Email: info@sekolahinteraktif.sch.id</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tautan Cepat</h3>
+                    <p><a href="#">Beranda</a></p>
+                    <p><a href="#">Profil</a></p>
+                    <p><a href="#">Akademik</a></p>
+                    <p><a href="#">Kontak</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Media Sosial</h3>
+                    <p><a href="#">Facebook</a></p>
+                    <p><a href="#">Instagram</a></p>
+                    <p><a href="#">YouTube</a></p>
+                    <p><a href="#">Twitter</a></p>
                 </div>
             </div>
-            
-            <div class="footer-section">
-                <h3>Kontak Kami</h3>
-                <p>Jl. Pendidikan No. 123, Jakarta</p>
-                <p>Telp: (021) 1234-5678</p>
-                <p>Email: info@sekolahinteraktif.sch.id</p>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sekolah Interaktif. Semua Hak Dilindungi.</p>
             </div>
-            
-            <div class="footer-section">
-                <h3>Tautan Cepat</h3>
-                <a href="#">Beranda</a>
-                <a href="#">Profil Sekolah</a>
-                <a href="#">Akademik</a>
-                <a href="#">Kontak</a>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            &copy; 2023 Sekolah Interaktif. Semua Hak Dilindungi.
         </div>
     </footer>
-    
-    <!-- Modal Edit -->
-    <div class="modal" id="editModal">
+
+    <div class="login-modal" id="login-modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3>Edit Konten</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <form id="editForm">
+            <h2>Login Admin</h2>
+            <form id="login-form">
                 <div class="form-group">
-                    <label for="editTitle">Judul</label>
-                    <input type="text" id="editTitle" name="title" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
                 </div>
                 <div class="form-group">
-                    <label for="editContent">Konten</label>
-                    <textarea id="editContent" name="content" required></textarea>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
                 </div>
-                <div class="form-group">
-                    <label for="editCategory">Kategori</label>
-                    <select id="editCategory" name="category">
-                        <option value="profil">Profil Sekolah</option>
-                        <option value="akademik">Akademik</option>
-                        <option value="siswa">Siswa</option>
-                        <option value="informasi">Informasi</option>
-                    </select>
-                </div>
-                <div class="btn-group">
-                    <button type="submit" class="btn">Simpan Perubahan</button>
-                    <button type="button" class="btn btn-danger" id="cancelEdit">Batal</button>
+                <div class="modal-buttons">
+                    <button type="button" class="btn cancel-btn" id="cancel-login">Batal</button>
+                    <button type="submit" class="btn">Login</button>
                 </div>
             </form>
         </div>
     </div>
-    
+
     <script>
-        // Modal functionality
-        const editModal = document.getElementById('editModal');
-        const editForm = document.getElementById('editForm');
-        const closeModal = document.querySelector('.close-modal');
-        const cancelEdit = document.getElementById('cancelEdit');
-        const editIcons = document.querySelectorAll('.edit-icon');
+        // Login functionality
+        const loginBtn = document.getElementById('login-btn');
+        const loginModal = document.getElementById('login-modal');
+        const cancelLogin = document.getElementById('cancel-login');
+        const loginForm = document.getElementById('login-form');
         
-        // Show modal when edit icon is clicked
-        editIcons.forEach(icon => {
-            icon.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+        
+        cancelLogin.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+        
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple authentication (in real app, this would be server-side)
+            if (username === 'admin' && password === 'admin123') {
+                // Show edit controls
+                document.querySelectorAll('.admin-controls').forEach(el => {
+                    el.style.display = 'inline';
+                });
+                document.querySelectorAll('.edit-icon').forEach(el => {
+                    el.style.display = 'inline';
+                });
                 
-                // Get the parent menu item text
-                const menuText = this.parentElement.textContent.replace('✏️ Edit', '').trim();
-                document.getElementById('editTitle').value = menuText;
-                document.getElementById('editContent').value = `Ini adalah konten untuk ${menuText}. Anda dapat mengedit konten ini sesuai kebutuhan.`;
+                // Change login button to logout
+                loginBtn.textContent = 'Logout Admin';
+                loginBtn.removeEventListener('click', loginHandler);
+                loginBtn.addEventListener('click', logoutHandler);
                 
-                editModal.style.display = 'flex';
-            });
-        });
-        
-        // Close modal when close button is clicked
-        closeModal.addEventListener('click', function() {
-            editModal.style.display = 'none';
-        });
-        
-        // Close modal when cancel button is clicked
-        cancelEdit.addEventListener('click', function() {
-            editModal.style.display = 'none';
-        });
-        
-        // Close modal when clicking outside the modal content
-        window.addEventListener('click', function(e) {
-            if (e.target === editModal) {
-                editModal.style.display = 'none';
+                loginModal.style.display = 'none';
+                alert('Login berhasil! Mode edit diaktifkan.');
+            } else {
+                alert('Username atau password salah!');
             }
         });
         
-        // Handle form submission
-        editForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Perubahan berhasil disimpan!');
-            editModal.style.display = 'none';
+        function logoutHandler() {
+            // Hide edit controls
+            document.querySelectorAll('.admin-controls').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.edit-icon').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Close any open edit forms
+            document.querySelectorAll('.edit-form').forEach(form => {
+                form.style.display = 'none';
+            });
+            
+            // Change logout button back to login
+            loginBtn.textContent = 'Login Admin';
+            loginBtn.removeEventListener('click', logoutHandler);
+            loginBtn.addEventListener('click', loginHandler);
+            
+            alert('Anda telah logout.');
+        }
+        
+        function loginHandler() {
+            loginModal.style.display = 'flex';
+        }
+        
+        // Edit functionality
+        document.querySelectorAll('.edit-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const editable = this.closest('.feature-card').querySelector('.editable');
+                const content = editable.querySelector('.content');
+                const editForm = editable.querySelector('.edit-form');
+                const textarea = editForm.querySelector('textarea');
+                
+                // Set current content to textarea
+                textarea.value = content.innerHTML;
+                
+                // Show edit form, hide content
+                content.style.display = 'none';
+                editForm.style.display = 'block';
+            });
         });
         
-        // Login button functionality
-        document.getElementById('loginBtn').addEventListener('click', function() {
-            alert('Fitur login akan segera tersedia!');
+        // Cancel edit
+        document.querySelectorAll('.cancel-edit-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const editForm = this.closest('.edit-form');
+                const content = editForm.previousElementSibling;
+                
+                editForm.style.display = 'none';
+                content.style.display = 'block';
+            });
+        });
+        
+        // Save edit
+        document.querySelectorAll('.save-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const editForm = this.closest('.edit-form');
+                const content = editForm.previousElementSibling;
+                const textarea = editForm.querySelector('textarea');
+                
+                // Update content with new value
+                content.innerHTML = textarea.value;
+                
+                // Hide edit form, show content
+                editForm.style.display = 'none';
+                content.style.display = 'block';
+                
+                alert('Perubahan berhasil disimpan!');
+                
+                // In a real application, you would send the updated content to the server here
+            });
         });
     </script>
 </body>

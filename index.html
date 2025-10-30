@@ -20,6 +20,7 @@
             --light: #f5f5f5;
             --dark: #333;
             --gray: #757575;
+            --success: #4caf50;
         }
 
         body {
@@ -55,8 +56,9 @@
             align-items: center;
         }
 
-        .logo img {
-            height: 50px;
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
             margin-right: 10px;
         }
 
@@ -128,6 +130,32 @@
             cursor: pointer;
         }
 
+        /* Admin Controls */
+        .admin-controls {
+            background: var(--dark);
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .admin-controls button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .admin-controls button:hover {
+            background: #e65100;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(26, 115, 232, 0.8), rgba(13, 71, 161, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
@@ -136,6 +164,7 @@
             color: white;
             padding: 100px 0;
             text-align: center;
+            position: relative;
         }
 
         .hero h2 {
@@ -179,14 +208,31 @@
             color: var(--primary);
         }
 
+        .btn-edit {
+            background: var(--success);
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .editable:hover .btn-edit {
+            opacity: 1;
+        }
+
         /* Sections */
         section {
             padding: 80px 0;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 50px;
+            position: relative;
         }
 
         .section-title h2 {
@@ -250,6 +296,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
+            position: relative;
         }
 
         .facility-card:hover {
@@ -297,6 +344,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
             transition: all 0.3s;
+            position: relative;
         }
 
         .program-card:hover {
@@ -377,6 +425,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
 
         .news-img {
@@ -415,6 +464,7 @@
         .announcement-item {
             padding: 15px 0;
             border-bottom: 1px solid #eee;
+            position: relative;
         }
 
         .announcement-item:last-child {
@@ -582,6 +632,60 @@
             color: #bbb;
         }
 
+        /* Modal Edit */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-header h3 {
+            color: var(--primary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content, .contact-container {
@@ -646,17 +750,27 @@
     </style>
 </head>
 <body>
+    <!-- Admin Controls -->
+    <div class="admin-controls">
+        <div class="container">
+            <button id="toggleEditMode"><i class="fas fa-edit"></i> Mode Edit</button>
+            <button id="saveChanges"><i class="fas fa-save"></i> Simpan Perubahan</button>
+            <button id="previewSite"><i class="fas fa-eye"></i> Preview</button>
+        </div>
+    </div>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <div class="header-top">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-graduation-cap" style="font-size: 2.5rem; color: var(--primary);"></i>
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <div class="logo-text">
-                        <h1>Sekolah Interaktif</h1>
-                        <p>Mencerdaskan Generasi Bangsa</p>
+                    <div class="logo-text editable">
+                        <h1 data-editable="school-name">Sekolah Interaktif</h1>
+                        <p data-editable="school-tagline">Mencerdaskan Generasi Bangsa</p>
+                        <button class="btn btn-edit edit-trigger" data-target="school-header"><i class="fas fa-edit"></i></button>
                     </div>
                 </div>
                 <div class="mobile-toggle">
@@ -692,31 +806,35 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero editable">
         <div class="container">
-            <h2>Selamat Datang di Sekolah Interaktif</h2>
-            <p>Mewujudkan pendidikan berkualitas dengan pendekatan modern untuk membentuk generasi unggul dan berkarakter</p>
-            <a href="#" class="btn">Daftar Sekarang</a>
-            <a href="#" class="btn btn-outline">Pelajari Lebih Lanjut</a>
+            <h2 data-editable="hero-title">Selamat Datang di Sekolah Interaktif</h2>
+            <p data-editable="hero-description">Mewujudkan pendidikan berkualitas dengan pendekatan modern untuk membentuk generasi unggul dan berkarakter</p>
+            <a href="#" class="btn" data-editable="hero-button1">Daftar Sekarang</a>
+            <a href="#" class="btn btn-outline" data-editable="hero-button2">Pelajari Lebih Lanjut</a>
+            <button class="btn btn-edit edit-trigger" data-target="hero-section"><i class="fas fa-edit"></i></button>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>Tentang Sekolah Kami</h2>
-                <p>Mengenal lebih dekat sejarah, visi, dan misi Sekolah Interaktif</p>
+            <div class="section-title editable">
+                <h2 data-editable="about-title">Tentang Sekolah Kami</h2>
+                <p data-editable="about-subtitle">Mengenal lebih dekat sejarah, visi, dan misi Sekolah Interaktif</p>
+                <button class="btn btn-edit edit-trigger" data-target="about-section"><i class="fas fa-edit"></i></button>
             </div>
             <div class="about-content">
-                <div class="about-text">
-                    <h3>Sekolah Berkualitas dengan Fasilitas Terlengkap</h3>
-                    <p>Didirikan pada tahun 1995, Sekolah Interaktif telah menjadi salah satu lembaga pendidikan terdepan di kota ini. Kami berkomitmen untuk memberikan pendidikan terbaik dengan pendekatan modern yang mengintegrasikan teknologi dalam proses pembelajaran.</p>
-                    <p>Dengan fasilitas yang lengkap dan tenaga pengajar yang berkualitas, kami siap membentuk generasi muda yang tidak hanya cerdas secara akademis tetapi juga memiliki karakter yang kuat dan siap menghadapi tantangan masa depan.</p>
-                    <a href="#" class="btn" style="margin-top: 20px;">Baca Selengkapnya</a>
+                <div class="about-text editable">
+                    <h3 data-editable="about-heading">Sekolah Berkualitas dengan Fasilitas Terlengkap</h3>
+                    <p data-editable="about-paragraph1">Didirikan pada tahun 1995, Sekolah Interaktif telah menjadi salah satu lembaga pendidikan terdepan di kota ini. Kami berkomitmen untuk memberikan pendidikan terbaik dengan pendekatan modern yang mengintegrasikan teknologi dalam proses pembelajaran.</p>
+                    <p data-editable="about-paragraph2">Dengan fasilitas yang lengkap dan tenaga pengajar yang berkualitas, kami siap membentuk generasi muda yang tidak hanya cerdas secara akademis tetapi juga memiliki karakter yang kuat dan siap menghadapi tantangan masa depan.</p>
+                    <a href="#" class="btn" style="margin-top: 20px;" data-editable="about-button">Baca Selengkapnya</a>
+                    <button class="btn btn-edit edit-trigger" data-target="about-content"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="about-image">
+                <div class="about-image editable">
                     <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Gedung Sekolah">
+                    <button class="btn btn-edit edit-trigger" data-target="about-image"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
         </div>
@@ -725,37 +843,41 @@
     <!-- Facilities Section -->
     <section id="facilities" style="background-color: #f5f5f5;">
         <div class="container">
-            <div class="section-title">
-                <h2>Fasilitas Sekolah</h2>
-                <p>Fasilitas modern dan lengkap untuk mendukung proses belajar mengajar</p>
+            <div class="section-title editable">
+                <h2 data-editable="facilities-title">Fasilitas Sekolah</h2>
+                <p data-editable="facilities-subtitle">Fasilitas modern dan lengkap untuk mendukung proses belajar mengajar</p>
+                <button class="btn btn-edit edit-trigger" data-target="facilities-section"><i class="fas fa-edit"></i></button>
             </div>
             <div class="facilities-grid">
-                <div class="facility-card">
+                <div class="facility-card editable">
                     <div class="facility-img">
                         <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Perpustakaan">
                     </div>
                     <div class="facility-info">
-                        <h3>Perpustakaan Modern</h3>
-                        <p>Perpustakaan dengan koleksi buku terlengkap dan sistem digital untuk memudahkan akses informasi.</p>
+                        <h3 data-editable="facility1-title">Perpustakaan Modern</h3>
+                        <p data-editable="facility1-description">Perpustakaan dengan koleksi buku terlengkap dan sistem digital untuk memudahkan akses informasi.</p>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="facility1"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="facility-card">
+                <div class="facility-card editable">
                     <div class="facility-img">
                         <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Laboratorium">
                     </div>
                     <div class="facility-info">
-                        <h3>Laboratorium Sains</h3>
-                        <p>Laboratorium dengan peralatan lengkap untuk mendukung praktikum fisika, kimia, dan biologi.</p>
+                        <h3 data-editable="facility2-title">Laboratorium Sains</h3>
+                        <p data-editable="facility2-description">Laboratorium dengan peralatan lengkap untuk mendukung praktikum fisika, kimia, dan biologi.</p>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="facility2"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="facility-card">
+                <div class="facility-card editable">
                     <div class="facility-img">
                         <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1190&q=80" alt="Lapangan Olahraga">
                     </div>
                     <div class="facility-info">
-                        <h3>Lapangan Olahraga</h3>
-                        <p>Lapangan olahraga yang luas dengan berbagai fasilitas untuk mendukung kegiatan ekstrakurikuler.</p>
+                        <h3 data-editable="facility3-title">Lapangan Olahraga</h3>
+                        <p data-editable="facility3-description">Lapangan olahraga yang luas dengan berbagai fasilitas untuk mendukung kegiatan ekstrakurikuler.</p>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="facility3"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
         </div>
@@ -764,31 +886,35 @@
     <!-- Programs Section -->
     <section id="programs">
         <div class="container">
-            <div class="section-title">
-                <h2>Program Akademik</h2>
-                <p>Berbagai program unggulan untuk mengembangkan potensi siswa secara maksimal</p>
+            <div class="section-title editable">
+                <h2 data-editable="programs-title">Program Akademik</h2>
+                <p data-editable="programs-subtitle">Berbagai program unggulan untuk mengembangkan potensi siswa secara maksimal</p>
+                <button class="btn btn-edit edit-trigger" data-target="programs-section"><i class="fas fa-edit"></i></button>
             </div>
             <div class="programs-container">
-                <div class="program-card">
+                <div class="program-card editable">
                     <div class="program-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Program Teknologi</h3>
-                    <p>Penguasaan teknologi informasi dan coding untuk mempersiapkan siswa di era digital.</p>
+                    <h3 data-editable="program1-title">Program Teknologi</h3>
+                    <p data-editable="program1-description">Penguasaan teknologi informasi dan coding untuk mempersiapkan siswa di era digital.</p>
+                    <button class="btn btn-edit edit-trigger" data-target="program1"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="program-card">
+                <div class="program-card editable">
                     <div class="program-icon">
                         <i class="fas fa-flask"></i>
                     </div>
-                    <h3>Program Sains</h3>
-                    <p>Pengembangan kemampuan ilmiah melalui eksperimen dan penelitian yang inovatif.</p>
+                    <h3 data-editable="program2-title">Program Sains</h3>
+                    <p data-editable="program2-description">Pengembangan kemampuan ilmiah melalui eksperimen dan penelitian yang inovatif.</p>
+                    <button class="btn btn-edit edit-trigger" data-target="program2"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="program-card">
+                <div class="program-card editable">
                     <div class="program-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Program Seni & Budaya</h3>
-                    <p>Pengembangan kreativitas dan apresiasi seni melalui berbagai kegiatan kesenian.</p>
+                    <h3 data-editable="program3-title">Program Seni & Budaya</h3>
+                    <p data-editable="program3-description">Pengembangan kreativitas dan apresiasi seni melalui berbagai kegiatan kesenian.</p>
+                    <button class="btn btn-edit edit-trigger" data-target="program3"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
         </div>
@@ -797,34 +923,39 @@
     <!-- Gallery Section -->
     <section id="gallery" style="background-color: #f5f5f5;">
         <div class="container">
-            <div class="section-title">
-                <h2>Galeri Sekolah</h2>
-                <p>Momen-momen berharga dalam kegiatan belajar mengajar di Sekolah Interaktif</p>
+            <div class="section-title editable">
+                <h2 data-editable="gallery-title">Galeri Sekolah</h2>
+                <p data-editable="gallery-subtitle">Momen-momen berharga dalam kegiatan belajar mengajar di Sekolah Interaktif</p>
+                <button class="btn btn-edit edit-trigger" data-target="gallery-section"><i class="fas fa-edit"></i></button>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item editable">
                     <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Belajar">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="gallery1"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item editable">
                     <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Upacara Bendera">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="gallery2"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item editable">
                     <img src="https://images.unsplash.com/photo-1462536943532-57a629f6cc60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="Kegiatan Olahraga">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="gallery3"><i class="fas fa-edit"></i></button>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item editable">
                     <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Pentas Seni">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="gallery4"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
         </div>
@@ -833,53 +964,61 @@
     <!-- News Section -->
     <section id="news">
         <div class="container">
-            <div class="section-title">
-                <h2>Berita & Pengumuman</h2>
-                <p>Informasi terbaru seputar kegiatan dan pengumuman penting dari sekolah</p>
+            <div class="section-title editable">
+                <h2 data-editable="news-title">Berita & Pengumuman</h2>
+                <p data-editable="news-subtitle">Informasi terbaru seputar kegiatan dan pengumuman penting dari sekolah</p>
+                <button class="btn btn-edit edit-trigger" data-target="news-section"><i class="fas fa-edit"></i></button>
             </div>
             <div class="news-container">
                 <div class="news-main">
-                    <div class="news-card">
+                    <div class="news-card editable">
                         <div class="news-img">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Berita 1">
                         </div>
                         <div class="news-content">
-                            <div class="news-date">15 Juni 2023</div>
-                            <h3>Penerimaan Siswa Baru Tahun Ajaran 2023/2024</h3>
-                            <p>Pendaftaran siswa baru untuk tahun ajaran 2023/2024 telah dibuka. Segera daftarkan putra-putri Anda untuk mendapatkan pendidikan terbaik.</p>
+                            <div class="news-date" data-editable="news1-date">15 Juni 2023</div>
+                            <h3 data-editable="news1-title">Penerimaan Siswa Baru Tahun Ajaran 2023/2024</h3>
+                            <p data-editable="news1-description">Pendaftaran siswa baru untuk tahun ajaran 2023/2024 telah dibuka. Segera daftarkan putra-putri Anda untuk mendapatkan pendidikan terbaik.</p>
                             <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Baca Selengkapnya</a>
                         </div>
+                        <button class="btn btn-edit edit-trigger" data-target="news1"><i class="fas fa-edit"></i></button>
                     </div>
-                    <div class="news-card">
+                    <div class="news-card editable">
                         <div class="news-img">
                             <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" alt="Berita 2">
                         </div>
                         <div class="news-content">
-                            <div class="news-date">10 Juni 2023</div>
-                            <h3>Siswa Sekolah Interaktif Raih Juara Olimpiade Sains Nasional</h3>
-                            <p>Dua siswa Sekolah Interaktif berhasil meraih medali emas dan perak dalam Olimpiade Sains Nasional tingkat SMA yang diselenggarakan di Jakarta.</p>
+                            <div class="news-date" data-editable="news2-date">10 Juni 2023</div>
+                            <h3 data-editable="news2-title">Siswa Sekolah Interaktif Raih Juara Olimpiade Sains Nasional</h3>
+                            <p data-editable="news2-description">Dua siswa Sekolah Interaktif berhasil meraih medali emas dan perak dalam Olimpiade Sains Nasional tingkat SMA yang diselenggarakan di Jakarta.</p>
                             <a href="#" class="btn" style="margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Baca Selengkapnya</a>
                         </div>
+                        <button class="btn btn-edit edit-trigger" data-target="news2"><i class="fas fa-edit"></i></button>
                     </div>
                 </div>
-                <div class="announcements">
-                    <h3>Pengumuman</h3>
-                    <div class="announcement-item">
-                        <div class="announcement-date">20 Juni 2023</div>
-                        <p>Libur semester genap akan dimulai tanggal 25 Juni 2023</p>
+                <div class="announcements editable">
+                    <h3 data-editable="announcements-title">Pengumuman</h3>
+                    <div class="announcement-item editable">
+                        <div class="announcement-date" data-editable="announcement1-date">20 Juni 2023</div>
+                        <p data-editable="announcement1-text">Libur semester genap akan dimulai tanggal 25 Juni 2023</p>
+                        <button class="btn btn-edit edit-trigger" data-target="announcement1"><i class="fas fa-edit"></i></button>
                     </div>
-                    <div class="announcement-item">
-                        <div class="announcement-date">18 Juni 2023</div>
-                        <p>Pembagian rapor akan dilaksanakan pada tanggal 24 Juni 2023</p>
+                    <div class="announcement-item editable">
+                        <div class="announcement-date" data-editable="announcement2-date">18 Juni 2023</div>
+                        <p data-editable="announcement2-text">Pembagian rapor akan dilaksanakan pada tanggal 24 Juni 2023</p>
+                        <button class="btn btn-edit edit-trigger" data-target="announcement2"><i class="fas fa-edit"></i></button>
                     </div>
-                    <div class="announcement-item">
-                        <div class="announcement-date">15 Juni 2023</div>
-                        <p>Ujian akhir semester genap akan dimulai tanggal 19 Juni 2023</p>
+                    <div class="announcement-item editable">
+                        <div class="announcement-date" data-editable="announcement3-date">15 Juni 2023</div>
+                        <p data-editable="announcement3-text">Ujian akhir semester genap akan dimulai tanggal 19 Juni 2023</p>
+                        <button class="btn btn-edit edit-trigger" data-target="announcement3"><i class="fas fa-edit"></i></button>
                     </div>
-                    <div class="announcement-item">
-                        <div class="announcement-date">12 Juni 2023</div>
-                        <p>Pendaftaran ekstrakurikuler tahun ajaran baru telah dibuka</p>
+                    <div class="announcement-item editable">
+                        <div class="announcement-date" data-editable="announcement4-date">12 Juni 2023</div>
+                        <p data-editable="announcement4-text">Pendaftaran ekstrakurikuler tahun ajaran baru telah dibuka</p>
+                        <button class="btn btn-edit edit-trigger" data-target="announcement4"><i class="fas fa-edit"></i></button>
                     </div>
+                    <button class="btn btn-edit edit-trigger" data-target="announcements-section"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
         </div>
@@ -888,52 +1027,57 @@
     <!-- Contact Section -->
     <section id="contact" style="background-color: #f5f5f5;">
         <div class="container">
-            <div class="section-title">
-                <h2>Kontak & Lokasi</h2>
-                <p>Hubungi kami untuk informasi lebih lanjut atau kunjungi sekolah kami</p>
+            <div class="section-title editable">
+                <h2 data-editable="contact-title">Kontak & Lokasi</h2>
+                <p data-editable="contact-subtitle">Hubungi kami untuk informasi lebih lanjut atau kunjungi sekolah kami</p>
+                <button class="btn btn-edit edit-trigger" data-target="contact-section"><i class="fas fa-edit"></i></button>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item editable">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h3>Alamat</h3>
-                            <p>Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12540</p>
+                            <h3 data-editable="contact-address-title">Alamat</h3>
+                            <p data-editable="contact-address">Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12540</p>
                         </div>
+                        <button class="btn btn-edit edit-trigger" data-target="contact-address"><i class="fas fa-edit"></i></button>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item editable">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h3>Telepon</h3>
-                            <p>(021) 1234-5678</p>
+                            <h3 data-editable="contact-phone-title">Telepon</h3>
+                            <p data-editable="contact-phone">(021) 1234-5678</p>
                         </div>
+                        <button class="btn btn-edit edit-trigger" data-target="contact-phone"><i class="fas fa-edit"></i></button>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item editable">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h3>Email</h3>
-                            <p>info@sekolahinteraktif.sch.id</p>
+                            <h3 data-editable="contact-email-title">Email</h3>
+                            <p data-editable="contact-email">info@sekolahinteraktif.sch.id</p>
                         </div>
+                        <button class="btn btn-edit edit-trigger" data-target="contact-email"><i class="fas fa-edit"></i></button>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item editable">
                         <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
                         <div>
-                            <h3>Jam Operasional</h3>
-                            <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
-                            <p>Sabtu: 08.00 - 14.00 WIB</p>
+                            <h3 data-editable="contact-hours-title">Jam Operasional</h3>
+                            <p data-editable="contact-hours1">Senin - Jumat: 07.00 - 16.00 WIB</p>
+                            <p data-editable="contact-hours2">Sabtu: 08.00 - 14.00 WIB</p>
                         </div>
+                        <button class="btn btn-edit edit-trigger" data-target="contact-hours"><i class="fas fa-edit"></i></button>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Kirim Pesan</h3>
+                <div class="contact-form editable">
+                    <h3 data-editable="contact-form-title">Kirim Pesan</h3>
                     <form>
                         <div class="form-group">
                             <label for="name">Nama Lengkap</label>
@@ -953,6 +1097,7 @@
                         </div>
                         <button type="submit" class="btn">Kirim Pesan</button>
                     </form>
+                    <button class="btn btn-edit edit-trigger" data-target="contact-form"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
         </div>
@@ -962,9 +1107,206 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Sekolah Interaktif</h3>
-                    <p>Mencerdaskan Generasi Bangsa melalui pendidikan berkualitas dengan pendekatan modern dan inovatif.</p>
+                <div class="footer-logo editable">
+                    <h3 data-editable="footer-school-name">Sekolah Interaktif</h3>
+                    <p data-editable="footer-description">Mencerdaskan Generasi Bangsa melalui pendidikan berkualitas dengan pendekatan modern dan inovatif.</p>
+                    <button class="btn btn-edit edit-trigger" data-target="footer-logo"><i class="fas fa-edit"></i></button>
+                </div>
+                <div class="footer-links editable">
+                    <h4 data-editable="footer-links-title">Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Profil Sekolah</a></li>
+                        <li><a href="#">Program Akademik</a></li>
+                        <li><a href="#">Berita & Acara</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                    <button class="btn btn-edit edit-trigger" data-target="footer-links"><i class="fas fa-edit"></i></button>
+                </div>
+                <div class="footer-contact editable">
+                    <h4 data-editable="footer-contact-title">Kontak Kami</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-editable="footer-address">Jl. Pendidikan No. 123, Jakarta Selatan</span></p>
+                    <p><i class="fas fa-phone"></i> <span data-editable="footer-phone">(021) 1234-5678</span></p>
+                    <p><i class="fas fa-envelope"></i> <span data-editable="footer-email">info@sekolahinteraktif.sch.id</span></p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <button class="btn btn-edit edit-trigger" data-target="footer-contact"><i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+            <div class="footer-bottom editable">
+                <p data-editable="footer-copyright">&copy; 2023 Sekolah Interaktif. Semua Hak Dilindungi.</p>
+                <button class="btn btn-edit edit-trigger" data-target="footer-bottom"><i class="fas fa-edit"></i></button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Edit -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Konten</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="editTitle">Judul</label>
+                        <input type="text" id="editTitle" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="editContent">Konten</label>
+                        <textarea id="editContent" class="form-control" rows="6"></textarea>
+                    </div>
+                    <div class="form-group" id="imageUploadGroup" style="display: none;">
+                        <label for="editImage">Unggah Gambar Baru</label>
+                        <input type="file" id="editImage" class="form-control" accept="image/*">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelEdit">Batal</button>
+                <button class="btn" id="saveEdit">Simpan Perubahan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle mobile menu
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Edit mode functionality
+        let editMode = false;
+        let currentEditingElement = null;
+        let currentEditingType = 'text';
+
+        // Toggle edit mode
+        document.getElementById('toggleEditMode').addEventListener('click', function() {
+            editMode = !editMode;
+            const editButtons = document.querySelectorAll('.btn-edit');
+            
+            if (editMode) {
+                this.innerHTML = '<i class="fas fa-times"></i> Keluar Mode Edit';
+                this.style.background = '#f44336';
+                editButtons.forEach(btn => btn.style.opacity = '1');
+            } else {
+                this.innerHTML = '<i class="fas fa-edit"></i> Mode Edit';
+                this.style.background = '';
+                editButtons.forEach(btn => btn.style.opacity = '0');
+            }
+        });
+
+        // Edit triggers
+        document.querySelectorAll('.edit-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                if (!editMode) return;
+                
+                const target = this.getAttribute('data-target');
+                currentEditingElement = document.querySelector(`[data-target="${target}"]`).closest('.editable');
+                
+                // Determine content type
+                const titleElement = currentEditingElement.querySelector('[data-editable]');
+                let title = '', content = '';
+                
+                if (titleElement) {
+                    const dataAttr = titleElement.getAttribute('data-editable');
+                    title = getFieldTitle(dataAttr);
+                    content = titleElement.innerHTML;
+                    currentEditingType = 'text';
+                    
+                    // Check if it's an image element
+                    if (currentEditingElement.querySelector('img')) {
+                        document.getElementById('imageUploadGroup').style.display = 'block';
+                        currentEditingType = 'image';
+                    } else {
+                        document.getElementById('imageUploadGroup').style.display = 'none';
+                    }
+                }
+                
+                // Populate modal
+                document.getElementById('editTitle').value = title;
+                document.getElementById('editContent').value = content;
+                
+                // Show modal
+                document.getElementById('editModal').style.display = 'flex';
+            });
+        });
+
+        // Close modal
+        document.querySelector('.close-modal').addEventListener('click', closeModal);
+        document.getElementById('cancelEdit').addEventListener('click', closeModal);
+
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        // Save edit
+        document.getElementById('saveEdit').addEventListener('click', function() {
+            if (!currentEditingElement) return;
+            
+            const newContent = document.getElementById('editContent').value;
+            const editableElement = currentEditingElement.querySelector('[data-editable]');
+            
+            if (editableElement) {
+                editableElement.innerHTML = newContent;
+            }
+            
+            // Handle image upload
+            if (currentEditingType === 'image') {
+                const fileInput = document.getElementById('editImage');
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const imgElement = currentEditingElement.querySelector('img');
+                        if (imgElement) {
+                            imgElement.src = e.target.result;
+                        }
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            }
+            
+            closeModal();
+        });
+
+        // Save all changes
+        document.getElementById('saveChanges').addEventListener('click', function() {
+            // In a real application, this would send data to a server
+            alert('Perubahan telah disimpan!');
+        });
+
+        // Preview site
+        document.getElementById('previewSite').addEventListener('click', function() {
+            // In a real application, this would show a preview without edit buttons
+            alert('Mode preview diaktifkan. Tombol edit akan disembunyikan.');
+            document.querySelectorAll('.btn-edit').forEach(btn => btn.style.display = 'none');
+        });
+
+        // Helper function to get field title
+        function getFieldTitle(dataAttr) {
+            const titles = {
+                'school-name': 'Nama Sekolah',
+                'school-tagline': 'Tagline Sekolah',
+                'hero-title': 'Judul Hero Section',
+                'hero-description': 'Deskripsi Hero Section',
+                'about-title': 'Judul Tentang Sekolah',
+                'about-subtitle': 'Subjudul Tentang Sekolah',
+                'about-heading': 'Heading Tentang Sekolah',
+                'about-paragraph1': 'Paragraf 1 Tentang Sekolah',
+                'about-paragraph2': 'Paragraf 2 Tentang Sekolah',
+                'about-button': 'Teks Tombol Tentang Sekolah'
+            };
+            
+            return titles[dataAttr] || 'Edit Konten';
+        }
+    </script>
+</body>
+</html>

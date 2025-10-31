@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sekolah XYZ - Website Interaktif</title>
+    <title>Sekolah Unggulan - Website Interaktif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --success-color: #2ecc71;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
         }
         
         * {
@@ -22,7 +24,7 @@
         }
         
         body {
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
         }
@@ -36,10 +38,10 @@
         
         /* Header Styles */
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .header-content {
@@ -51,19 +53,30 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
         
-        .logo img {
+        .logo-icon {
+            width: 60px;
             height: 60px;
-            margin-right: 15px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: bold;
         }
         
-        .logo h1 {
-            font-size: 1.5rem;
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
         }
         
-        .logo span {
-            color: var(--secondary-color);
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
         
         .auth-buttons {
@@ -72,16 +85,19 @@
         }
         
         .btn {
-            padding: 8px 15px;
+            padding: 8px 16px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .btn-primary {
-            background-color: var(--secondary-color);
+            background-color: var(--accent);
             color: white;
         }
         
@@ -91,17 +107,29 @@
             color: white;
         }
         
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
         .btn:hover {
-            opacity: 0.9;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         /* Navigation Styles */
         nav {
-            background-color: var(--secondary-color);
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .nav-menu {
@@ -116,22 +144,31 @@
         .nav-link {
             display: block;
             padding: 15px 20px;
-            color: white;
+            color: var(--dark);
             text-decoration: none;
-            transition: background-color 0.3s;
+            font-weight: 500;
+            transition: all 0.3s;
         }
         
         .nav-link:hover {
-            background-color: rgba(0,0,0,0.1);
+            background-color: var(--light);
+            color: var(--secondary);
+        }
+        
+        .nav-link.active {
+            background-color: var(--secondary);
+            color: white;
         }
         
         .dropdown-menu {
             position: absolute;
             background-color: white;
-            min-width: 200px;
+            min-width: 220px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             display: none;
             z-index: 1;
+            border-radius: 0 0 4px 4px;
+            overflow: hidden;
         }
         
         .dropdown-menu a {
@@ -140,14 +177,32 @@
             color: #333;
             text-decoration: none;
             border-bottom: 1px solid #eee;
+            transition: all 0.3s;
         }
         
         .dropdown-menu a:hover {
-            background-color: #f5f5f5;
+            background-color: var(--light);
+            color: var(--secondary);
+            padding-left: 20px;
+        }
+        
+        .dropdown-menu a i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
         }
         
         .nav-item:hover .dropdown-menu {
             display: block;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
         }
         
         /* Main Content Styles */
@@ -156,12 +211,27 @@
             min-height: calc(100vh - 200px);
         }
         
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             color: white;
             padding: 80px 0;
             text-align: center;
             margin-bottom: 30px;
+            border-radius: 8px;
         }
         
         .hero h2 {
@@ -178,7 +248,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 30px;
-            color: var(--primary-color);
+            color: var(--primary);
             position: relative;
             padding-bottom: 10px;
         }
@@ -191,7 +261,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--secondary-color);
+            background-color: var(--secondary);
         }
         
         .cards {
@@ -226,12 +296,12 @@
         
         .card h3 {
             margin-bottom: 10px;
-            color: var(--primary-color);
+            color: var(--primary);
         }
         
         /* Footer Styles */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--dark);
             color: white;
             padding: 40px 0 20px;
         }
@@ -256,7 +326,7 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--secondary-color);
+            background-color: var(--secondary);
         }
         
         .footer-bottom {
@@ -267,7 +337,7 @@
         
         /* Admin Panel Styles */
         .admin-panel {
-            background-color: var(--light-color);
+            background-color: var(--light);
             padding: 20px;
             border-radius: 8px;
             margin-top: 30px;
@@ -275,14 +345,14 @@
         }
         
         .admin-panel h3 {
-            color: var(--primary-color);
+            color: var(--primary);
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid #ddd;
         }
         
         .edit-btn {
-            background-color: var(--accent-color);
+            background-color: var(--accent);
             color: white;
             border: none;
             padding: 5px 10px;
@@ -290,6 +360,11 @@
             cursor: pointer;
             font-size: 0.8rem;
             margin-left: 10px;
+            transition: all 0.3s;
+        }
+        
+        .edit-btn:hover {
+            background-color: #c0392b;
         }
         
         .editable {
@@ -297,6 +372,7 @@
             padding: 5px;
             border: 1px dashed transparent;
             transition: border 0.3s;
+            border-radius: 4px;
         }
         
         .editable:hover {
@@ -327,6 +403,12 @@
             padding: 8px 12px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
         }
         
         .form-actions {
@@ -356,6 +438,12 @@
             width: 100%;
             max-width: 400px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
         
         .modal-header {
@@ -370,6 +458,23 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: #777;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 10px 0;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
         }
         
         /* Responsive Styles */
@@ -377,15 +482,26 @@
             .header-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 15px;
             }
             
-            .logo {
-                margin-bottom: 15px;
-                justify-content: center;
+            .mobile-menu-btn {
+                display: block;
             }
             
             .nav-menu {
                 flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
             }
             
             .dropdown-menu {
@@ -402,6 +518,14 @@
             .nav-item.active .dropdown-menu {
                 display: block;
             }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -410,76 +534,98 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <!-- Placeholder for logo -->
-                <div style="width: 60px; height: 60px; background-color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 15px;">
-                    <span style="color: var(--primary-color); font-weight: bold;">XYZ</span>
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
-                <div>
-                    <h1>Sekolah <span>XYZ</span></h1>
-                    <p>Terdepan dalam Pendidikan</p>
+                <div class="logo-text">
+                    <h1>Sekolah <span>Unggulan</span></h1>
+                    <p>Mencerdaskan Generasi Bangsa</p>
                 </div>
             </div>
             <div class="auth-buttons">
-                <button class="btn btn-secondary" id="loginBtn">Login</button>
-                <button class="btn btn-primary" id="adminBtn" style="display: none;">Admin Panel</button>
-                <button class="btn btn-secondary" id="logoutBtn" style="display: none;">Logout</button>
+                <button class="btn btn-secondary" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="btn btn-success" id="adminBtn" style="display: none;">
+                    <i class="fas fa-cog"></i> Admin Panel
+                </button>
+                <button class="btn btn-secondary" id="logoutBtn" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Navigation -->
     <nav>
-        <div class="container">
-            <ul class="nav-menu">
+        <div class="container nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Beranda</a>
+                    <a href="#" class="nav-link active" data-page="beranda">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Profil</a>
+                    <a href="#" class="nav-link" data-page="profil">
+                        <i class="fas fa-info-circle"></i> Profil
+                    </a>
                     <div class="dropdown-menu">
-                        <a href="#">Sejarah</a>
-                        <a href="#">Visi & Misi</a>
-                        <a href="#">Struktur Organisasi</a>
-                        <a href="#">Sarana & Prasarana</a>
+                        <a href="#" data-page="sejarah"><i class="fas fa-history"></i> Sejarah</a>
+                        <a href="#" data-page="visi-misi"><i class="fas fa-bullseye"></i> Visi & Misi</a>
+                        <a href="#" data-page="struktur"><i class="fas fa-sitemap"></i> Struktur Organisasi</a>
+                        <a href="#" data-page="sarana"><i class="fas fa-building"></i> Sarana & Prasarana</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Akademik</a>
+                    <a href="#" class="nav-link" data-page="akademik">
+                        <i class="fas fa-book"></i> Akademik
+                    </a>
                     <div class="dropdown-menu">
-                        <a href="#">Kurikulum</a>
-                        <a href="#">Program Studi</a>
-                        <a href="#">Jadwal Pelajaran</a>
-                        <a href="#">Kalender Akademik</a>
+                        <a href="#" data-page="kurikulum"><i class="fas fa-graduation-cap"></i> Kurikulum</a>
+                        <a href="#" data-page="program-studi"><i class="fas fa-laptop-code"></i> Program Studi</a>
+                        <a href="#" data-page="jadwal"><i class="fas fa-calendar-alt"></i> Jadwal Pelajaran</a>
+                        <a href="#" data-page="kalender"><i class="fas fa-calendar"></i> Kalender Akademik</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Siswa</a>
+                    <a href="#" class="nav-link" data-page="siswa">
+                        <i class="fas fa-user-graduate"></i> Siswa
+                    </a>
                     <div class="dropdown-menu">
-                        <a href="#">Penerimaan Siswa Baru</a>
-                        <a href="#">Ekstrakurikuler</a>
-                        <a href="#">Prestasi Siswa</a>
-                        <a href="#">Alumni</a>
+                        <a href="#" data-page="psb"><i class="fas fa-user-plus"></i> Penerimaan Siswa Baru</a>
+                        <a href="#" data-page="ekstrakurikuler"><i class="fas fa-futbol"></i> Ekstrakurikuler</a>
+                        <a href="#" data-page="prestasi"><i class="fas fa-trophy"></i> Prestasi Siswa</a>
+                        <a href="#" data-page="alumni"><i class="fas fa-users"></i> Alumni</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Guru & Staf</a>
+                    <a href="#" class="nav-link" data-page="guru-staf">
+                        <i class="fas fa-chalkboard-teacher"></i> Guru & Staf
+                    </a>
                     <div class="dropdown-menu">
-                        <a href="#">Daftar Guru</a>
-                        <a href="#">Daftar Staf</a>
-                        <a href="#">Program Pengembangan</a>
+                        <a href="#" data-page="daftar-guru"><i class="fas fa-user-tie"></i> Daftar Guru</a>
+                        <a href="#" data-page="daftar-staf"><i class="fas fa-user-friends"></i> Daftar Staf</a>
+                        <a href="#" data-page="pengembangan"><i class="fas fa-chart-line"></i> Program Pengembangan</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Berita & Kegiatan</a>
+                    <a href="#" class="nav-link" data-page="berita">
+                        <i class="fas fa-newspaper"></i> Berita & Kegiatan
+                    </a>
                     <div class="dropdown-menu">
-                        <a href="#">Berita Sekolah</a>
-                        <a href="#">Kegiatan Siswa</a>
-                        <a href="#">Pengumuman</a>
-                        <a href="#">Galeri Foto</a>
+                        <a href="#" data-page="berita-sekolah"><i class="fas fa-bullhorn"></i> Berita Sekolah</a>
+                        <a href="#" data-page="kegiatan"><i class="fas fa-running"></i> Kegiatan Siswa</a>
+                        <a href="#" data-page="pengumuman"><i class="fas fa-bell"></i> Pengumuman</a>
+                        <a href="#" data-page="galeri"><i class="fas fa-images"></i> Galeri Foto</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Kontak</a>
+                    <a href="#" class="nav-link" data-page="kontak">
+                        <i class="fas fa-phone-alt"></i> Kontak
+                    </a>
                 </li>
             </ul>
         </div>
@@ -487,85 +633,146 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h2 id="hero-title" class="editable">Selamat Datang di Sekolah XYZ</h2>
-                <p id="hero-subtitle" class="editable">Membentuk generasi unggul, berkarakter, dan berprestasi</p>
-                <button class="btn btn-primary">Pelajari Lebih Lanjut</button>
-                <button class="edit-btn" onclick="showEditForm('hero-title')">Edit</button>
-                <button class="edit-btn" onclick="showEditForm('hero-subtitle')">Edit</button>
-            </div>
-        </section>
-
         <div class="container">
-            <!-- About Section -->
-            <section>
-                <h2 class="section-title">Tentang Kami</h2>
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-img" style="background-color: #3498db;"></div>
-                        <div class="card-content">
-                            <h3 id="about-title-1" class="editable">Visi Sekolah</h3>
-                            <p id="about-content-1" class="editable">Menjadi sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan mampu bersaing di tingkat nasional maupun internasional.</p>
-                            <button class="edit-btn" onclick="showEditForm('about-title-1')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('about-content-1')">Edit</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img" style="background-color: #2ecc71;"></div>
-                        <div class="card-content">
-                            <h3 id="about-title-2" class="editable">Misi Sekolah</h3>
-                            <p id="about-content-2" class="editable">Menyelenggarakan pendidikan berkualitas dengan pendekatan holistik untuk mengembangkan potensi akademik dan non-akademik siswa.</p>
-                            <button class="edit-btn" onclick="showEditForm('about-title-2')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('about-content-2')">Edit</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img" style="background-color: #e74c3c;"></div>
-                        <div class="card-content">
-                            <h3 id="about-title-3" class="editable">Prestasi</h3>
-                            <p id="about-content-3" class="editable">Sekolah kami telah meraih berbagai penghargaan di tingkat nasional dalam bidang akademik, olahraga, dan seni.</p>
-                            <button class="edit-btn" onclick="showEditForm('about-title-3')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('about-content-3')">Edit</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <!-- Breadcrumb -->
+            <div class="breadcrumb" id="breadcrumb">
+                <a href="#" data-page="beranda">Beranda</a>
+            </div>
 
-            <!-- News Section -->
-            <section>
-                <h2 class="section-title">Berita & Kegiatan Terbaru</h2>
+            <!-- Pages -->
+            <div id="beranda" class="page active">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="container">
+                        <h2 id="hero-title" class="editable">Selamat Datang di Sekolah Unggulan</h2>
+                        <p id="hero-subtitle" class="editable">Membentuk generasi unggul, berkarakter, dan berprestasi dalam lingkungan belajar yang inspiratif</p>
+                        <button class="btn btn-primary">Pelajari Lebih Lanjut</button>
+                        <button class="edit-btn" onclick="showEditForm('hero-title')">Edit</button>
+                        <button class="edit-btn" onclick="showEditForm('hero-subtitle')">Edit</button>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section>
+                    <h2 class="section-title">Tentang Kami</h2>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="card-img" style="background-color: #3498db;"></div>
+                            <div class="card-content">
+                                <h3 id="about-title-1" class="editable">Visi Sekolah</h3>
+                                <p id="about-content-1" class="editable">Menjadi sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan mampu bersaing di tingkat nasional maupun internasional.</p>
+                                <button class="edit-btn" onclick="showEditForm('about-title-1')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-content-1')">Edit</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-img" style="background-color: #2ecc71;"></div>
+                            <div class="card-content">
+                                <h3 id="about-title-2" class="editable">Misi Sekolah</h3>
+                                <p id="about-content-2" class="editable">Menyelenggarakan pendidikan berkualitas dengan pendekatan holistik untuk mengembangkan potensi akademik dan non-akademik siswa.</p>
+                                <button class="edit-btn" onclick="showEditForm('about-title-2')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-content-2')">Edit</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-img" style="background-color: #e74c3c;"></div>
+                            <div class="card-content">
+                                <h3 id="about-title-3" class="editable">Prestasi</h3>
+                                <p id="about-content-3" class="editable">Sekolah kami telah meraih berbagai penghargaan di tingkat nasional dalam bidang akademik, olahraga, dan seni.</p>
+                                <button class="edit-btn" onclick="showEditForm('about-title-3')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-content-3')">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- News Section -->
+                <section>
+                    <h2 class="section-title">Berita & Kegiatan Terbaru</h2>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="card-img" style="background-color: #9b59b6;"></div>
+                            <div class="card-content">
+                                <h3 id="news-title-1" class="editable">Pentas Seni Tahun 2023</h3>
+                                <p id="news-content-1" class="editable">Siswa-siswi Sekolah Unggulan akan mengadakan pentas seni tahunan pada tanggal 15 Desember 2023.</p>
+                                <button class="edit-btn" onclick="showEditForm('news-title-1')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('news-content-1')">Edit</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-img" style="background-color: #f39c12;"></div>
+                            <div class="card-content">
+                                <h3 id="news-title-2" class="editable">Olimpiade Sains Nasional</h3>
+                                <p id="news-content-2" class="editable">Dua siswa kami berhasil meraih medali perak dalam Olimpiade Sains Nasional tingkat SMA.</p>
+                                <button class="edit-btn" onclick="showEditForm('news-title-2')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('news-content-2')">Edit</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-img" style="background-color: #1abc9c;"></div>
+                            <div class="card-content">
+                                <h3 id="news-title-3" class="editable">Kegiatan Bakti Sosial</h3>
+                                <p id="news-content-3" class="editable">Sekolah mengadakan kegiatan bakti sosial di panti asuhan setempat sebagai bentuk kepedulian sosial.</p>
+                                <button class="edit-btn" onclick="showEditForm('news-title-3')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('news-content-3')">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Other Pages (initially hidden) -->
+            <div id="profil" class="page">
+                <h2 class="section-title">Profil Sekolah</h2>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 id="profil-title" class="editable">Profil Sekolah Unggulan</h3>
+                        <p id="profil-content" class="editable">Sekolah Unggulan adalah lembaga pendidikan yang berdiri sejak tahun 1995. Kami berkomitmen untuk memberikan pendidikan terbaik bagi siswa dengan fasilitas modern dan tenaga pengajar yang berkualitas.</p>
+                        <button class="edit-btn" onclick="showEditForm('profil-title')">Edit</button>
+                        <button class="edit-btn" onclick="showEditForm('profil-content')">Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sejarah" class="page">
+                <h2 class="section-title">Sejarah Sekolah</h2>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 id="sejarah-title" class="editable">Sejarah Berdirinya Sekolah Unggulan</h3>
+                        <p id="sejarah-content" class="editable">Sekolah Unggulan didirikan pada tahun 1995 oleh Yayasan Pendidikan Maju Jaya dengan tujuan memberikan pendidikan berkualitas bagi masyarakat. Awalnya sekolah hanya memiliki 5 ruang kelas dan 50 siswa. Kini kami telah berkembang menjadi sekolah dengan lebih dari 1000 siswa dan fasilitas lengkap.</p>
+                        <button class="edit-btn" onclick="showEditForm('sejarah-title')">Edit</button>
+                        <button class="edit-btn" onclick="showEditForm('sejarah-content')">Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="visi-misi" class="page">
+                <h2 class="section-title">Visi & Misi</h2>
                 <div class="cards">
                     <div class="card">
-                        <div class="card-img" style="background-color: #9b59b6;"></div>
                         <div class="card-content">
-                            <h3 id="news-title-1" class="editable">Pentas Seni Tahun 2023</h3>
-                            <p id="news-content-1" class="editable">Siswa-siswi Sekolah XYZ akan mengadakan pentas seni tahunan pada tanggal 15 Desember 2023.</p>
-                            <button class="edit-btn" onclick="showEditForm('news-title-1')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('news-content-1')">Edit</button>
+                            <h3 id="visi-title" class="editable">Visi</h3>
+                            <p id="visi-content" class="editable">Menjadi sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan mampu bersaing di tingkat nasional maupun internasional.</p>
+                            <button class="edit-btn" onclick="showEditForm('visi-title')">Edit</button>
+                            <button class="edit-btn" onclick="showEditForm('visi-content')">Edit</button>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-img" style="background-color: #f39c12;"></div>
                         <div class="card-content">
-                            <h3 id="news-title-2" class="editable">Olimpiade Sains Nasional</h3>
-                            <p id="news-content-2" class="editable">Dua siswa kami berhasil meraih medali perak dalam Olimpiade Sains Nasional tingkat SMA.</p>
-                            <button class="edit-btn" onclick="showEditForm('news-title-2')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('news-content-2')">Edit</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img" style="background-color: #1abc9c;"></div>
-                        <div class="card-content">
-                            <h3 id="news-title-3" class="editable">Kegiatan Bakti Sosial</h3>
-                            <p id="news-content-3" class="editable">Sekolah mengadakan kegiatan bakti sosial di panti asuhan setempat sebagai bentuk kepedulian sosial.</p>
-                            <button class="edit-btn" onclick="showEditForm('news-title-3')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('news-content-3')">Edit</button>
+                            <h3 id="misi-title" class="editable">Misi</h3>
+                            <p id="misi-content" class="editable">
+                                1. Menyelenggarakan pendidikan berkualitas dengan pendekatan holistik<br>
+                                2. Mengembangkan potensi akademik dan non-akademik siswa<br>
+                                3. Menciptakan lingkungan belajar yang inspiratif dan kondusif<br>
+                                4. Membangun karakter siswa yang berakhlak mulia<br>
+                                5. Mempersiapkan siswa untuk menghadapi tantangan global
+                            </p>
+                            <button class="edit-btn" onclick="showEditForm('misi-title')">Edit</button>
+                            <button class="edit-btn" onclick="showEditForm('misi-content')">Edit</button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Admin Panel (Visible only when logged in as admin) -->
             <div id="adminPanel" class="admin-panel" style="display: none;">
@@ -583,7 +790,7 @@
                     <h3>Kontak Kami</h3>
                     <p id="footer-address" class="editable">Jl. Pendidikan No. 123, Jakarta</p>
                     <p id="footer-phone" class="editable">Telepon: (021) 1234567</p>
-                    <p id="footer-email" class="editable">Email: info@sekolahxyz.sch.id</p>
+                    <p id="footer-email" class="editable">Email: info@sekolahunggulan.sch.id</p>
                     <button class="edit-btn" onclick="showEditForm('footer-address')">Edit</button>
                     <button class="edit-btn" onclick="showEditForm('footer-phone')">Edit</button>
                     <button class="edit-btn" onclick="showEditForm('footer-email')">Edit</button>
@@ -591,24 +798,24 @@
                 <div class="footer-section">
                     <h3>Tautan Cepat</h3>
                     <ul>
-                        <li><a href="#">Penerimaan Siswa Baru</a></li>
-                        <li><a href="#">Kalender Akademik</a></li>
-                        <li><a href="#">Galeri Foto</a></li>
-                        <li><a href="#">Pengumuman</a></li>
+                        <li><a href="#" data-page="psb">Penerimaan Siswa Baru</a></li>
+                        <li><a href="#" data-page="kalender">Kalender Akademik</a></li>
+                        <li><a href="#" data-page="galeri">Galeri Foto</a></li>
+                        <li><a href="#" data-page="pengumuman">Pengumuman</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Ikuti Kami</h3>
                     <p>Terhubung dengan kami di media sosial untuk informasi terbaru.</p>
                     <div style="margin-top: 15px;">
-                        <a href="#" style="color: white; margin-right: 10px;">Facebook</a>
-                        <a href="#" style="color: white; margin-right: 10px;">Instagram</a>
-                        <a href="#" style="color: white; margin-right: 10px;">YouTube</a>
+                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-facebook-f"></i> Facebook</a><br>
+                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-instagram"></i> Instagram</a><br>
+                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-youtube"></i> YouTube</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Sekolah XYZ. Semua Hak Dilindungi.</p>
+                <p>&copy; 2023 Sekolah Unggulan. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
@@ -661,6 +868,8 @@
         // State management
         let isAdmin = false;
         let currentEditElement = null;
+        let currentPage = 'beranda';
+        let pageHistory = ['beranda'];
 
         // DOM Elements
         const loginBtn = document.getElementById('loginBtn');
@@ -671,7 +880,12 @@
         const loginForm = document.getElementById('loginForm');
         const editForm = document.getElementById('editForm');
         const adminPanel = document.getElementById('adminPanel');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const breadcrumb = document.getElementById('breadcrumb');
         const closeModalButtons = document.querySelectorAll('.close-modal');
+        const navLinks = document.querySelectorAll('.nav-link, .dropdown-menu a');
+        const pages = document.querySelectorAll('.page');
 
         // Event Listeners
         loginBtn.addEventListener('click', () => {
@@ -718,6 +932,27 @@
             editForm.reset();
         });
 
+        // Navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                if (pageId) {
+                    navigateToPage(pageId);
+                }
+                
+                // Close mobile menu after clicking a link
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
         // Close modal when clicking close button or outside modal
         closeModalButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -736,6 +971,94 @@
         });
 
         // Functions
+        function navigateToPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate the appropriate nav link
+            const activeNavLink = document.querySelector(`[data-page="${pageId}"]`);
+            if (activeNavLink) {
+                activeNavLink.classList.add('active');
+                
+                // If it's a dropdown item, also activate its parent
+                const parentNavItem = activeNavLink.closest('.nav-item');
+                if (parentNavItem) {
+                    const parentNavLink = parentNavItem.querySelector('.nav-link');
+                    if (parentNavLink) {
+                        parentNavLink.classList.add('active');
+                    }
+                }
+            }
+            
+            // Update breadcrumb
+            updateBreadcrumb(pageId);
+            
+            // Update page history
+            if (pageHistory[pageHistory.length - 1] !== pageId) {
+                pageHistory.push(pageId);
+            }
+            
+            currentPage = pageId;
+        }
+
+        function updateBreadcrumb(pageId) {
+            const pageTitles = {
+                'beranda': 'Beranda',
+                'profil': 'Profil',
+                'sejarah': 'Sejarah',
+                'visi-misi': 'Visi & Misi',
+                'struktur': 'Struktur Organisasi',
+                'sarana': 'Sarana & Prasarana',
+                'akademik': 'Akademik',
+                'kurikulum': 'Kurikulum',
+                'program-studi': 'Program Studi',
+                'jadwal': 'Jadwal Pelajaran',
+                'kalender': 'Kalender Akademik',
+                'siswa': 'Siswa',
+                'psb': 'Penerimaan Siswa Baru',
+                'ekstrakurikuler': 'Ekstrakurikuler',
+                'prestasi': 'Prestasi Siswa',
+                'alumni': 'Alumni',
+                'guru-staf': 'Guru & Staf',
+                'daftar-guru': 'Daftar Guru',
+                'daftar-staf': 'Daftar Staf',
+                'pengembangan': 'Program Pengembangan',
+                'berita': 'Berita & Kegiatan',
+                'berita-sekolah': 'Berita Sekolah',
+                'kegiatan': 'Kegiatan Siswa',
+                'pengumuman': 'Pengumuman',
+                'galeri': 'Galeri Foto',
+                'kontak': 'Kontak'
+            };
+            
+            let breadcrumbHTML = '<a href="#" data-page="beranda">Beranda</a>';
+            
+            if (pageId !== 'beranda') {
+                breadcrumbHTML += ` &rsaquo; <a href="#" data-page="${pageId}">${pageTitles[pageId] || pageId}</a>`;
+            }
+            
+            breadcrumb.innerHTML = breadcrumbHTML;
+            
+            // Add event listeners to breadcrumb links
+            breadcrumb.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = link.getAttribute('data-page');
+                    navigateToPage(page);
+                });
+            });
+        }
+
         function updateUI() {
             if (isAdmin) {
                 loginBtn.style.display = 'none';
@@ -747,11 +1070,6 @@
                 document.querySelectorAll('.edit-btn').forEach(btn => {
                     btn.style.display = 'inline-block';
                 });
-                
-                // Add hover effect to editable elements
-                document.querySelectorAll('.editable').forEach(el => {
-                    el.classList.add('editable-hover');
-                });
             } else {
                 loginBtn.style.display = 'block';
                 adminBtn.style.display = 'none';
@@ -761,11 +1079,6 @@
                 // Hide edit buttons
                 document.querySelectorAll('.edit-btn').forEach(btn => {
                     btn.style.display = 'none';
-                });
-                
-                // Remove hover effect from editable elements
-                document.querySelectorAll('.editable').forEach(el => {
-                    el.classList.remove('editable-hover');
                 });
             }
         }
@@ -793,6 +1106,9 @@
                 isAdmin = true;
                 updateUI();
             }
+            
+            // Initialize breadcrumb
+            updateBreadcrumb('beranda');
         });
 
         // Save admin state when logging in/out

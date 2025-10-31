@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK Negeri 1 Maju Jaya</title>
+    <title>SMK Negeri 1 Maju Jaya - Sekolah Unggul Berbasis Teknologi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,6 +14,7 @@
             --dark: #333;
             --success: #4caf50;
             --danger: #f44336;
+            --gray: #777;
         }
         
         * {
@@ -42,6 +43,9 @@
             color: white;
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .header-top {
@@ -60,6 +64,7 @@
         .logo img {
             height: 60px;
             margin-right: 15px;
+            border-radius: 5px;
         }
         
         .logo-text h1 {
@@ -117,7 +122,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -145,6 +150,8 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
@@ -262,6 +269,32 @@
             color: var(--secondary);
         }
         
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
         /* Footer */
         footer {
             background: var(--dark);
@@ -344,9 +377,9 @@
             background: white;
             border-radius: 8px;
             padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             margin: 50px auto;
-            max-width: 800px;
+            max-width: 900px;
             display: none;
         }
         
@@ -458,6 +491,7 @@
             border: 1px dashed transparent;
             padding: 2px;
             transition: all 0.3s;
+            min-height: 20px;
         }
         
         .editable:hover {
@@ -480,10 +514,62 @@
             cursor: pointer;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
+            display: none;
         }
         
         .edit-btn:hover {
             background: var(--secondary);
+        }
+        
+        .image-upload {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .image-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -493,7 +579,7 @@
         <div class="container">
             <div class="header-top">
                 <div class="logo">
-                    <img src="https://via.placeholder.com/60" alt="Logo SMK">
+                    <img src="https://via.placeholder.com/60/1a73e8/ffffff?text=SMK" alt="Logo SMK" class="editable-image" data-id="logo">
                     <div class="logo-text">
                         <h1 class="editable" data-id="school-name">SMK NEGERI 1 MAJU JAYA</h1>
                         <p class="editable" data-id="school-motto">Sekolah Unggul Berbasis Teknologi</p>
@@ -572,25 +658,42 @@
         <h2 class="section-title editable" data-id="programs-title">Program Keahlian</h2>
         <div class="programs">
             <div class="program-card">
-                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                <div class="program-img editable-image" data-id="program1-img" style="background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
                 <div class="program-content">
                     <h3 class="editable" data-id="program1-title">Rekayasa Perangkat Lunak</h3>
                     <p class="editable" data-id="program1-desc">Mempelajari pengembangan aplikasi dan sistem informasi berbasis komputer.</p>
                 </div>
             </div>
             <div class="program-card">
-                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="program-img editable-image" data-id="program2-img" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                 <div class="program-content">
                     <h3 class="editable" data-id="program2-title">Teknik Kendaraan Ringan</h3>
                     <p class="editable" data-id="program2-desc">Fokus pada perawatan dan perbaikan kendaraan roda empat.</p>
                 </div>
             </div>
             <div class="program-card">
-                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="program-img editable-image" data-id="program3-img" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                 <div class="program-content">
                     <h3 class="editable" data-id="program3-title">Teknik Pemesinan</h3>
                     <p class="editable" data-id="program3-desc">Mempelajari proses produksi komponen mesin dengan teknologi CNC.</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Gallery -->
+        <h2 class="section-title editable" data-id="gallery-title">Galeri Kegiatan</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Belajar" class="editable-image" data-id="gallery1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Praktikum" class="editable-image" data-id="gallery2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ekstrakurikuler" class="editable-image" data-id="gallery3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Upacara" class="editable-image" data-id="gallery4">
             </div>
         </div>
     </div>
@@ -635,57 +738,126 @@
     <!-- Admin Panel -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-header">
-            <h2>Panel Admin - Edit Konten</h2>
+            <h2>Panel Admin - Edit Konten Website</h2>
             <button class="btn-admin btn-danger" id="logoutBtn">Keluar</button>
         </div>
-        <div class="form-group">
-            <label for="contentSelector">Pilih Konten untuk Diedit:</label>
-            <select id="contentSelector" class="form-control">
-                <option value="">-- Pilih Konten --</option>
-                <option value="school-name">Nama Sekolah</option>
-                <option value="school-motto">Motto Sekolah</option>
-                <option value="hero-title">Judul Hero</option>
-                <option value="hero-subtitle">Subjudul Hero</option>
-                <option value="features-title">Judul Keunggulan</option>
-                <option value="feature1-title">Keunggulan 1 - Judul</option>
-                <option value="feature1-desc">Keunggulan 1 - Deskripsi</option>
-                <option value="feature2-title">Keunggulan 2 - Judul</option>
-                <option value="feature2-desc">Keunggulan 2 - Deskripsi</option>
-                <option value="feature3-title">Keunggulan 3 - Judul</option>
-                <option value="feature3-desc">Keunggulan 3 - Deskripsi</option>
-                <option value="announcements-title">Judul Pengumuman</option>
-                <option value="announcement1-date">Pengumuman 1 - Tanggal</option>
-                <option value="announcement1-title">Pengumuman 1 - Judul</option>
-                <option value="announcement1-desc">Pengumuman 1 - Deskripsi</option>
-                <option value="announcement2-date">Pengumuman 2 - Tanggal</option>
-                <option value="announcement2-title">Pengumuman 2 - Judul</option>
-                <option value="announcement2-desc">Pengumuman 2 - Deskripsi</option>
-                <option value="announcement3-date">Pengumuman 3 - Tanggal</option>
-                <option value="announcement3-title">Pengumuman 3 - Judul</option>
-                <option value="announcement3-desc">Pengumuman 3 - Deskripsi</option>
-                <option value="programs-title">Judul Program</option>
-                <option value="program1-title">Program 1 - Judul</option>
-                <option value="program1-desc">Program 1 - Deskripsi</option>
-                <option value="program2-title">Program 2 - Judul</option>
-                <option value="program2-desc">Program 2 - Deskripsi</option>
-                <option value="program3-title">Program 3 - Judul</option>
-                <option value="program3-desc">Program 3 - Deskripsi</option>
-                <option value="footer-about-title">Footer - Tentang Kami</option>
-                <option value="footer-about-desc">Footer - Deskripsi Tentang Kami</option>
-                <option value="footer-links-title">Footer - Tautan Cepat</option>
-                <option value="footer-contact-title">Footer - Kontak Kami</option>
-                <option value="footer-address">Footer - Alamat</option>
-                <option value="footer-phone">Footer - Telepon</option>
-                <option value="footer-email">Footer - Email</option>
-                <option value="footer-copyright">Footer - Hak Cipta</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="contentEditor">Edit Konten:</label>
-            <textarea id="contentEditor" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-            <button class="btn-admin" id="saveContentBtn">Simpan Perubahan</button>
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="text">Edit Teks</div>
+                <div class="tab" data-tab="images">Edit Gambar</div>
+                <div class="tab" data-tab="announcements">Edit Pengumuman</div>
+            </div>
+            
+            <!-- Tab Edit Teks -->
+            <div class="tab-content active" id="text-tab">
+                <div class="form-group">
+                    <label for="contentSelector">Pilih Konten untuk Diedit:</label>
+                    <select id="contentSelector" class="form-control">
+                        <option value="">-- Pilih Konten Teks --</option>
+                        <option value="school-name">Nama Sekolah</option>
+                        <option value="school-motto">Motto Sekolah</option>
+                        <option value="hero-title">Judul Hero</option>
+                        <option value="hero-subtitle">Subjudul Hero</option>
+                        <option value="features-title">Judul Keunggulan</option>
+                        <option value="feature1-title">Keunggulan 1 - Judul</option>
+                        <option value="feature1-desc">Keunggulan 1 - Deskripsi</option>
+                        <option value="feature2-title">Keunggulan 2 - Judul</option>
+                        <option value="feature2-desc">Keunggulan 2 - Deskripsi</option>
+                        <option value="feature3-title">Keunggulan 3 - Judul</option>
+                        <option value="feature3-desc">Keunggulan 3 - Deskripsi</option>
+                        <option value="announcements-title">Judul Pengumuman</option>
+                        <option value="programs-title">Judul Program</option>
+                        <option value="program1-title">Program 1 - Judul</option>
+                        <option value="program1-desc">Program 1 - Deskripsi</option>
+                        <option value="program2-title">Program 2 - Judul</option>
+                        <option value="program2-desc">Program 2 - Deskripsi</option>
+                        <option value="program3-title">Program 3 - Judul</option>
+                        <option value="program3-desc">Program 3 - Deskripsi</option>
+                        <option value="gallery-title">Judul Galeri</option>
+                        <option value="footer-about-title">Footer - Tentang Kami</option>
+                        <option value="footer-about-desc">Footer - Deskripsi Tentang Kami</option>
+                        <option value="footer-links-title">Footer - Tautan Cepat</option>
+                        <option value="footer-contact-title">Footer - Kontak Kami</option>
+                        <option value="footer-address">Footer - Alamat</option>
+                        <option value="footer-phone">Footer - Telepon</option>
+                        <option value="footer-email">Footer - Email</option>
+                        <option value="footer-copyright">Footer - Hak Cipta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contentEditor">Edit Konten:</label>
+                    <textarea id="contentEditor" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn-admin" id="saveContentBtn">Simpan Perubahan Teks</button>
+                </div>
+            </div>
+            
+            <!-- Tab Edit Gambar -->
+            <div class="tab-content" id="images-tab">
+                <div class="form-group">
+                    <label for="imageSelector">Pilih Gambar untuk Diedit:</label>
+                    <select id="imageSelector" class="form-control">
+                        <option value="">-- Pilih Gambar --</option>
+                        <option value="logo">Logo Sekolah</option>
+                        <option value="program1-img">Program 1 - Gambar</option>
+                        <option value="program2-img">Program 2 - Gambar</option>
+                        <option value="program3-img">Program 3 - Gambar</option>
+                        <option value="gallery1">Galeri 1</option>
+                        <option value="gallery2">Galeri 2</option>
+                        <option value="gallery3">Galeri 3</option>
+                        <option value="gallery4">Galeri 4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Pratinjau Gambar:</label>
+                    <div class="image-upload">
+                        <div class="image-preview">
+                            <img id="imagePreview" src="" alt="Pratinjau">
+                        </div>
+                        <div>
+                            <input type="file" id="imageUpload" accept="image/*">
+                            <p class="help-text">Unggah gambar baru (max 2MB)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Atau masukkan URL gambar:</label>
+                    <input type="text" id="imageUrl" class="form-control" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <button class="btn-admin" id="saveImageBtn">Simpan Perubahan Gambar</button>
+                </div>
+            </div>
+            
+            <!-- Tab Edit Pengumuman -->
+            <div class="tab-content" id="announcements-tab">
+                <div class="form-group">
+                    <label for="announcementSelector">Pilih Pengumuman untuk Diedit:</label>
+                    <select id="announcementSelector" class="form-control">
+                        <option value="">-- Pilih Pengumuman --</option>
+                        <option value="announcement1">Pengumuman 1</option>
+                        <option value="announcement2">Pengumuman 2</option>
+                        <option value="announcement3">Pengumuman 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="announcementDate">Tanggal:</label>
+                    <input type="text" id="announcementDate" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="announcementTitle">Judul:</label>
+                    <input type="text" id="announcementTitle" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="announcementDesc">Deskripsi:</label>
+                    <textarea id="announcementDesc" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn-admin" id="saveAnnouncementBtn">Simpan Perubahan Pengumuman</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -703,6 +875,9 @@
         <div class="form-group">
             <button class="btn-admin" id="loginBtn">Login</button>
         </div>
+        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+            <strong>Default login:</strong> admin / smk123
+        </p>
     </div>
 
     <!-- Edit Button -->
@@ -729,6 +904,18 @@
         const contentSelector = document.getElementById('contentSelector');
         const contentEditor = document.getElementById('contentEditor');
         const saveContentBtn = document.getElementById('saveContentBtn');
+        const imageSelector = document.getElementById('imageSelector');
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreview = document.getElementById('imagePreview');
+        const imageUrl = document.getElementById('imageUrl');
+        const saveImageBtn = document.getElementById('saveImageBtn');
+        const announcementSelector = document.getElementById('announcementSelector');
+        const announcementDate = document.getElementById('announcementDate');
+        const announcementTitle = document.getElementById('announcementTitle');
+        const announcementDesc = document.getElementById('announcementDesc');
+        const saveAnnouncementBtn = document.getElementById('saveAnnouncementBtn');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
 
         // Event Listeners
         loginBtn.addEventListener('click', handleLogin);
@@ -736,6 +923,30 @@
         editBtn.addEventListener('click', toggleAdminPanel);
         contentSelector.addEventListener('change', loadContentToEditor);
         saveContentBtn.addEventListener('click', saveContent);
+        imageSelector.addEventListener('change', loadImageToEditor);
+        imageUpload.addEventListener('change', handleImageUpload);
+        saveImageBtn.addEventListener('click', saveImage);
+        announcementSelector.addEventListener('change', loadAnnouncementToEditor);
+        saveAnnouncementBtn.addEventListener('click', saveAnnouncement);
+        
+        // Tab switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-tab`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
 
         // Fungsi untuk menangani login
         function handleLogin() {
@@ -801,8 +1012,129 @@
             }
         }
 
+        // Fungsi untuk memuat gambar ke editor
+        function loadImageToEditor() {
+            const selectedId = imageSelector.value;
+            if (selectedId) {
+                const element = document.querySelector(`[data-id="${selectedId}"]`);
+                if (element) {
+                    if (element.tagName === 'IMG') {
+                        imagePreview.src = element.src;
+                    } else {
+                        // For background images
+                        const bgImage = element.style.backgroundImage;
+                        if (bgImage) {
+                            imagePreview.src = bgImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+                        }
+                    }
+                    
+                    // Load saved image URL if exists
+                    const savedImage = localStorage.getItem(selectedId);
+                    if (savedImage) {
+                        imageUrl.value = savedImage;
+                    }
+                }
+            } else {
+                imagePreview.src = '';
+                imageUrl.value = '';
+            }
+        }
+
+        // Fungsi untuk menangani upload gambar
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar. Maksimal 2MB.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+                    imageUrl.value = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Fungsi untuk menyimpan gambar
+        function saveImage() {
+            const selectedId = imageSelector.value;
+            if (selectedId && imageUrl.value) {
+                const element = document.querySelector(`[data-id="${selectedId}"]`);
+                if (element) {
+                    if (element.tagName === 'IMG') {
+                        element.src = imageUrl.value;
+                    } else {
+                        // For background images
+                        element.style.backgroundImage = `url('${imageUrl.value}')`;
+                    }
+                    
+                    // Simpan ke localStorage untuk penyimpanan permanen
+                    localStorage.setItem(selectedId, imageUrl.value);
+                    alert('Gambar berhasil disimpan!');
+                }
+            } else {
+                alert('Pilih gambar dan masukkan URL atau unggah gambar terlebih dahulu!');
+            }
+        }
+
+        // Fungsi untuk memuat pengumuman ke editor
+        function loadAnnouncementToEditor() {
+            const selectedId = announcementSelector.value;
+            if (selectedId) {
+                // Load data from the page
+                const dateElement = document.querySelector(`[data-id="${selectedId}-date"]`);
+                const titleElement = document.querySelector(`[data-id="${selectedId}-title"]`);
+                const descElement = document.querySelector(`[data-id="${selectedId}-desc"]`);
+                
+                if (dateElement) announcementDate.value = dateElement.textContent;
+                if (titleElement) announcementTitle.value = titleElement.textContent;
+                if (descElement) announcementDesc.value = descElement.textContent;
+                
+                // Load saved data if exists
+                const savedDate = localStorage.getItem(`${selectedId}-date`);
+                const savedTitle = localStorage.getItem(`${selectedId}-title`);
+                const savedDesc = localStorage.getItem(`${selectedId}-desc`);
+                
+                if (savedDate) announcementDate.value = savedDate;
+                if (savedTitle) announcementTitle.value = savedTitle;
+                if (savedDesc) announcementDesc.value = savedDesc;
+            } else {
+                announcementDate.value = '';
+                announcementTitle.value = '';
+                announcementDesc.value = '';
+            }
+        }
+
+        // Fungsi untuk menyimpan pengumuman
+        function saveAnnouncement() {
+            const selectedId = announcementSelector.value;
+            if (selectedId) {
+                // Update the page
+                const dateElement = document.querySelector(`[data-id="${selectedId}-date"]`);
+                const titleElement = document.querySelector(`[data-id="${selectedId}-title"]`);
+                const descElement = document.querySelector(`[data-id="${selectedId}-desc"]`);
+                
+                if (dateElement) dateElement.textContent = announcementDate.value;
+                if (titleElement) titleElement.textContent = announcementTitle.value;
+                if (descElement) descElement.textContent = announcementDesc.value;
+                
+                // Save to localStorage
+                localStorage.setItem(`${selectedId}-date`, announcementDate.value);
+                localStorage.setItem(`${selectedId}-title`, announcementTitle.value);
+                localStorage.setItem(`${selectedId}-desc`, announcementDesc.value);
+                
+                alert('Pengumuman berhasil disimpan!');
+            } else {
+                alert('Pilih pengumuman yang akan diedit terlebih dahulu!');
+            }
+        }
+
         // Fungsi untuk memuat konten dari localStorage saat halaman dimuat
         function loadSavedContent() {
+            // Load text content
             const editableElements = document.querySelectorAll('.editable');
             editableElements.forEach(element => {
                 const id = element.getAttribute('data-id');
@@ -811,6 +1143,44 @@
                     element.textContent = savedContent;
                 }
             });
+            
+            // Load images
+            const editableImages = document.querySelectorAll('.editable-image');
+            editableImages.forEach(element => {
+                const id = element.getAttribute('data-id');
+                const savedImage = localStorage.getItem(id);
+                if (savedImage) {
+                    if (element.tagName === 'IMG') {
+                        element.src = savedImage;
+                    } else {
+                        // For background images
+                        element.style.backgroundImage = `url('${savedImage}')`;
+                    }
+                }
+            });
+            
+            // Load announcements
+            for (let i = 1; i <= 3; i++) {
+                const announcementId = `announcement${i}`;
+                const savedDate = localStorage.getItem(`${announcementId}-date`);
+                const savedTitle = localStorage.getItem(`${announcementId}-title`);
+                const savedDesc = localStorage.getItem(`${announcementId}-desc`);
+                
+                if (savedDate) {
+                    const dateElement = document.querySelector(`[data-id="${announcementId}-date"]`);
+                    if (dateElement) dateElement.textContent = savedDate;
+                }
+                
+                if (savedTitle) {
+                    const titleElement = document.querySelector(`[data-id="${announcementId}-title"]`);
+                    if (titleElement) titleElement.textContent = savedTitle;
+                }
+                
+                if (savedDesc) {
+                    const descElement = document.querySelector(`[data-id="${announcementId}-desc"]`);
+                    if (descElement) descElement.textContent = savedDesc;
+                }
+            }
         }
 
         // Panggil fungsi untuk memuat konten yang disimpan

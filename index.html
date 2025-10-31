@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK Tamsis Playen - Sekolah Menengah Kejuruan</title>
+    <title>SMK Prestasi Prima - Sekolah Menengah Kejuruan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -153,6 +153,14 @@
             background-color: #e68900;
             transform: translateY(-3px);
             box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1f6b23;
         }
         
         /* Section Styling */
@@ -647,6 +655,19 @@
             display: none;
         }
         
+        .save-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: none;
+            z-index: 3000;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content, .contact-content {
@@ -709,8 +730,8 @@
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div class="logo-text">
-                        <h1>SMK PRESTASI PRIMA</h1>
-                        <span>Sekolah Menengah Kejuruan</span>
+                        <h1 id="school-name">SMK PRESTASI PRIMA</h1>
+                        <span id="school-tagline">Sekolah Menengah Kejuruan</span>
                     </div>
                 </div>
                 
@@ -965,7 +986,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>SMK Prestasi Prima</h3>
+                    <h3 id="footer-school-name">SMK Prestasi Prima</h3>
                     <p id="footer-desc">Sekolah menengah kejuruan dengan fokus pada pendidikan vokasional berkualitas, menghasilkan lulusan siap kerja dan berwirausaha.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1004,7 +1025,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; <span id="current-year">2023</span> SMK Prestasi Prima. All Rights Reserved.</p>
+                <p>&copy; <span id="current-year">2023</span> <span id="copyright-school-name">SMK Prestasi Prima</span>. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -1035,7 +1056,10 @@
         <div class="admin-panel" id="adminPanel">
             <div class="admin-header">
                 <h2>Panel Admin</h2>
-                <button id="logoutBtn" class="btn">Logout</button>
+                <div>
+                    <button id="saveBtn" class="btn btn-secondary">Simpan Perubahan</button>
+                    <button id="logoutBtn" class="btn">Logout</button>
+                </div>
             </div>
             <div class="admin-controls">
                 <div class="admin-control" data-section="hero">
@@ -1066,55 +1090,210 @@
         </div>
     </div>
 
+    <!-- Save Notification -->
+    <div class="save-notification" id="saveNotification">
+        Perubahan berhasil disimpan!
+    </div>
+
     <script>
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // Data storage key
+        const STORAGE_KEY = 'smk_website_data';
         
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('show');
-        });
-
-        // Login Modal
-        const loginBtn = document.getElementById('login-btn');
-        const loginModal = document.getElementById('loginModal');
-        const closeModal = document.querySelector('.close-modal');
-        const loginForm = document.getElementById('loginForm');
-        const adminPanel = document.getElementById('adminPanel');
-        const logoutBtn = document.getElementById('logoutBtn');
-
-        // Show login modal
-        loginBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            loginModal.style.display = 'flex';
-        });
-
-        // Close login modal
-        closeModal.addEventListener('click', function() {
-            loginModal.style.display = 'none';
-        });
-
-        // Login form submission
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        // Default content data
+        const defaultContent = {
+            // Header
+            'school-name': 'SMK PRESTASI PRIMA',
+            'school-tagline': 'Sekolah Menengah Kejuruan',
             
-            // Simple authentication
-            if (username === 'admin' && password === 'admin123') {
-                loginModal.style.display = 'none';
-                adminPanel.style.display = 'block';
-                enableEditMode();
-            } else {
-                alert('Username atau password salah!');
-            }
+            // Hero section
+            'hero-title': 'Selamat Datang di SMK Prestasi Prima',
+            'hero-subtitle': 'Mencetak generasi terampil, berkarakter, dan siap kerja dengan kurikulum terpadu dan fasilitas modern.',
+            
+            // About section
+            'about-title': 'SMK Prestasi Prima - Membentuk Profesional Muda',
+            'about-text-1': 'SMK Prestasi Prima adalah sekolah menengah kejuruan yang berfokus pada pendidikan vokasional berkualitas. Kami telah berdiri sejak tahun 2005 dan telah meluluskan ribuan siswa yang berkompeten di berbagai industri.',
+            'about-text-2': 'Dengan kurikulum yang terus diperbarui sesuai perkembangan industri, kami mempersiapkan siswa untuk menjadi tenaga kerja profesional yang siap bersaing di era globalisasi.',
+            'about-text-3': 'Visi kami adalah menjadi pusat pendidikan kejuruan terdepan yang menghasilkan lulusan berdaya saing global dengan karakter kuat dan keterampilan tinggi.',
+            'about-image': 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+            
+            // Jurusan section
+            'jurusan-1-title': 'Teknik Komputer & Jaringan',
+            'jurusan-1-desc': 'Mempelajari instalasi, konfigurasi, dan pemeliharaan sistem komputer dan jaringan.',
+            'jurusan-2-title': 'Teknik Elektronika',
+            'jurusan-2-desc': 'Fokus pada perancangan, instalasi, dan perbaikan peralatan elektronika.',
+            'jurusan-3-title': 'Teknik Kendaraan Ringan',
+            'jurusan-3-desc': 'Mempelajari perawatan dan perbaikan kendaraan bermotor roda empat.',
+            'jurusan-4-title': 'Tata Boga',
+            'jurusan-4-desc': 'Mengasah keterampilan dalam pengolahan makanan dan penyajian hidangan.',
+            'jurusan-5-title': 'Tata Busana',
+            'jurusan-5-desc': 'Mempelajari desain, pembuatan, dan penyelesaian produk busana.',
+            'jurusan-6-title': 'Perhotelan',
+            'jurusan-6-desc': 'Menyiapkan siswa untuk bekerja di industri perhotelan dan pariwisata.',
+            
+            // Facilities section
+            'facility-1-title': 'Laboratorium Komputer',
+            'facility-1-desc': 'Dilengkapi dengan 40 unit komputer terbaru dengan spesifikasi tinggi untuk mendukung pembelajaran.',
+            'facility-1-img': 'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80',
+            'facility-2-title': 'Bengkel Kerja',
+            'facility-2-desc': 'Fasilitas praktik lengkap dengan peralatan standar industri untuk setiap jurusan.',
+            'facility-2-img': 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
+            'facility-3-title': 'Perpustakaan Digital',
+            'facility-3-desc': 'Koleksi buku lengkap dan akses ke sumber digital untuk mendukung penelitian siswa.',
+            'facility-3-img': 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+            
+            // Gallery section
+            'gallery-1': 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+            'gallery-2': 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',
+            'gallery-3': 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
+            'gallery-4': 'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80',
+            
+            // Contact section
+            'contact-address': 'Jl. Pendidikan No. 123, Jakarta Selatan',
+            'contact-phone': '(021) 1234-5678',
+            'contact-email': 'info@smkprestasiprima.sch.id',
+            'contact-hours': 'Senin - Jumat: 07.00 - 16.00 WIB',
+            
+            // Footer
+            'footer-school-name': 'SMK Prestasi Prima',
+            'footer-desc': 'Sekolah menengah kejuruan dengan fokus pada pendidikan vokasional berkualitas, menghasilkan lulusan siap kerja dan berwirausaha.',
+            'footer-address': 'Jl. Pendidikan No. 123, Jakarta Selatan',
+            'footer-phone': '(021) 1234-5678',
+            'footer-email': 'info@smkprestasiprima.sch.id',
+            'copyright-school-name': 'SMK Prestasi Prima'
+        };
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Load saved content or use defaults
+            loadContent();
+            
+            // Initialize event listeners
+            initEventListeners();
         });
 
-        // Logout
-        logoutBtn.addEventListener('click', function() {
-            adminPanel.style.display = 'none';
-            disableEditMode();
-        });
+        // Load content from localStorage or use defaults
+        function loadContent() {
+            const savedContent = localStorage.getItem(STORAGE_KEY);
+            const content = savedContent ? JSON.parse(savedContent) : defaultContent;
+            
+            // Apply content to elements
+            for (const [key, value] of Object.entries(content)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.tagName === 'IMG') {
+                        element.src = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                }
+            }
+        }
+
+        // Save content to localStorage
+        function saveContent() {
+            const content = {};
+            
+            // Collect all editable content
+            for (const key of Object.keys(defaultContent)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.tagName === 'IMG') {
+                        content[key] = element.src;
+                    } else {
+                        content[key] = element.textContent;
+                    }
+                }
+            }
+            
+            // Save to localStorage
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+            
+            // Show save notification
+            const notification = document.getElementById('saveNotification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Initialize event listeners
+        function initEventListeners() {
+            // Mobile Menu Toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('nav ul').classList.toggle('show');
+            });
+
+            // Login Modal
+            const loginBtn = document.getElementById('login-btn');
+            const loginModal = document.getElementById('loginModal');
+            const closeModal = document.querySelector('.close-modal');
+            const loginForm = document.getElementById('loginForm');
+            const adminPanel = document.getElementById('adminPanel');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const saveBtn = document.getElementById('saveBtn');
+
+            // Show login modal
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.style.display = 'flex';
+            });
+
+            // Close login modal
+            closeModal.addEventListener('click', function() {
+                loginModal.style.display = 'none';
+            });
+
+            // Login form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple authentication
+                if (username === 'admin' && password === 'admin123') {
+                    loginModal.style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    enableEditMode();
+                } else {
+                    alert('Username atau password salah!');
+                }
+            });
+
+            // Save button
+            saveBtn.addEventListener('click', function() {
+                saveContent();
+            });
+
+            // Logout
+            logoutBtn.addEventListener('click', function() {
+                adminPanel.style.display = 'none';
+                disableEditMode();
+            });
+
+            // Contact form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Pesan Anda telah berhasil dikirim!');
+                this.reset();
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        }
 
         // Enable edit mode
         function enableEditMode() {
@@ -1198,27 +1377,6 @@
                 });
             });
         }
-
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Pesan Anda telah berhasil dikirim!');
-            this.reset();
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
     </script>
 </body>
 </html>

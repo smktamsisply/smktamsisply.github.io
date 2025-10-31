@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK Tamsis Playen - Sekolah Menengah Kejuruan</title>
+    <title>SMK Negeri 1 Maju Jaya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a4b8c;
-            --secondary: #2e7d32;
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
             --accent: #ff9800;
             --light: #f5f5f5;
             --dark: #333;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --radius: 8px;
+            --success: #4caf50;
+            --danger: #f44336;
         }
         
         * {
@@ -25,7 +24,7 @@
         }
         
         body {
-            background-color: var(--light);
+            background-color: #f9f9f9;
             color: var(--dark);
             line-height: 1.6;
         }
@@ -39,19 +38,18 @@
         
         /* Header Styles */
         header {
-            background: linear-gradient(to right, var(--primary), #0d3a6e);
-            color: var(--white);
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .header-content {
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .logo {
@@ -59,59 +57,62 @@
             align-items: center;
         }
         
-        .logo-icon {
-            width: 60px;
+        .logo img {
             height: 60px;
-            background-color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-right: 15px;
         }
         
-        .logo-icon i {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-        
         .logo-text h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
         }
         
-        .logo-text span {
-            display: block;
+        .logo-text p {
             font-size: 0.9rem;
-            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .search-bar {
+            display: flex;
+        }
+        
+        .search-bar input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            width: 250px;
+        }
+        
+        .search-bar button {
+            background: var(--accent);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            color: white;
         }
         
         nav ul {
             display: flex;
             list-style: none;
+            margin-top: 15px;
         }
         
         nav ul li {
-            margin-left: 20px;
+            margin-right: 20px;
         }
         
         nav ul li a {
-            color: var(--white);
+            color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 15px;
-            border-radius: var(--radius);
-            transition: background-color 0.3s;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
         }
         
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        nav ul li a:hover, nav ul li a.active {
+            background: rgba(255, 255, 255, 0.2);
         }
         
         /* Hero Section */
@@ -119,15 +120,14 @@
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
-            color: var(--white);
-            padding: 100px 0;
+            color: white;
+            padding: 80px 0;
             text-align: center;
         }
         
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .hero p {
@@ -138,330 +138,134 @@
         
         .btn {
             display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
+            background: var(--accent);
+            color: white;
             padding: 12px 25px;
-            border-radius: var(--radius);
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-            border: none;
-            cursor: pointer;
         }
         
         .btn:hover {
-            background-color: #e68900;
+            background: #e68900;
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .btn-secondary {
-            background-color: var(--secondary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #1f6b23;
-        }
-        
-        /* Section Styling */
-        section {
-            padding: 80px 0;
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             position: relative;
         }
         
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary);
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .section-title h2::after {
+        .section-title:after {
             content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* About Section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
             display: block;
-            transition: transform 0.5s;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
         }
         
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Programs Section */
-        .programs {
-            background-color: var(--white);
-        }
-        
-        .program-grid {
+        .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 50px;
         }
         
-        .program-card {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
         }
         
-        .program-card:hover {
+        .feature-card:hover {
             transform: translateY(-10px);
         }
         
-        .program-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .program-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .program-card:hover .program-img img {
-            transform: scale(1.1);
-        }
-        
-        .program-info {
-            padding: 20px;
-        }
-        
-        .program-info h3 {
+        .feature-card i {
+            font-size: 2.5rem;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
-        /* Jurusan Section */
-        .jurusan-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
         }
         
-        .jurusan-card {
-            background-color: var(--white);
-            border-radius: var(--radius);
+        /* Announcements */
+        .announcements {
+            background: white;
+            border-radius: 8px;
             padding: 25px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
         }
         
-        .jurusan-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        .announcement-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
         }
         
-        .jurusan-icon {
-            width: 70px;
-            height: 70px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
+        .announcement-item:last-child {
+            border-bottom: none;
         }
         
-        .jurusan-icon i {
-            font-size: 1.8rem;
-            color: var(--white);
-        }
-        
-        .jurusan-card h3 {
+        .announcement-date {
             color: var(--primary);
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
-        /* Facilities Section */
-        .facilities {
-            background-color: var(--white);
+        .announcement-title {
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
-        .facility-grid {
+        /* Programs */
+        .programs {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
         }
         
-        .facility-card {
-            background-color: var(--white);
-            border-radius: var(--radius);
+        .program-card {
+            background: white;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .facility-img {
-            height: 200px;
-            overflow: hidden;
+        .program-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
         }
         
-        .facility-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .facility-card:hover .facility-img img {
-            transform: scale(1.1);
-        }
-        
-        .facility-info {
+        .program-content {
             padding: 20px;
         }
         
-        .facility-info h3 {
-            color: var(--primary);
+        .program-content h3 {
             margin-bottom: 10px;
-        }
-        
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius);
-            height: 250px;
-            box-shadow: var(--shadow);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 75, 140, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        
-        /* Contact Section */
-        .contact {
-            background-color: var(--white);
-        }
-        
-        .contact-content {
-            display: flex;
-            gap: 40px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-form {
-            flex: 1;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            background-color: var(--primary);
-            color: var(--white);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: var(--radius);
-            font-size: 1rem;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+            color: var(--secondary);
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: var(--white);
+            background: var(--dark);
+            color: white;
             padding: 50px 0 20px;
         }
         
@@ -472,123 +276,82 @@
             margin-bottom: 30px;
         }
         
-        .footer-column h3 {
-            font-size: 1.2rem;
+        .footer-section h3 {
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
         
-        .footer-column h3::after {
+        .footer-section h3:after {
             content: '';
             position: absolute;
+            left: 0;
+            bottom: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--accent);
-            bottom: 0;
-            left: 0;
+            background: var(--accent);
         }
         
-        .footer-links {
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links ul {
             list-style: none;
         }
         
-        .footer-links li {
+        .footer-links ul li {
             margin-bottom: 10px;
         }
         
-        .footer-links a {
-            color: var(--light);
+        .footer-links ul li a {
+            color: #ddd;
             text-decoration: none;
             transition: color 0.3s;
         }
         
-        .footer-links a:hover {
+        .footer-links ul li a:hover {
             color: var(--accent);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
+            padding-left: 5px;
         }
         
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: var(--white);
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
             transition: all 0.3s;
         }
         
         .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
+            background: var(--accent);
+            transform: translateY(-5px);
         }
         
-        .copyright {
+        .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Login Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: var(--radius);
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .modal-header h2 {
-            color: var(--primary);
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
         }
         
         /* Admin Panel */
         .admin-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 50px auto;
+            max-width: 800px;
             display: none;
-            background-color: var(--white);
-            padding: 20px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin: 30px auto;
-            max-width: 1200px;
+        }
+        
+        .admin-panel.active {
+            display: block;
         }
         
         .admin-header {
@@ -600,114 +363,86 @@
             border-bottom: 1px solid #eee;
         }
         
-        .admin-controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        .form-group {
             margin-bottom: 20px;
         }
         
-        .admin-control {
-            background-color: var(--light);
-            padding: 15px;
-            border-radius: var(--radius);
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .admin-control:hover {
-            background-color: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-        
-        .admin-control i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .edit-mode {
-            position: relative;
-            border: 2px dashed var(--accent);
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: var(--radius);
-        }
-        
-        .edit-toolbar {
-            position: absolute;
-            top: -15px;
-            right: 10px;
-            background-color: var(--accent);
-            color: white;
-            padding: 5px 10px;
-            border-radius: var(--radius);
-            font-size: 0.8rem;
-            display: none;
-        }
-        
-        .edit-mode:hover .edit-toolbar {
+        .form-group label {
             display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
-        .image-upload {
-            display: none;
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
         }
         
-        .save-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--secondary);
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-admin {
+            background: var(--primary);
             color: white;
+            border: none;
             padding: 10px 20px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            display: none;
-            z-index: 3000;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
         }
         
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .about-content, .contact-content {
-                flex-direction: column;
-            }
-            
-            .about-image, .about-text, .contact-info, .contact-form {
-                width: 100%;
-            }
+        .btn-admin:hover {
+            background: var(--secondary);
         }
         
+        .btn-danger {
+            background: var(--danger);
+        }
+        
+        .btn-danger:hover {
+            background: #d32f2f;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .mobile-menu {
-                display: block;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
+            .header-top {
                 flex-direction: column;
-                padding: 20px 0;
-                box-shadow: var(--shadow);
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
                 text-align: center;
             }
             
-            nav ul li a {
-                display: block;
-                padding: 10px 0;
+            .logo {
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
             }
             
             .hero h2 {
@@ -718,625 +453,368 @@
                 font-size: 1rem;
             }
         }
+        
+        .editable {
+            border: 1px dashed transparent;
+            padding: 2px;
+            transition: all 0.3s;
+        }
+        
+        .editable:hover {
+            border-color: var(--primary);
+            background-color: rgba(26, 115, 232, 0.05);
+        }
+        
+        .edit-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        .edit-btn:hover {
+            background: var(--secondary);
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="header-content">
+            <div class="header-top">
                 <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                    <img src="https://via.placeholder.com/60" alt="Logo SMK">
                     <div class="logo-text">
-                        <h1 id="school-name">SMK Taman Siswa Playen</h1>
-                        <span id="school-tagline">Sekolah Menengah Kejuruan</span>
+                        <h1 class="editable" data-id="school-name">SMK NEGERI 1 MAJU JAYA</h1>
+                        <p class="editable" data-id="school-motto">Sekolah Unggul Berbasis Teknologi</p>
                     </div>
                 </div>
-                
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari informasi...">
+                    <button><i class="fas fa-search"></i></button>
                 </div>
-                
-                <nav>
-                    <ul>
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#about">Tentang</a></li>
-                        <li><a href="#jurusan">Jurusan</a></li>
-                        <li><a href="#facilities">Fasilitas</a></li>
-                        <li><a href="#gallery">Galeri</a></li>
-                        <li><a href="#contact">Kontak</a></li>
-                        <li><a href="#" id="login-btn">Admin</a></li>
-                    </ul>
-                </nav>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Beranda</a></li>
+                    <li><a href="#">Profil</a></li>
+                    <li><a href="#">Program Keahlian</a></li>
+                    <li><a href="#">Galeri</a></li>
+                    <li><a href="#">Berita</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container">
-            <h2 id="hero-title">Selamat Datang di SMK Taman Siswa Playen</h2>
-            <p id="hero-subtitle">Mencetak generasi terampil, berkarakter, dan siap kerja dengan kurikulum terpadu dan fasilitas modern.</p>
-            <a href="#jurusan" class="btn">Lihat Jurusan Kami</a>
+            <h2 class="editable" data-id="hero-title">Selamat Datang di SMK Negeri 1 Maju Jaya</h2>
+            <p class="editable" data-id="hero-subtitle">Menyiapkan Generasi Unggul yang Siap Kerja dan Berwirausaha di Era Digital</p>
+            <a href="#" class="btn">Lihat Program Kami</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Tentang Kami</h2>
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Features -->
+        <h2 class="section-title editable" data-id="features-title">Keunggulan Kami</h2>
+        <div class="features">
+            <div class="feature-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3 class="editable" data-id="feature1-title">Kurikulum Berbasis Industri</h3>
+                <p class="editable" data-id="feature1-desc">Kurikulum kami disusun sesuai dengan kebutuhan industri terkini untuk memastikan lulusan siap kerja.</p>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3 id="about-title">SMK Prestasi Prima - Membentuk Profesional Muda</h3>
-                    <p id="about-text-1">SMK Prestasi Prima adalah sekolah menengah kejuruan yang berfokus pada pendidikan vokasional berkualitas. Kami telah berdiri sejak tahun 2005 dan telah meluluskan ribuan siswa yang berkompeten di berbagai industri.</p>
-                    <p id="about-text-2">Dengan kurikulum yang terus diperbarui sesuai perkembangan industri, kami mempersiapkan siswa untuk menjadi tenaga kerja profesional yang siap bersaing di era globalisasi.</p>
-                    <p id="about-text-3">Visi kami adalah menjadi pusat pendidikan kejuruan terdepan yang menghasilkan lulusan berdaya saing global dengan karakter kuat dan keterampilan tinggi.</p>
-                </div>
-                <div class="about-image">
-                    <img id="about-image" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gedung SMK Prestasi Prima">
-                </div>
+            <div class="feature-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3 class="editable" data-id="feature2-title">Guru Berpengalaman</h3>
+                <p class="editable" data-id="feature2-desc">Didukung oleh tenaga pengajar yang kompeten dan berpengalaman di bidangnya masing-masing.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tools"></i>
+                <h3 class="editable" data-id="feature3-title">Fasilitas Lengkap</h3>
+                <p class="editable" data-id="feature3-desc">Peralatan praktik yang modern dan lengkap untuk mendukung proses pembelajaran.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Jurusan Section -->
-    <section class="programs" id="jurusan">
-        <div class="container">
-            <div class="section-title">
-                <h2>Jurusan Kami</h2>
-                </div>
-                <div class="jurusan-card">
-                    <div class="jurusan-icon">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <h3 id="jurusan-5-title">Tata Busana</h3>
-                    <p id="jurusan-5-desc">Mempelajari desain, pembuatan, dan penyelesaian produk busana.</p>
-                </div>
+        <!-- Announcements -->
+        <h2 class="section-title editable" data-id="announcements-title">Pengumuman Terbaru</h2>
+        <div class="announcements">
+            <div class="announcement-item">
+                <div class="announcement-date editable" data-id="announcement1-date">15 Oktober 2023</div>
+                <div class="announcement-title editable" data-id="announcement1-title">Pendaftaran Peserta Didik Baru Tahun Ajaran 2024/2025</div>
+                <p class="editable" data-id="announcement1-desc">Pendaftaran dibuka mulai 1 November 2023. Informasi lebih lanjut dapat dilihat di menu PPDB.</p>
+            </div>
+            <div class="announcement-item">
+                <div class="announcement-date editable" data-id="announcement2-date">10 Oktober 2023</div>
+                <div class="announcement-title editable" data-id="announcement2-title">Workshop Kewirausahaan untuk Siswa Kelas XII</div>
+                <p class="editable" data-id="announcement2-desc">Workshop akan dilaksanakan pada 25-26 Oktober 2023. Daftar segera di ruang BKK.</p>
+            </div>
+            <div class="announcement-item">
+                <div class="announcement-date editable" data-id="announcement3-date">5 Oktober 2023</div>
+                <div class="announcement-title editable" data-id="announcement3-title">Peringatan Hari Sumpah Pemuda 2023</div>
+                <p class="editable" data-id="announcement3-desc">Akan diadakan berbagai lomba dan kegiatan untuk memperingati Hari Sumpah Pemuda.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Facilities Section -->
-    <section class="facilities" id="facilities">
-        <div class="container">
-            <div class="section-title">
-                <h2>Fasilitas Sekolah</h2>
+        <!-- Programs -->
+        <h2 class="section-title editable" data-id="programs-title">Program Keahlian</h2>
+        <div class="programs">
+            <div class="program-card">
+                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                <div class="program-content">
+                    <h3 class="editable" data-id="program1-title">Rekayasa Perangkat Lunak</h3>
+                    <p class="editable" data-id="program1-desc">Mempelajari pengembangan aplikasi dan sistem informasi berbasis komputer.</p>
+                </div>
             </div>
-            <div class="facility-grid">
-                <div class="facility-card">
-                    <div class="facility-img">
-                        <img id="facility-1-img" src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Laboratorium Komputer">
-                    </div>
-                    <div class="facility-info">
-                        <h3 id="facility-1-title">Laboratorium Komputer</h3>
-                        <p id="facility-1-desc">Dilengkapi dengan 40 unit komputer terbaru dengan spesifikasi tinggi untuk mendukung pembelajaran.</p>
-                    </div>
+            <div class="program-card">
+                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="program-content">
+                    <h3 class="editable" data-id="program2-title">Teknik Kendaraan Ringan</h3>
+                    <p class="editable" data-id="program2-desc">Fokus pada perawatan dan perbaikan kendaraan roda empat.</p>
                 </div>
-                <div class="facility-card">
-                    <div class="facility-img">
-                        <img id="facility-2-img" src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Bengkel Kerja">
-                    </div>
-                    <div class="facility-info">
-                        <h3 id="facility-2-title">Bengkel Kerja</h3>
-                        <p id="facility-2-desc">Fasilitas praktik lengkap dengan peralatan standar industri untuk setiap jurusan.</p>
-                    </div>
-                </div>
-                <div class="facility-card">
-                    <div class="facility-img">
-                        <img id="facility-3-img" src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Perpustakaan">
-                    </div>
-                    <div class="facility-info">
-                        <h3 id="facility-3-title">Perpustakaan Digital</h3>
-                        <p id="facility-3-desc">Koleksi buku lengkap dan akses ke sumber digital untuk mendukung penelitian siswa.</p>
-                    </div>
+            </div>
+            <div class="program-card">
+                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="program-content">
+                    <h3 class="editable" data-id="program3-title">Teknik Pemesinan</h3>
+                    <p class="editable" data-id="program3-desc">Mempelajari proses produksi komponen mesin dengan teknologi CNC.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>Galeri Kegiatan</h2>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img id="gallery-1" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Siswa 1">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img id="gallery-2" src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Kegiatan Siswa 2">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img id="gallery-3" src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Kegiatan Siswa 3">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img id="gallery-4" src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Kegiatan Siswa 4">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Kontak Kami</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Informasi Kontak</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Alamat</h4>
-                            <p id="contact-address">Jl. Pendidikan No. 123, Jakarta Selatan</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Telepon</h4>
-                            <p id="contact-phone">(021) 1234-5678</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p id="contact-email">info@smkprestasiprima.sch.id</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4>Jam Operasional</h4>
-                            <p id="contact-hours">Senin - Jumat: 07.00 - 16.00 WIB</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Kirim Pesan</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subjek</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Pesan</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3 id="footer-school-name">SMK tamsis Playen</h3>
-                    <p id="footer-desc">Sekolah menengah kejuruan dengan fokus pada pendidikan vokasional berkualitas, menghasilkan lulusan siap kerja dan berwirausaha.</p>
+                <div class="footer-section">
+                    <h3 class="editable" data-id="footer-about-title">Tentang Kami</h3>
+                    <p class="editable" data-id="footer-about-desc">SMK Negeri 1 Maju Jaya adalah sekolah menengah kejuruan yang berfokus pada pengembangan kompetensi siswa di bidang teknologi dan industri.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Menu Cepat</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#about">Tentang Kami</a></li>
-                        <li><a href="#jurusan">Jurusan</a></li>
-                        <li><a href="#facilities">Fasilitas</a></li>
-                        <li><a href="#gallery">Galeri</a></li>
+                <div class="footer-section footer-links">
+                    <h3 class="editable" data-id="footer-links-title">Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Profil Sekolah</a></li>
+                        <li><a href="#">Program Keahlian</a></li>
+                        <li><a href="#">Galeri</a></li>
+                        <li><a href="#">Kontak</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Jurusan</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Tata Busana</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Kontak</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> <span id="footer-address">Jl. Pendidikan No. 123, Jakarta Selatan</span></li>
-                        <li><i class="fas fa-phone"></i> <span id="footer-phone">(021) 1234-5678</span></li>
-                        <li><i class="fas fa-envelope"></i> <span id="footer-email">info@smkprestasiprima.sch.id</span></li>
-                    </ul>
+                <div class="footer-section">
+                    <h3 class="editable" data-id="footer-contact-title">Kontak Kami</h3>
+                    <p class="editable" data-id="footer-address">Jl. Pendidikan No. 123, Kota Maju Jaya</p>
+                    <p class="editable" data-id="footer-phone">Telepon: (021) 1234-5678</p>
+                    <p class="editable" data-id="footer-email">Email: info@smkn1majujaya.sch.id</p>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; <span id="current-year">2023</span> <span id="copyright-school-name">SMK Taman Siswa Playen</span>. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <p class="editable" data-id="footer-copyright">&copy; 2023 SMK Negeri 1 Maju Jaya. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Login Admin</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" required>
-                </div>
-                <button type="submit" class="btn">Login</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Admin Panel -->
-    <div class="container">
-        <div class="admin-panel" id="adminPanel">
-            <div class="admin-header">
-                <h2>Panel Admin</h2>
-                <div>
-                    <button id="saveBtn" class="btn btn-secondary">Simpan Perubahan</button>
-                    <button id="logoutBtn" class="btn">Logout</button>
-                </div>
-            </div>
-            <div class="admin-controls">
-                <div class="admin-control" data-section="hero">
-                    <i class="fas fa-home"></i>
-                    <h3>Edit Beranda</h3>
-                </div>
-                <div class="admin-control" data-section="about">
-                    <i class="fas fa-info-circle"></i>
-                    <h3>Edit Tentang</h3>
-                </div>
-                <div class="admin-control" data-section="jurusan">
-                    <i class="fas fa-book"></i>
-                    <h3>Edit Jurusan</h3>
-                </div>
-                <div class="admin-control" data-section="facilities">
-                    <i class="fas fa-building"></i>
-                    <h3>Edit Fasilitas</h3>
-                </div>
-                <div class="admin-control" data-section="gallery">
-                    <i class="fas fa-images"></i>
-                    <h3>Edit Galeri</h3>
-                </div>
-                <div class="admin-control" data-section="contact">
-                    <i class="fas fa-address-book"></i>
-                    <h3>Edit Kontak</h3>
-                </div>
-            </div>
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h2>Panel Admin - Edit Konten</h2>
+            <button class="btn-admin btn-danger" id="logoutBtn">Keluar</button>
+        </div>
+        <div class="form-group">
+            <label for="contentSelector">Pilih Konten untuk Diedit:</label>
+            <select id="contentSelector" class="form-control">
+                <option value="">-- Pilih Konten --</option>
+                <option value="school-name">Nama Sekolah</option>
+                <option value="school-motto">Motto Sekolah</option>
+                <option value="hero-title">Judul Hero</option>
+                <option value="hero-subtitle">Subjudul Hero</option>
+                <option value="features-title">Judul Keunggulan</option>
+                <option value="feature1-title">Keunggulan 1 - Judul</option>
+                <option value="feature1-desc">Keunggulan 1 - Deskripsi</option>
+                <option value="feature2-title">Keunggulan 2 - Judul</option>
+                <option value="feature2-desc">Keunggulan 2 - Deskripsi</option>
+                <option value="feature3-title">Keunggulan 3 - Judul</option>
+                <option value="feature3-desc">Keunggulan 3 - Deskripsi</option>
+                <option value="announcements-title">Judul Pengumuman</option>
+                <option value="announcement1-date">Pengumuman 1 - Tanggal</option>
+                <option value="announcement1-title">Pengumuman 1 - Judul</option>
+                <option value="announcement1-desc">Pengumuman 1 - Deskripsi</option>
+                <option value="announcement2-date">Pengumuman 2 - Tanggal</option>
+                <option value="announcement2-title">Pengumuman 2 - Judul</option>
+                <option value="announcement2-desc">Pengumuman 2 - Deskripsi</option>
+                <option value="announcement3-date">Pengumuman 3 - Tanggal</option>
+                <option value="announcement3-title">Pengumuman 3 - Judul</option>
+                <option value="announcement3-desc">Pengumuman 3 - Deskripsi</option>
+                <option value="programs-title">Judul Program</option>
+                <option value="program1-title">Program 1 - Judul</option>
+                <option value="program1-desc">Program 1 - Deskripsi</option>
+                <option value="program2-title">Program 2 - Judul</option>
+                <option value="program2-desc">Program 2 - Deskripsi</option>
+                <option value="program3-title">Program 3 - Judul</option>
+                <option value="program3-desc">Program 3 - Deskripsi</option>
+                <option value="footer-about-title">Footer - Tentang Kami</option>
+                <option value="footer-about-desc">Footer - Deskripsi Tentang Kami</option>
+                <option value="footer-links-title">Footer - Tautan Cepat</option>
+                <option value="footer-contact-title">Footer - Kontak Kami</option>
+                <option value="footer-address">Footer - Alamat</option>
+                <option value="footer-phone">Footer - Telepon</option>
+                <option value="footer-email">Footer - Email</option>
+                <option value="footer-copyright">Footer - Hak Cipta</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="contentEditor">Edit Konten:</label>
+            <textarea id="contentEditor" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn-admin" id="saveContentBtn">Simpan Perubahan</button>
         </div>
     </div>
 
-    <!-- Save Notification -->
-    <div class="save-notification" id="saveNotification">
-        Perubahan berhasil disimpan!
+    <!-- Login Form -->
+    <div class="login-form" id="loginForm">
+        <h2>Login Admin</h2>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" class="form-control" placeholder="Masukkan username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" class="form-control" placeholder="Masukkan password">
+        </div>
+        <div class="form-group">
+            <button class="btn-admin" id="loginBtn">Login</button>
+        </div>
+    </div>
+
+    <!-- Edit Button -->
+    <div class="edit-btn" id="editBtn">
+        <i class="fas fa-edit"></i>
     </div>
 
     <script>
-        // Data storage key
-        const STORAGE_KEY = 'smk_website_data';
-        
-        // Default content data
-        const defaultContent = {
-            // Header
-            'school-name': 'SMK PRESTASI PRIMA',
-            'school-tagline': 'Sekolah Menengah Kejuruan',
-            
-            // Hero section
-            'hero-title': 'Selamat Datang di SMK Prestasi Prima',
-            'hero-subtitle': 'Mencetak generasi terampil, berkarakter, dan siap kerja dengan kurikulum terpadu dan fasilitas modern.',
-            
-            // About section
-            'about-title': 'SMK Prestasi Prima - Membentuk Profesional Muda',
-            'about-text-1': 'SMK Prestasi Prima adalah sekolah menengah kejuruan yang berfokus pada pendidikan vokasional berkualitas. Kami telah berdiri sejak tahun 2005 dan telah meluluskan ribuan siswa yang berkompeten di berbagai industri.',
-            'about-text-2': 'Dengan kurikulum yang terus diperbarui sesuai perkembangan industri, kami mempersiapkan siswa untuk menjadi tenaga kerja profesional yang siap bersaing di era globalisasi.',
-            'about-text-3': 'Visi kami adalah menjadi pusat pendidikan kejuruan terdepan yang menghasilkan lulusan berdaya saing global dengan karakter kuat dan keterampilan tinggi.',
-            'about-image': 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-            
-            // Jurusan section
-            'jurusan-1-title': 'Teknik Komputer & Jaringan',
-            'jurusan-1-desc': 'Mempelajari instalasi, konfigurasi, dan pemeliharaan sistem komputer dan jaringan.',
-            'jurusan-2-title': 'Teknik Elektronika',
-            'jurusan-2-desc': 'Fokus pada perancangan, instalasi, dan perbaikan peralatan elektronika.',
-            'jurusan-3-title': 'Teknik Kendaraan Ringan',
-            'jurusan-3-desc': 'Mempelajari perawatan dan perbaikan kendaraan bermotor roda empat.',
-            'jurusan-4-title': 'Tata Boga',
-            'jurusan-4-desc': 'Mengasah keterampilan dalam pengolahan makanan dan penyajian hidangan.',
-            'jurusan-5-title': 'Tata Busana',
-            'jurusan-5-desc': 'Mempelajari desain, pembuatan, dan penyelesaian produk busana.',
-            'jurusan-6-title': 'Perhotelan',
-            'jurusan-6-desc': 'Menyiapkan siswa untuk bekerja di industri perhotelan dan pariwisata.',
-            
-            // Facilities section
-            'facility-1-title': 'Laboratorium Komputer',
-            'facility-1-desc': 'Dilengkapi dengan 40 unit komputer terbaru dengan spesifikasi tinggi untuk mendukung pembelajaran.',
-            'facility-1-img': 'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80',
-            'facility-2-title': 'Bengkel Kerja',
-            'facility-2-desc': 'Fasilitas praktik lengkap dengan peralatan standar industri untuk setiap jurusan.',
-            'facility-2-img': 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
-            'facility-3-title': 'Perpustakaan Digital',
-            'facility-3-desc': 'Koleksi buku lengkap dan akses ke sumber digital untuk mendukung penelitian siswa.',
-            'facility-3-img': 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-            
-            // Gallery section
-            'gallery-1': 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-            'gallery-2': 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',
-            'gallery-3': 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80',
-            'gallery-4': 'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80',
-            
-            // Contact section
-            'contact-address': 'Jl. Pendidikan No. 123, Jakarta Selatan',
-            'contact-phone': '(021) 1234-5678',
-            'contact-email': 'info@smkprestasiprima.sch.id',
-            'contact-hours': 'Senin - Jumat: 07.00 - 16.00 WIB',
-            
-            // Footer
-            'footer-school-name': 'SMK Prestasi Prima',
-            'footer-desc': 'Sekolah menengah kejuruan dengan fokus pada pendidikan vokasional berkualitas, menghasilkan lulusan siap kerja dan berwirausaha.',
-            'footer-address': 'Jl. Pendidikan No. 123, Jakarta Selatan',
-            'footer-phone': '(021) 1234-5678',
-            'footer-email': 'info@smkprestasiprima.sch.id',
-            'copyright-school-name': 'SMK Prestasi Prima'
+        // Data login admin
+        const adminCredentials = {
+            username: "admin",
+            password: "smk123"
         };
 
-        // Initialize the website
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            // Load saved content or use defaults
-            loadContent();
-            
-            // Initialize event listeners
-            initEventListeners();
-        });
+        // Status login
+        let isLoggedIn = false;
 
-        // Load content from localStorage or use defaults
-        function loadContent() {
-            const savedContent = localStorage.getItem(STORAGE_KEY);
-            const content = savedContent ? JSON.parse(savedContent) : defaultContent;
+        // Elemen DOM
+        const loginForm = document.getElementById('loginForm');
+        const adminPanel = document.getElementById('adminPanel');
+        const editBtn = document.getElementById('editBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const contentSelector = document.getElementById('contentSelector');
+        const contentEditor = document.getElementById('contentEditor');
+        const saveContentBtn = document.getElementById('saveContentBtn');
+
+        // Event Listeners
+        loginBtn.addEventListener('click', handleLogin);
+        logoutBtn.addEventListener('click', handleLogout);
+        editBtn.addEventListener('click', toggleAdminPanel);
+        contentSelector.addEventListener('change', loadContentToEditor);
+        saveContentBtn.addEventListener('click', saveContent);
+
+        // Fungsi untuk menangani login
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            // Apply content to elements
-            for (const [key, value] of Object.entries(content)) {
-                const element = document.getElementById(key);
-                if (element) {
-                    if (element.tagName === 'IMG') {
-                        element.src = value;
-                    } else {
-                        element.textContent = value;
-                    }
-                }
+            if (username === adminCredentials.username && password === adminCredentials.password) {
+                isLoggedIn = true;
+                loginForm.style.display = 'none';
+                adminPanel.classList.add('active');
+                editBtn.style.display = 'flex';
+                alert('Login berhasil!');
+            } else {
+                alert('Username atau password salah!');
             }
         }
 
-        // Save content to localStorage
+        // Fungsi untuk menangani logout
+        function handleLogout() {
+            isLoggedIn = false;
+            adminPanel.classList.remove('active');
+            loginForm.style.display = 'block';
+            editBtn.style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Fungsi untuk menampilkan/sembunyikan panel admin
+        function toggleAdminPanel() {
+            if (adminPanel.classList.contains('active')) {
+                adminPanel.classList.remove('active');
+            } else {
+                adminPanel.classList.add('active');
+            }
+        }
+
+        // Fungsi untuk memuat konten ke editor
+        function loadContentToEditor() {
+            const selectedId = contentSelector.value;
+            if (selectedId) {
+                const element = document.querySelector(`[data-id="${selectedId}"]`);
+                if (element) {
+                    contentEditor.value = element.textContent;
+                }
+            } else {
+                contentEditor.value = '';
+            }
+        }
+
+        // Fungsi untuk menyimpan konten
         function saveContent() {
-            const content = {};
-            
-            // Collect all editable content
-            for (const key of Object.keys(defaultContent)) {
-                const element = document.getElementById(key);
+            const selectedId = contentSelector.value;
+            if (selectedId) {
+                const element = document.querySelector(`[data-id="${selectedId}"]`);
                 if (element) {
-                    if (element.tagName === 'IMG') {
-                        content[key] = element.src;
-                    } else {
-                        content[key] = element.textContent;
-                    }
+                    element.textContent = contentEditor.value;
+                    // Simpan ke localStorage untuk penyimpanan permanen
+                    localStorage.setItem(selectedId, contentEditor.value);
+                    alert('Konten berhasil disimpan!');
                 }
+            } else {
+                alert('Pilih konten yang akan diedit terlebih dahulu!');
             }
-            
-            // Save to localStorage
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
-            
-            // Show save notification
-            const notification = document.getElementById('saveNotification');
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
         }
 
-        // Initialize event listeners
-        function initEventListeners() {
-            // Mobile Menu Toggle
-            document.querySelector('.mobile-menu').addEventListener('click', function() {
-                document.querySelector('nav ul').classList.toggle('show');
-            });
-
-            // Login Modal
-            const loginBtn = document.getElementById('login-btn');
-            const loginModal = document.getElementById('loginModal');
-            const closeModal = document.querySelector('.close-modal');
-            const loginForm = document.getElementById('loginForm');
-            const adminPanel = document.getElementById('adminPanel');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const saveBtn = document.getElementById('saveBtn');
-
-            // Show login modal
-            loginBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                loginModal.style.display = 'flex';
-            });
-
-            // Close login modal
-            closeModal.addEventListener('click', function() {
-                loginModal.style.display = 'none';
-            });
-
-            // Login form submission
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                
-                // Simple authentication
-                if (username === 'admin' && password === 'admin123') {
-                    loginModal.style.display = 'none';
-                    adminPanel.style.display = 'block';
-                    enableEditMode();
-                } else {
-                    alert('Username atau password salah!');
+        // Fungsi untuk memuat konten dari localStorage saat halaman dimuat
+        function loadSavedContent() {
+            const editableElements = document.querySelectorAll('.editable');
+            editableElements.forEach(element => {
+                const id = element.getAttribute('data-id');
+                const savedContent = localStorage.getItem(id);
+                if (savedContent) {
+                    element.textContent = savedContent;
                 }
             });
-
-            // Save button
-            saveBtn.addEventListener('click', function() {
-                saveContent();
-            });
-
-            // Logout
-            logoutBtn.addEventListener('click', function() {
-                adminPanel.style.display = 'none';
-                disableEditMode();
-            });
-
-            // Contact form submission
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Pesan Anda telah berhasil dikirim!');
-                this.reset();
-            });
-
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if (this.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const targetSection = document.querySelector(targetId);
-                        if (targetSection) {
-                            targetSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }
-                });
-            });
         }
 
-        // Enable edit mode
-        function enableEditMode() {
-            // Add edit mode to all editable sections
-            const sections = document.querySelectorAll('#home, #about, #jurusan, #facilities, #gallery, #contact, footer');
-            sections.forEach(section => {
-                section.classList.add('edit-mode');
-                
-                // Create edit toolbar
-                const toolbar = document.createElement('div');
-                toolbar.className = 'edit-toolbar';
-                toolbar.innerHTML = 'Klik untuk mengedit';
-                section.appendChild(toolbar);
-                
-                // Make text content editable
-                const editableElements = section.querySelectorAll('h1, h2, h3, h4, p, span, li');
-                editableElements.forEach(element => {
-                    element.setAttribute('contenteditable', 'true');
-                });
-                
-                // Add image upload functionality
-                const images = section.querySelectorAll('img');
-                images.forEach(img => {
-                    img.style.cursor = 'pointer';
-                    img.addEventListener('click', function() {
-                        const input = document.createElement('input');
-                        input.type = 'file';
-                        input.accept = 'image/*';
-                        input.className = 'image-upload';
-                        input.addEventListener('change', function(e) {
-                            if (e.target.files && e.target.files[0]) {
-                                const reader = new FileReader();
-                                reader.onload = function(event) {
-                                    img.src = event.target.result;
-                                };
-                                reader.readAsDataURL(e.target.files[0]);
-                            }
-                        });
-                        input.click();
-                    });
-                });
-            });
-            
-            // Add click handlers for admin controls
-            const adminControls = document.querySelectorAll('.admin-control');
-            adminControls.forEach(control => {
-                control.addEventListener('click', function() {
-                    const sectionId = this.getAttribute('data-section');
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        section.scrollIntoView({ behavior: 'smooth' });
-                    } else if (sectionId === 'hero') {
-                        document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-        }
-
-        // Disable edit mode
-        function disableEditMode() {
-            const sections = document.querySelectorAll('#home, #about, #jurusan, #facilities, #gallery, #contact, footer');
-            sections.forEach(section => {
-                section.classList.remove('edit-mode');
-                
-                const toolbar = section.querySelector('.edit-toolbar');
-                if (toolbar) {
-                    toolbar.remove();
-                }
-                
-                // Remove contenteditable
-                const editableElements = section.querySelectorAll('[contenteditable="true"]');
-                editableElements.forEach(element => {
-                    element.removeAttribute('contenteditable');
-                });
-                
-                // Remove image upload functionality
-                const images = section.querySelectorAll('img');
-                images.forEach(img => {
-                    img.style.cursor = 'default';
-                    img.replaceWith(img.cloneNode(true));
-                });
-            });
-        }
+        // Panggil fungsi untuk memuat konten yang disimpan
+        window.addEventListener('DOMContentLoaded', loadSavedContent);
     </script>
 </body>
 </html>

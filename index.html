@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sekolah Unggulan - Website Interaktif</title>
+    <title>Sekolah Cerdas - Website Interaktif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,19 +14,21 @@
             --dark: #2c3e50;
             --success: #2ecc71;
             --warning: #f39c12;
+            --info: #1abc9c;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
@@ -41,13 +43,29 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
         
         .logo {
@@ -57,21 +75,27 @@
         }
         
         .logo-icon {
-            width: 60px;
-            height: 60px;
-            background-color: white;
+            width: 70px;
+            height: 70px;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--primary);
-            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .logo-icon:hover {
+            transform: rotate(15deg);
         }
         
         .logo-text h1 {
             font-size: 1.8rem;
             margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
         
         .logo-text p {
@@ -85,42 +109,48 @@
         }
         
         .btn {
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .btn-primary {
-            background-color: var(--accent);
+            background: var(--accent);
             color: white;
         }
         
         .btn-secondary {
-            background-color: transparent;
-            border: 1px solid white;
+            background: transparent;
+            border: 2px solid white;
             color: white;
         }
         
         .btn-success {
-            background-color: var(--success);
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-info {
+            background: var(--info);
             color: white;
         }
         
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         
         /* Navigation Styles */
         nav {
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -143,53 +173,72 @@
         
         .nav-link {
             display: block;
-            padding: 15px 20px;
+            padding: 18px 22px;
             color: var(--dark);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
         }
         
         .nav-link:hover {
-            background-color: var(--light);
             color: var(--secondary);
         }
         
         .nav-link.active {
-            background-color: var(--secondary);
-            color: white;
+            color: var(--secondary);
         }
         
         .dropdown-menu {
             position: absolute;
-            background-color: white;
+            background: white;
             min-width: 220px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             display: none;
             z-index: 1;
-            border-radius: 0 0 4px 4px;
+            border-radius: 0 0 8px 8px;
             overflow: hidden;
+            animation: fadeIn 0.3s;
         }
         
         .dropdown-menu a {
-            display: block;
-            padding: 12px 16px;
-            color: #333;
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            color: #555;
             text-decoration: none;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #f0f0f0;
             transition: all 0.3s;
         }
         
         .dropdown-menu a:hover {
-            background-color: var(--light);
+            background: var(--light);
             color: var(--secondary);
-            padding-left: 20px;
+            padding-left: 25px;
         }
         
         .dropdown-menu a i {
-            margin-right: 8px;
+            margin-right: 10px;
             width: 20px;
             text-align: center;
+            color: var(--secondary);
         }
         
         .nav-item:hover .dropdown-menu {
@@ -207,103 +256,160 @@
         
         /* Main Content Styles */
         .main-content {
-            padding: 30px 0;
+            padding: 40px 0;
             min-height: calc(100vh - 200px);
         }
         
         .page {
             display: none;
-        }
-        
-        .page.active {
-            display: block;
             animation: fadeIn 0.5s ease;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
+        .page.active {
+            display: block;
+        }
+        
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3') no-repeat center center/cover;
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
-            margin-bottom: 30px;
-            border-radius: 8px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233498db" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: var(--primary);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
-        .section-title:after {
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--info));
+            border-radius: 2px;
         }
         
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
         }
         
         .card {
-            background-color: white;
-            border-radius: 8px;
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
         }
         
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--info));
         }
         
         .card-img {
-            height: 180px;
-            background-color: #ddd;
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary), var(--info));
             background-size: cover;
             background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
         }
         
         .card-content {
-            padding: 20px;
+            padding: 25px;
         }
         
         .card h3 {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .card p {
+            color: #666;
+            margin-bottom: 15px;
         }
         
         /* Footer Styles */
         footer {
-            background-color: var(--dark);
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             color: white;
-            padding: 40px 0 20px;
+            padding: 50px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23000000" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
         }
         
         .footer-content {
@@ -311,6 +417,8 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
         
         .footer-section h3 {
@@ -319,57 +427,72 @@
             padding-bottom: 10px;
         }
         
-        .footer-section h3:after {
+        .footer-section h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 2px;
-            background-color: var(--secondary);
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
         }
         
         /* Admin Panel Styles */
         .admin-panel {
-            background-color: var(--light);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--accent);
         }
         
         .admin-panel h3 {
             color: var(--primary);
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-panel h3 i {
+            color: var(--accent);
         }
         
         .edit-btn {
-            background-color: var(--accent);
+            background: var(--accent);
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.8rem;
             margin-left: 10px;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .edit-btn:hover {
-            background-color: #c0392b;
+            background: #c0392b;
+            transform: scale(1.05);
         }
         
         .editable {
             position: relative;
-            padding: 5px;
+            padding: 8px;
             border: 1px dashed transparent;
             transition: border 0.3s;
             border-radius: 4px;
@@ -377,15 +500,17 @@
         
         .editable:hover {
             border-color: #ddd;
+            background: rgba(52, 152, 219, 0.05);
         }
         
         .edit-form {
             display: none;
-            background-color: white;
-            padding: 15px;
+            background: white;
+            padding: 20px;
             border-radius: 8px;
-            margin-top: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
         }
         
         .form-group {
@@ -396,18 +521,26 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
+            color: var(--primary);
         }
         
         .form-control {
             width: 100%;
-            padding: 8px 12px;
+            padding: 10px 15px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
             font-family: inherit;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
         
         textarea.form-control {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
         }
         
@@ -425,24 +558,26 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
         
         .modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: modalFadeIn 0.3s ease;
+            max-width: 450px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: modalFadeIn 0.4s ease;
+            position: relative;
         }
         
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.9); }
+            from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
         
@@ -450,7 +585,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .close-modal {
@@ -459,25 +594,62 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: #777;
+            transition: color 0.3s;
         }
         
-        /* Breadcrumb */
-        .breadcrumb {
-            padding: 10px 0;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
+        .close-modal:hover {
+            color: var(--accent);
         }
         
-        .breadcrumb a {
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
             color: var(--secondary);
-            text-decoration: none;
+            margin-bottom: 15px;
         }
         
-        .breadcrumb a:hover {
-            text-decoration: underline;
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-card p {
+            color: #666;
+            font-weight: 500;
         }
         
         /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cards {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -495,9 +667,10 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: white;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                background: white;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
                 display: none;
+                z-index: 100;
             }
             
             .nav-menu.active {
@@ -509,6 +682,7 @@
                 width: 100%;
                 display: none;
                 box-shadow: none;
+                animation: none;
             }
             
             .nav-item:hover .dropdown-menu {
@@ -524,7 +698,29 @@
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -538,16 +734,16 @@
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Sekolah <span>Unggulan</span></h1>
+                    <h1>Sekolah <span>Cerdas</span></h1>
                     <p>Mencerdaskan Generasi Bangsa</p>
                 </div>
             </div>
             <div class="auth-buttons">
                 <button class="btn btn-secondary" id="loginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Login
+                    <i class="fas fa-sign-in-alt"></i> Login Admin
                 </button>
                 <button class="btn btn-success" id="adminBtn" style="display: none;">
-                    <i class="fas fa-cog"></i> Admin Panel
+                    <i class="fas fa-cog"></i> Panel Admin
                 </button>
                 <button class="btn btn-secondary" id="logoutBtn" style="display: none;">
                     <i class="fas fa-sign-out-alt"></i> Logout
@@ -634,53 +830,82 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Breadcrumb -->
-            <div class="breadcrumb" id="breadcrumb">
-                <a href="#" data-page="beranda">Beranda</a>
-            </div>
-
-            <!-- Pages -->
+            <!-- Beranda Page -->
             <div id="beranda" class="page active">
                 <!-- Hero Section -->
                 <section class="hero">
-                    <div class="container">
-                        <h2 id="hero-title" class="editable">Selamat Datang di Sekolah Unggulan</h2>
+                    <div class="hero-content">
+                        <h2 id="hero-title" class="editable">Selamat Datang di Sekolah Cerdas</h2>
                         <p id="hero-subtitle" class="editable">Membentuk generasi unggul, berkarakter, dan berprestasi dalam lingkungan belajar yang inspiratif</p>
-                        <button class="btn btn-primary">Pelajari Lebih Lanjut</button>
-                        <button class="edit-btn" onclick="showEditForm('hero-title')">Edit</button>
-                        <button class="edit-btn" onclick="showEditForm('hero-subtitle')">Edit</button>
+                        <button class="btn btn-primary">Jelajahi Sekolah Kami</button>
+                        <button class="edit-btn" onclick="showEditForm('hero-title')"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="edit-btn" onclick="showEditForm('hero-subtitle')"><i class="fas fa-edit"></i> Edit</button>
                     </div>
                 </section>
+
+                <!-- Stats Section -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3 id="stat-siswa" class="editable">1250</h3>
+                        <p>Jumlah Siswa</p>
+                        <button class="edit-btn" onclick="showEditForm('stat-siswa')"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3 id="stat-guru" class="editable">85</h3>
+                        <p>Guru Berkualitas</p>
+                        <button class="edit-btn" onclick="showEditForm('stat-guru')"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3 id="stat-prestasi" class="editable">240</h3>
+                        <p>Prestasi Nasional</p>
+                        <button class="edit-btn" onclick="showEditForm('stat-prestasi')"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-building"></i>
+                        <h3 id="stat-kelas" class="editable">36</h3>
+                        <p>Ruang Kelas</p>
+                        <button class="edit-btn" onclick="showEditForm('stat-kelas')"><i class="fas fa-edit"></i></button>
+                    </div>
+                </div>
 
                 <!-- About Section -->
                 <section>
                     <h2 class="section-title">Tentang Kami</h2>
                     <div class="cards">
                         <div class="card">
-                            <div class="card-img" style="background-color: #3498db;"></div>
+                            <div class="card-img">
+                                <i class="fas fa-eye"></i>
+                            </div>
                             <div class="card-content">
                                 <h3 id="about-title-1" class="editable">Visi Sekolah</h3>
                                 <p id="about-content-1" class="editable">Menjadi sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan mampu bersaing di tingkat nasional maupun internasional.</p>
-                                <button class="edit-btn" onclick="showEditForm('about-title-1')">Edit</button>
-                                <button class="edit-btn" onclick="showEditForm('about-content-1')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-title-1')"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-content-1')"><i class="fas fa-edit"></i> Edit</button>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-img" style="background-color: #2ecc71;"></div>
+                            <div class="card-img">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
                             <div class="card-content">
                                 <h3 id="about-title-2" class="editable">Misi Sekolah</h3>
                                 <p id="about-content-2" class="editable">Menyelenggarakan pendidikan berkualitas dengan pendekatan holistik untuk mengembangkan potensi akademik dan non-akademik siswa.</p>
-                                <button class="edit-btn" onclick="showEditForm('about-title-2')">Edit</button>
-                                <button class="edit-btn" onclick="showEditForm('about-content-2')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-title-2')"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-content-2')"><i class="fas fa-edit"></i> Edit</button>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-img" style="background-color: #e74c3c;"></div>
+                            <div class="card-img">
+                                <i class="fas fa-trophy"></i>
+                            </div>
                             <div class="card-content">
                                 <h3 id="about-title-3" class="editable">Prestasi</h3>
                                 <p id="about-content-3" class="editable">Sekolah kami telah meraih berbagai penghargaan di tingkat nasional dalam bidang akademik, olahraga, dan seni.</p>
-                                <button class="edit-btn" onclick="showEditForm('about-title-3')">Edit</button>
-                                <button class="edit-btn" onclick="showEditForm('about-content-3')">Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-title-3')"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('about-content-3')"><i class="fas fa-edit"></i> Edit</button>
                             </div>
                         </div>
                     </div>
@@ -691,30 +916,36 @@
                     <h2 class="section-title">Berita & Kegiatan Terbaru</h2>
                     <div class="cards">
                         <div class="card">
-                            <div class="card-img" style="background-color: #9b59b6;"></div>
+                            <div class="card-img">
+                                <i class="fas fa-music"></i>
+                            </div>
                             <div class="card-content">
                                 <h3 id="news-title-1" class="editable">Pentas Seni Tahun 2023</h3>
-                                <p id="news-content-1" class="editable">Siswa-siswi Sekolah Unggulan akan mengadakan pentas seni tahunan pada tanggal 15 Desember 2023.</p>
-                                <button class="edit-btn" onclick="showEditForm('news-title-1')">Edit</button>
-                                <button class="edit-btn" onclick="showEditForm('news-content-1')">Edit</button>
+                                <p id="news-content-1" class="editable">Siswa-siswi Sekolah Cerdas akan mengadakan pentas seni tahunan pada tanggal 15 Desember 2023 dengan berbagai pertunjukan menarik.</p>
+                                <button class="edit-btn" onclick="showEditForm('news-title-1')"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('news-content-1')"><i class="fas fa-edit"></i> Edit</button>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-img" style="background-color: #f39c12;"></div>
+                            <div class="card-img">
+                                <i class="fas fa-flask"></i>
+                            </div>
                             <div class="card-content">
                                 <h3 id="news-title-2" class="editable">Olimpiade Sains Nasional</h3>
-                                <p id="news-content-2" class="editable">Dua siswa kami berhasil meraih medali perak dalam Olimpiade Sains Nasional tingkat SMA.</p>
-                                <button class="edit-btn" onclick="showEditForm('news-title-2')">Edit</button>
-                                <button class="edit-btn" onclick="showEditForm('news-content-2')">Edit</button>
+                                <p id="news-content-2" class="editable">Dua siswa kami berhasil meraih medali perak dalam Olimpiade Sains Nasional tingkat SMA yang diadakan di Jakarta.</p>
+                                <button class="edit-btn" onclick="showEditForm('news-title-2')"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('news-content-2')"><i class="fas fa-edit"></i> Edit</button>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-img" style="background-color: #1abc9c;"></div>
+                            <div class="card-img">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
                             <div class="card-content">
                                 <h3 id="news-title-3" class="editable">Kegiatan Bakti Sosial</h3>
-                                <p id="news-content-3" class="editable">Sekolah mengadakan kegiatan bakti sosial di panti asuhan setempat sebagai bentuk kepedulian sosial.</p>
-                                <button class="edit-btn" onclick="showEditForm('news-title-3')">Edit</button>
-                                <button class="edit-btn" onclick="showEditForm('news-content-3')">Edit</button>
+                                <p id="news-content-3" class="editable">Sekolah mengadakan kegiatan bakti sosial di panti asuhan setempat sebagai bentuk kepedulian sosial dan pendidikan karakter.</p>
+                                <button class="edit-btn" onclick="showEditForm('news-title-3')"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="edit-btn" onclick="showEditForm('news-content-3')"><i class="fas fa-edit"></i> Edit</button>
                             </div>
                         </div>
                     </div>
@@ -726,22 +957,10 @@
                 <h2 class="section-title">Profil Sekolah</h2>
                 <div class="card">
                     <div class="card-content">
-                        <h3 id="profil-title" class="editable">Profil Sekolah Unggulan</h3>
-                        <p id="profil-content" class="editable">Sekolah Unggulan adalah lembaga pendidikan yang berdiri sejak tahun 1995. Kami berkomitmen untuk memberikan pendidikan terbaik bagi siswa dengan fasilitas modern dan tenaga pengajar yang berkualitas.</p>
-                        <button class="edit-btn" onclick="showEditForm('profil-title')">Edit</button>
-                        <button class="edit-btn" onclick="showEditForm('profil-content')">Edit</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="sejarah" class="page">
-                <h2 class="section-title">Sejarah Sekolah</h2>
-                <div class="card">
-                    <div class="card-content">
-                        <h3 id="sejarah-title" class="editable">Sejarah Berdirinya Sekolah Unggulan</h3>
-                        <p id="sejarah-content" class="editable">Sekolah Unggulan didirikan pada tahun 1995 oleh Yayasan Pendidikan Maju Jaya dengan tujuan memberikan pendidikan berkualitas bagi masyarakat. Awalnya sekolah hanya memiliki 5 ruang kelas dan 50 siswa. Kini kami telah berkembang menjadi sekolah dengan lebih dari 1000 siswa dan fasilitas lengkap.</p>
-                        <button class="edit-btn" onclick="showEditForm('sejarah-title')">Edit</button>
-                        <button class="edit-btn" onclick="showEditForm('sejarah-content')">Edit</button>
+                        <h3 id="profil-title" class="editable">Profil Sekolah Cerdas</h3>
+                        <p id="profil-content" class="editable">Sekolah Cerdas adalah lembaga pendidikan yang berdiri sejak tahun 1995. Kami berkomitmen untuk memberikan pendidikan terbaik bagi siswa dengan fasilitas modern dan tenaga pengajar yang berkualitas. Sekolah kami telah terakreditasi A dan memiliki berbagai prestasi di tingkat nasional.</p>
+                        <button class="edit-btn" onclick="showEditForm('profil-title')"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="edit-btn" onclick="showEditForm('profil-content')"><i class="fas fa-edit"></i> Edit</button>
                     </div>
                 </div>
             </div>
@@ -753,8 +972,8 @@
                         <div class="card-content">
                             <h3 id="visi-title" class="editable">Visi</h3>
                             <p id="visi-content" class="editable">Menjadi sekolah unggulan yang menghasilkan lulusan berkarakter, berprestasi, dan mampu bersaing di tingkat nasional maupun internasional.</p>
-                            <button class="edit-btn" onclick="showEditForm('visi-title')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('visi-content')">Edit</button>
+                            <button class="edit-btn" onclick="showEditForm('visi-title')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="edit-btn" onclick="showEditForm('visi-content')"><i class="fas fa-edit"></i> Edit</button>
                         </div>
                     </div>
                     <div class="card">
@@ -767,8 +986,8 @@
                                 4. Membangun karakter siswa yang berakhlak mulia<br>
                                 5. Mempersiapkan siswa untuk menghadapi tantangan global
                             </p>
-                            <button class="edit-btn" onclick="showEditForm('misi-title')">Edit</button>
-                            <button class="edit-btn" onclick="showEditForm('misi-content')">Edit</button>
+                            <button class="edit-btn" onclick="showEditForm('misi-title')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="edit-btn" onclick="showEditForm('misi-content')"><i class="fas fa-edit"></i> Edit</button>
                         </div>
                     </div>
                 </div>
@@ -776,8 +995,20 @@
 
             <!-- Admin Panel (Visible only when logged in as admin) -->
             <div id="adminPanel" class="admin-panel" style="display: none;">
-                <h3>Panel Admin - Edit Konten</h3>
+                <h3><i class="fas fa-user-shield"></i> Panel Admin - Edit Konten</h3>
                 <p>Gunakan tombol "Edit" di samping setiap konten untuk mengubah teks. Perubahan akan tersimpan secara lokal di browser Anda.</p>
+                <div class="stats" style="margin-top: 20px;">
+                    <div class="stat-card">
+                        <i class="fas fa-edit"></i>
+                        <h3 id="edit-count">0</h3>
+                        <p>Konten Diedit</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-user"></i>
+                        <h3 id="admin-name">Admin</h3>
+                        <p>Pengguna Aktif</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -788,34 +1019,35 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Kontak Kami</h3>
-                    <p id="footer-address" class="editable">Jl. Pendidikan No. 123, Jakarta</p>
-                    <p id="footer-phone" class="editable">Telepon: (021) 1234567</p>
-                    <p id="footer-email" class="editable">Email: info@sekolahunggulan.sch.id</p>
-                    <button class="edit-btn" onclick="showEditForm('footer-address')">Edit</button>
-                    <button class="edit-btn" onclick="showEditForm('footer-phone')">Edit</button>
-                    <button class="edit-btn" onclick="showEditForm('footer-email')">Edit</button>
+                    <p id="footer-address" class="editable"><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 123, Jakarta</p>
+                    <p id="footer-phone" class="editable"><i class="fas fa-phone"></i> Telepon: (021) 1234567</p>
+                    <p id="footer-email" class="editable"><i class="fas fa-envelope"></i> Email: info@sekolahcerdas.sch.id</p>
+                    <button class="edit-btn" onclick="showEditForm('footer-address')"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="edit-btn" onclick="showEditForm('footer-phone')"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="edit-btn" onclick="showEditForm('footer-email')"><i class="fas fa-edit"></i> Edit</button>
                 </div>
                 <div class="footer-section">
                     <h3>Tautan Cepat</h3>
                     <ul>
-                        <li><a href="#" data-page="psb">Penerimaan Siswa Baru</a></li>
-                        <li><a href="#" data-page="kalender">Kalender Akademik</a></li>
-                        <li><a href="#" data-page="galeri">Galeri Foto</a></li>
-                        <li><a href="#" data-page="pengumuman">Pengumuman</a></li>
+                        <li><a href="#" data-page="psb"><i class="fas fa-arrow-right"></i> Penerimaan Siswa Baru</a></li>
+                        <li><a href="#" data-page="kalender"><i class="fas fa-arrow-right"></i> Kalender Akademik</a></li>
+                        <li><a href="#" data-page="galeri"><i class="fas fa-arrow-right"></i> Galeri Foto</a></li>
+                        <li><a href="#" data-page="pengumuman"><i class="fas fa-arrow-right"></i> Pengumuman</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Ikuti Kami</h3>
                     <p>Terhubung dengan kami di media sosial untuk informasi terbaru.</p>
-                    <div style="margin-top: 15px;">
-                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-facebook-f"></i> Facebook</a><br>
-                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-instagram"></i> Instagram</a><br>
-                        <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-youtube"></i> YouTube</a>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <a href="#" class="btn btn-info" style="padding: 8px 12px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-info" style="padding: 8px 12px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-info" style="padding: 8px 12px;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="btn btn-info" style="padding: 8px 12px;"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Sekolah Unggulan. Semua Hak Dilindungi.</p>
+                <p>&copy; 2023 Sekolah Cerdas. Semua Hak Dilindungi. | <span id="footer-year">2023</span></p>
             </div>
         </div>
     </footer>
@@ -824,17 +1056,17 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Login Admin</h2>
+                <h2><i class="fas fa-lock"></i> Login Admin</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" class="form-control" required>
+                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Masukkan username" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" required>
+                    <label for="password"><i class="fas fa-key"></i> Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary close-modal">Batal</button>
@@ -848,17 +1080,17 @@
     <div id="editModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Edit Konten</h2>
+                <h2><i class="fas fa-edit"></i> Edit Konten</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <form id="editForm">
                 <div class="form-group">
                     <label for="editField">Konten</label>
-                    <textarea id="editField" class="form-control" rows="5"></textarea>
+                    <textarea id="editField" class="form-control" rows="5" placeholder="Masukkan konten baru"></textarea>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary close-modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>
             </form>
         </div>
@@ -869,7 +1101,7 @@
         let isAdmin = false;
         let currentEditElement = null;
         let currentPage = 'beranda';
-        let pageHistory = ['beranda'];
+        let editCount = 0;
 
         // DOM Elements
         const loginBtn = document.getElementById('loginBtn');
@@ -882,10 +1114,15 @@
         const adminPanel = document.getElementById('adminPanel');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navMenu = document.getElementById('navMenu');
-        const breadcrumb = document.getElementById('breadcrumb');
         const closeModalButtons = document.querySelectorAll('.close-modal');
         const navLinks = document.querySelectorAll('.nav-link, .dropdown-menu a');
         const pages = document.querySelectorAll('.page');
+        const editCountElement = document.getElementById('edit-count');
+        const adminNameElement = document.getElementById('admin-name');
+        const footerYear = document.getElementById('footer-year');
+
+        // Set current year in footer
+        footerYear.textContent = new Date().getFullYear();
 
         // Event Listeners
         loginBtn.addEventListener('click', () => {
@@ -900,6 +1137,7 @@
         logoutBtn.addEventListener('click', () => {
             isAdmin = false;
             updateUI();
+            alert('Anda telah logout dari panel admin.');
         });
 
         loginForm.addEventListener('submit', (e) => {
@@ -907,14 +1145,16 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            // Simple authentication (in a real app, this would be server-side)
+            // Simple authentication
             if (username === 'admin' && password === 'admin123') {
                 isAdmin = true;
                 updateUI();
                 loginModal.style.display = 'none';
                 loginForm.reset();
+                adminNameElement.textContent = username;
+                alert('Login berhasil! Selamat datang di panel admin.');
             } else {
-                alert('Username atau password salah!');
+                alert('Username atau password salah! Coba: admin / admin123');
             }
         });
 
@@ -924,8 +1164,10 @@
             
             if (currentEditElement) {
                 currentEditElement.textContent = newContent;
-                // In a real application, you would save this to a database here
+                // Save to localStorage
                 localStorage.setItem(currentEditElement.id, newContent);
+                editCount++;
+                editCountElement.textContent = editCount;
             }
             
             editModal.style.display = 'none';
@@ -1000,63 +1242,7 @@
                 }
             }
             
-            // Update breadcrumb
-            updateBreadcrumb(pageId);
-            
-            // Update page history
-            if (pageHistory[pageHistory.length - 1] !== pageId) {
-                pageHistory.push(pageId);
-            }
-            
             currentPage = pageId;
-        }
-
-        function updateBreadcrumb(pageId) {
-            const pageTitles = {
-                'beranda': 'Beranda',
-                'profil': 'Profil',
-                'sejarah': 'Sejarah',
-                'visi-misi': 'Visi & Misi',
-                'struktur': 'Struktur Organisasi',
-                'sarana': 'Sarana & Prasarana',
-                'akademik': 'Akademik',
-                'kurikulum': 'Kurikulum',
-                'program-studi': 'Program Studi',
-                'jadwal': 'Jadwal Pelajaran',
-                'kalender': 'Kalender Akademik',
-                'siswa': 'Siswa',
-                'psb': 'Penerimaan Siswa Baru',
-                'ekstrakurikuler': 'Ekstrakurikuler',
-                'prestasi': 'Prestasi Siswa',
-                'alumni': 'Alumni',
-                'guru-staf': 'Guru & Staf',
-                'daftar-guru': 'Daftar Guru',
-                'daftar-staf': 'Daftar Staf',
-                'pengembangan': 'Program Pengembangan',
-                'berita': 'Berita & Kegiatan',
-                'berita-sekolah': 'Berita Sekolah',
-                'kegiatan': 'Kegiatan Siswa',
-                'pengumuman': 'Pengumuman',
-                'galeri': 'Galeri Foto',
-                'kontak': 'Kontak'
-            };
-            
-            let breadcrumbHTML = '<a href="#" data-page="beranda">Beranda</a>';
-            
-            if (pageId !== 'beranda') {
-                breadcrumbHTML += ` &rsaquo; <a href="#" data-page="${pageId}">${pageTitles[pageId] || pageId}</a>`;
-            }
-            
-            breadcrumb.innerHTML = breadcrumbHTML;
-            
-            // Add event listeners to breadcrumb links
-            breadcrumb.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const page = link.getAttribute('data-page');
-                    navigateToPage(page);
-                });
-            });
         }
 
         function updateUI() {
@@ -1068,8 +1254,15 @@
                 
                 // Show edit buttons
                 document.querySelectorAll('.edit-btn').forEach(btn => {
-                    btn.style.display = 'inline-block';
+                    btn.style.display = 'inline-flex';
                 });
+                
+                // Add hover effect to editable elements
+                document.querySelectorAll('.editable').forEach(el => {
+                    el.style.cursor = 'pointer';
+                });
+                
+                localStorage.setItem('isAdmin', 'true');
             } else {
                 loginBtn.style.display = 'block';
                 adminBtn.style.display = 'none';
@@ -1080,6 +1273,15 @@
                 document.querySelectorAll('.edit-btn').forEach(btn => {
                     btn.style.display = 'none';
                 });
+                
+                // Remove hover effect from editable elements
+                document.querySelectorAll('.editable').forEach(el => {
+                    el.style.cursor = 'default';
+                    el.style.borderColor = 'transparent';
+                    el.style.background = 'transparent';
+                });
+                
+                localStorage.setItem('isAdmin', 'false');
             }
         }
 
@@ -1100,45 +1302,17 @@
                 }
             });
             
-            // Check if user was previously logged in (in a real app, use more secure method)
+            // Check if user was previously logged in
             const savedAdminState = localStorage.getItem('isAdmin');
             if (savedAdminState === 'true') {
                 isAdmin = true;
                 updateUI();
             }
             
-            // Initialize breadcrumb
-            updateBreadcrumb('beranda');
+            // Count existing edits
+            editCount = document.querySelectorAll('.editable').length;
+            editCountElement.textContent = editCount;
         });
-
-        // Save admin state when logging in/out
-        function updateUI() {
-            if (isAdmin) {
-                loginBtn.style.display = 'none';
-                adminBtn.style.display = 'block';
-                logoutBtn.style.display = 'block';
-                adminPanel.style.display = 'block';
-                
-                // Show edit buttons
-                document.querySelectorAll('.edit-btn').forEach(btn => {
-                    btn.style.display = 'inline-block';
-                });
-                
-                localStorage.setItem('isAdmin', 'true');
-            } else {
-                loginBtn.style.display = 'block';
-                adminBtn.style.display = 'none';
-                logoutBtn.style.display = 'none';
-                adminPanel.style.display = 'none';
-                
-                // Hide edit buttons
-                document.querySelectorAll('.edit-btn').forEach(btn => {
-                    btn.style.display = 'none';
-                });
-                
-                localStorage.setItem('isAdmin', 'false');
-            }
-        }
     </script>
 </body>
 </html>

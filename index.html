@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK Negeri 1 Maju Jaya - Sekolah Unggul Berbasis Teknologi</title>
+    <title>SMK FASHIONISTA - Jurusan Tata Busana</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a73e8;
-            --secondary: #0d47a1;
-            --accent: #ff9800;
-            --light: #f5f5f5;
-            --dark: #333;
+            --primary: #8B4513;
+            --secondary: #D2691E;
+            --accent: #FF69B4;
+            --light: #FFF8DC;
+            --dark: #654321;
             --success: #4caf50;
             --danger: #f44336;
             --gray: #777;
@@ -25,7 +25,7 @@
         }
         
         body {
-            background-color: #f9f9f9;
+            background-color: #fefefe;
             color: var(--dark);
             line-height: 1.6;
         }
@@ -97,6 +97,10 @@
             color: white;
         }
         
+        nav {
+            position: relative;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
@@ -105,6 +109,7 @@
         
         nav ul li {
             margin-right: 20px;
+            position: relative;
         }
         
         nav ul li a {
@@ -114,19 +119,63 @@
             padding: 8px 12px;
             border-radius: 4px;
             transition: background 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a i {
+            margin-left: 5px;
         }
         
         nav ul li a:hover, nav ul li a.active {
             background: rgba(255, 255, 255, 0.2);
         }
         
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+            width: 100%;
+        }
+        
+        .dropdown-menu li a {
+            color: var(--dark);
+            padding: 10px 15px;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dropdown-menu li a:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+        
+        nav ul li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(210, 105, 30, 0.7)), url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
         
@@ -155,7 +204,7 @@
         }
         
         .btn:hover {
-            background: #e68900;
+            background: #e0529c;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -193,6 +242,7 @@
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
+            border-top: 4px solid var(--accent);
         }
         
         .feature-card:hover {
@@ -210,33 +260,39 @@
             color: var(--secondary);
         }
         
-        /* Announcements */
-        .announcements {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 50px;
+        /* Jurusan Section */
+        .jurusan {
+            background: var(--light);
+            padding: 60px 0;
+            margin: 50px 0;
         }
         
-        .announcement-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
+        .jurusan-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
         
-        .announcement-item:last-child {
-            border-bottom: none;
-        }
-        
-        .announcement-date {
+        .jurusan-text h2 {
+            margin-bottom: 20px;
             color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 5px;
         }
         
-        .announcement-title {
-            font-weight: 600;
-            margin-bottom: 5px;
+        .jurusan-text p {
+            margin-bottom: 15px;
+        }
+        
+        .jurusan-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .jurusan-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         /* Programs */
@@ -252,6 +308,11 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
         }
         
         .program-img {
@@ -485,6 +546,10 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .jurusan-content {
+                grid-template-columns: 1fr;
+            }
         }
         
         .editable {
@@ -496,7 +561,7 @@
         
         .editable:hover {
             border-color: var(--primary);
-            background-color: rgba(26, 115, 232, 0.05);
+            background-color: rgba(139, 69, 19, 0.05);
         }
         
         .edit-btn {
@@ -579,10 +644,10 @@
         <div class="container">
             <div class="header-top">
                 <div class="logo">
-                    <img src="https://via.placeholder.com/60/1a73e8/ffffff?text=SMK" alt="Logo SMK" class="editable-image" data-id="logo">
+                    <img src="https://via.placeholder.com/60/8B4513/ffffff?text=TB" alt="Logo SMK" class="editable-image" data-id="logo">
                     <div class="logo-text">
-                        <h1 class="editable" data-id="school-name">SMK NEGERI 1 MAJU JAYA</h1>
-                        <p class="editable" data-id="school-motto">Sekolah Unggul Berbasis Teknologi</p>
+                        <h1 class="editable" data-id="school-name">SMK FASHIONISTA</h1>
+                        <p class="editable" data-id="school-motto">Jurusan Tata Busana - Kreatif, Inovatif, dan Profesional</p>
                     </div>
                 </div>
                 <div class="search-bar">
@@ -592,12 +657,43 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" class="active">Beranda</a></li>
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Program Keahlian</a></li>
-                    <li><a href="#">Galeri</a></li>
-                    <li><a href="#">Berita</a></li>
-                    <li><a href="#">Kontak</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li>
+                        <a href="#"><i class="fas fa-school"></i> Profil <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Sejarah Sekolah</a></li>
+                            <li><a href="#">Visi & Misi</a></li>
+                            <li><a href="#">Struktur Organisasi</a></li>
+                            <li><a href="#">Sarana & Prasarana</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-tshirt"></i> Jurusan <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Program Keahlian</a></li>
+                            <li><a href="#">Kurikulum</a></li>
+                            <li><a href="#">Guru & Staff</a></li>
+                            <li><a href="#">Prestasi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-images"></i> Galeri <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Foto Kegiatan</a></li>
+                            <li><a href="#">Karya Siswa</a></li>
+                            <li><a href="#">Fashion Show</a></li>
+                            <li><a href="#">Workshop</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-newspaper"></i> Berita <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Pengumuman</a></li>
+                            <li><a href="#">Agenda Kegiatan</a></li>
+                            <li><a href="#">Artikel</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Kontak</a></li>
                 </ul>
             </nav>
         </div>
@@ -606,94 +702,91 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2 class="editable" data-id="hero-title">Selamat Datang di SMK Negeri 1 Maju Jaya</h2>
-            <p class="editable" data-id="hero-subtitle">Menyiapkan Generasi Unggul yang Siap Kerja dan Berwirausaha di Era Digital</p>
-            <a href="#" class="btn">Lihat Program Kami</a>
+            <h2 class="editable" data-id="hero-title">Selamat Datang di SMK Fashionista</h2>
+            <p class="editable" data-id="hero-subtitle">Sekolah Menengah Kejuruan dengan Jurusan Tata Busana yang Menghasilkan Desainer dan Perancang Busana Berbakat</p>
+            <a href="#" class="btn">Jelajahi Jurusan Kami</a>
         </div>
     </section>
 
     <!-- Main Content -->
     <div class="container main-content">
         <!-- Features -->
-        <h2 class="section-title editable" data-id="features-title">Keunggulan Kami</h2>
+        <h2 class="section-title editable" data-id="features-title">Keunggulan Jurusan Tata Busana</h2>
         <div class="features">
             <div class="feature-card">
-                <i class="fas fa-laptop-code"></i>
-                <h3 class="editable" data-id="feature1-title">Kurikulum Berbasis Industri</h3>
-                <p class="editable" data-id="feature1-desc">Kurikulum kami disusun sesuai dengan kebutuhan industri terkini untuk memastikan lulusan siap kerja.</p>
+                <i class="fas fa-ruler-combined"></i>
+                <h3 class="editable" data-id="feature1-title">Pembelajaran Pola & Jahit</h3>
+                <p class="editable" data-id="feature1-desc">Siswa diajarkan teknik membuat pola, memotong bahan, dan menjahit dengan berbagai metode tradisional dan modern.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-user-graduate"></i>
-                <h3 class="editable" data-id="feature2-title">Guru Berpengalaman</h3>
-                <p class="editable" data-id="feature2-desc">Didukung oleh tenaga pengajar yang kompeten dan berpengalaman di bidangnya masing-masing.</p>
+                <i class="fas fa-palette"></i>
+                <h3 class="editable" data-id="feature2-title">Desain & Kreativitas</h3>
+                <p class="editable" data-id="feature2-desc">Pengembangan kemampuan desain, pemilihan warna, tekstur, dan aksesori untuk menciptakan busana yang estetis.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-tools"></i>
-                <h3 class="editable" data-id="feature3-title">Fasilitas Lengkap</h3>
-                <p class="editable" data-id="feature3-desc">Peralatan praktik yang modern dan lengkap untuk mendukung proses pembelajaran.</p>
+                <i class="fas fa-industry"></i>
+                <h3 class="editable" data-id="feature3-title">Keterampilan Industri</h3>
+                <p class="editable" data-id="feature3-desc">Pembekalan pengetahuan tentang proses produksi garmen, kualitas bahan, dan standar industri fashion.</p>
             </div>
         </div>
 
-        <!-- Announcements -->
-        <h2 class="section-title editable" data-id="announcements-title">Pengumuman Terbaru</h2>
-        <div class="announcements">
-            <div class="announcement-item">
-                <div class="announcement-date editable" data-id="announcement1-date">15 Oktober 2023</div>
-                <div class="announcement-title editable" data-id="announcement1-title">Pendaftaran Peserta Didik Baru Tahun Ajaran 2024/2025</div>
-                <p class="editable" data-id="announcement1-desc">Pendaftaran dibuka mulai 1 November 2023. Informasi lebih lanjut dapat dilihat di menu PPDB.</p>
+        <!-- Jurusan Section -->
+        <section class="jurusan">
+            <div class="container">
+                <div class="jurusan-content">
+                    <div class="jurusan-text">
+                        <h2 class="editable" data-id="jurusan-title">Jurusan Tata Busana</h2>
+                        <p class="editable" data-id="jurusan-desc1">Jurusan Tata Busana di SMK Fashionista mempersiapkan siswa untuk menjadi tenaga terampil di bidang fashion dan garmen. Dengan kurikulum yang mengintegrasikan teori dan praktik, siswa dibekali kemampuan untuk merancang, membuat pola, dan memproduksi busana yang sesuai dengan kebutuhan pasar.</p>
+                        <p class="editable" data-id="jurusan-desc2">Lulusan jurusan ini memiliki peluang karir yang luas sebagai desainer, pattern maker, tailor, quality control, wirausaha di bidang fashion, dan berbagai profesi lainnya di industri garmen.</p>
+                        <a href="#" class="btn">Lihat Detail Kurikulum</a>
+                    </div>
+                    <div class="jurusan-image">
+                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Jurusan Tata Busana" class="editable-image" data-id="jurusan-image">
+                    </div>
+                </div>
             </div>
-            <div class="announcement-item">
-                <div class="announcement-date editable" data-id="announcement2-date">10 Oktober 2023</div>
-                <div class="announcement-title editable" data-id="announcement2-title">Workshop Kewirausahaan untuk Siswa Kelas XII</div>
-                <p class="editable" data-id="announcement2-desc">Workshop akan dilaksanakan pada 25-26 Oktober 2023. Daftar segera di ruang BKK.</p>
-            </div>
-            <div class="announcement-item">
-                <div class="announcement-date editable" data-id="announcement3-date">5 Oktober 2023</div>
-                <div class="announcement-title editable" data-id="announcement3-title">Peringatan Hari Sumpah Pemuda 2023</div>
-                <p class="editable" data-id="announcement3-desc">Akan diadakan berbagai lomba dan kegiatan untuk memperingati Hari Sumpah Pemuda.</p>
-            </div>
-        </div>
+        </section>
 
         <!-- Programs -->
         <h2 class="section-title editable" data-id="programs-title">Program Keahlian</h2>
         <div class="programs">
             <div class="program-card">
-                <div class="program-img editable-image" data-id="program1-img" style="background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                <div class="program-img editable-image" data-id="program1-img" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="program-content">
-                    <h3 class="editable" data-id="program1-title">Rekayasa Perangkat Lunak</h3>
-                    <p class="editable" data-id="program1-desc">Mempelajari pengembangan aplikasi dan sistem informasi berbasis komputer.</p>
+                    <h3 class="editable" data-id="program1-title">Desain Busana</h3>
+                    <p class="editable" data-id="program1-desc">Mempelajari prinsip-prinsip desain, ilustrasi busana, dan pengembangan koleksi fashion.</p>
                 </div>
             </div>
             <div class="program-card">
-                <div class="program-img editable-image" data-id="program2-img" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="program-img editable-image" data-id="program2-img" style="background-image: url('https://images.unsplash.com/photo-1584467735871-8db9ac8b1f0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="program-content">
-                    <h3 class="editable" data-id="program2-title">Teknik Kendaraan Ringan</h3>
-                    <p class="editable" data-id="program2-desc">Fokus pada perawatan dan perbaikan kendaraan roda empat.</p>
+                    <h3 class="editable" data-id="program2-title">Pembuatan Pola</h3>
+                    <p class="editable" data-id="program2-desc">Teknik membuat pola dasar, modifikasi pola, dan grading untuk berbagai ukuran tubuh.</p>
                 </div>
             </div>
             <div class="program-card">
-                <div class="program-img editable-image" data-id="program3-img" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="program-img editable-image" data-id="program3-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="program-content">
-                    <h3 class="editable" data-id="program3-title">Teknik Pemesinan</h3>
-                    <p class="editable" data-id="program3-desc">Mempelajari proses produksi komponen mesin dengan teknologi CNC.</p>
+                    <h3 class="editable" data-id="program3-title">Teknologi Menjahit</h3>
+                    <p class="editable" data-id="program3-desc">Penguasaan mesin jahit, teknik menjahit, dan finishing untuk menghasilkan produk berkualitas.</p>
                 </div>
             </div>
         </div>
 
         <!-- Gallery -->
-        <h2 class="section-title editable" data-id="gallery-title">Galeri Kegiatan</h2>
+        <h2 class="section-title editable" data-id="gallery-title">Galeri Karya Siswa</h2>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan Belajar" class="editable-image" data-id="gallery1">
+                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 1" class="editable-image" data-id="gallery1">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Praktikum" class="editable-image" data-id="gallery2">
+                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 2" class="editable-image" data-id="gallery2">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ekstrakurikuler" class="editable-image" data-id="gallery3">
+                <img src="https://images.unsplash.com/photo-1585487000125-19e1d3d0b71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 3" class="editable-image" data-id="gallery3">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Upacara" class="editable-image" data-id="gallery4">
+                <img src="https://images.unsplash.com/photo-1585109641405-8c57f5db2e80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 4" class="editable-image" data-id="gallery4">
             </div>
         </div>
     </div>
@@ -704,12 +797,12 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 class="editable" data-id="footer-about-title">Tentang Kami</h3>
-                    <p class="editable" data-id="footer-about-desc">SMK Negeri 1 Maju Jaya adalah sekolah menengah kejuruan yang berfokus pada pengembangan kompetensi siswa di bidang teknologi dan industri.</p>
+                    <p class="editable" data-id="footer-about-desc">SMK Fashionista adalah sekolah menengah kejuruan yang berfokus pada pengembangan kompetensi siswa di bidang tata busana dan fashion design.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 <div class="footer-section footer-links">
@@ -717,20 +810,20 @@
                     <ul>
                         <li><a href="#">Beranda</a></li>
                         <li><a href="#">Profil Sekolah</a></li>
-                        <li><a href="#">Program Keahlian</a></li>
+                        <li><a href="#">Jurusan Tata Busana</a></li>
                         <li><a href="#">Galeri</a></li>
                         <li><a href="#">Kontak</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3 class="editable" data-id="footer-contact-title">Kontak Kami</h3>
-                    <p class="editable" data-id="footer-address">Jl. Pendidikan No. 123, Kota Maju Jaya</p>
+                    <p class="editable" data-id="footer-address">Jl. Fashion Indah No. 123, Jakarta</p>
                     <p class="editable" data-id="footer-phone">Telepon: (021) 1234-5678</p>
-                    <p class="editable" data-id="footer-email">Email: info@smkn1majujaya.sch.id</p>
+                    <p class="editable" data-id="footer-email">Email: info@smkfashionista.sch.id</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="editable" data-id="footer-copyright">&copy; 2023 SMK Negeri 1 Maju Jaya. Semua Hak Dilindungi.</p>
+                <p class="editable" data-id="footer-copyright">&copy; 2023 SMK Fashionista. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
@@ -766,7 +859,9 @@
                         <option value="feature2-desc">Keunggulan 2 - Deskripsi</option>
                         <option value="feature3-title">Keunggulan 3 - Judul</option>
                         <option value="feature3-desc">Keunggulan 3 - Deskripsi</option>
-                        <option value="announcements-title">Judul Pengumuman</option>
+                        <option value="jurusan-title">Judul Jurusan</option>
+                        <option value="jurusan-desc1">Deskripsi Jurusan 1</option>
+                        <option value="jurusan-desc2">Deskripsi Jurusan 2</option>
                         <option value="programs-title">Judul Program</option>
                         <option value="program1-title">Program 1 - Judul</option>
                         <option value="program1-desc">Program 1 - Deskripsi</option>
@@ -801,6 +896,7 @@
                     <select id="imageSelector" class="form-control">
                         <option value="">-- Pilih Gambar --</option>
                         <option value="logo">Logo Sekolah</option>
+                        <option value="jurusan-image">Gambar Jurusan</option>
                         <option value="program1-img">Program 1 - Gambar</option>
                         <option value="program2-img">Program 2 - Gambar</option>
                         <option value="program3-img">Program 3 - Gambar</option>
@@ -830,34 +926,6 @@
                     <button class="btn-admin" id="saveImageBtn">Simpan Perubahan Gambar</button>
                 </div>
             </div>
-            
-            <!-- Tab Edit Pengumuman -->
-            <div class="tab-content" id="announcements-tab">
-                <div class="form-group">
-                    <label for="announcementSelector">Pilih Pengumuman untuk Diedit:</label>
-                    <select id="announcementSelector" class="form-control">
-                        <option value="">-- Pilih Pengumuman --</option>
-                        <option value="announcement1">Pengumuman 1</option>
-                        <option value="announcement2">Pengumuman 2</option>
-                        <option value="announcement3">Pengumuman 3</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="announcementDate">Tanggal:</label>
-                    <input type="text" id="announcementDate" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="announcementTitle">Judul:</label>
-                    <input type="text" id="announcementTitle" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="announcementDesc">Deskripsi:</label>
-                    <textarea id="announcementDesc" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn-admin" id="saveAnnouncementBtn">Simpan Perubahan Pengumuman</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -876,7 +944,7 @@
             <button class="btn-admin" id="loginBtn">Login</button>
         </div>
         <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
-            <strong>Default login:</strong> admin / smk123
+            <strong>Default login:</strong> admin / tata123
         </p>
     </div>
 
@@ -889,7 +957,7 @@
         // Data login admin
         const adminCredentials = {
             username: "admin",
-            password: "smk123"
+            password: "tata123"
         };
 
         // Status login
@@ -909,11 +977,6 @@
         const imagePreview = document.getElementById('imagePreview');
         const imageUrl = document.getElementById('imageUrl');
         const saveImageBtn = document.getElementById('saveImageBtn');
-        const announcementSelector = document.getElementById('announcementSelector');
-        const announcementDate = document.getElementById('announcementDate');
-        const announcementTitle = document.getElementById('announcementTitle');
-        const announcementDesc = document.getElementById('announcementDesc');
-        const saveAnnouncementBtn = document.getElementById('saveAnnouncementBtn');
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
 
@@ -926,8 +989,6 @@
         imageSelector.addEventListener('change', loadImageToEditor);
         imageUpload.addEventListener('change', handleImageUpload);
         saveImageBtn.addEventListener('click', saveImage);
-        announcementSelector.addEventListener('change', loadAnnouncementToEditor);
-        saveAnnouncementBtn.addEventListener('click', saveAnnouncement);
         
         // Tab switching
         tabs.forEach(tab => {
@@ -1080,58 +1141,6 @@
             }
         }
 
-        // Fungsi untuk memuat pengumuman ke editor
-        function loadAnnouncementToEditor() {
-            const selectedId = announcementSelector.value;
-            if (selectedId) {
-                // Load data from the page
-                const dateElement = document.querySelector(`[data-id="${selectedId}-date"]`);
-                const titleElement = document.querySelector(`[data-id="${selectedId}-title"]`);
-                const descElement = document.querySelector(`[data-id="${selectedId}-desc"]`);
-                
-                if (dateElement) announcementDate.value = dateElement.textContent;
-                if (titleElement) announcementTitle.value = titleElement.textContent;
-                if (descElement) announcementDesc.value = descElement.textContent;
-                
-                // Load saved data if exists
-                const savedDate = localStorage.getItem(`${selectedId}-date`);
-                const savedTitle = localStorage.getItem(`${selectedId}-title`);
-                const savedDesc = localStorage.getItem(`${selectedId}-desc`);
-                
-                if (savedDate) announcementDate.value = savedDate;
-                if (savedTitle) announcementTitle.value = savedTitle;
-                if (savedDesc) announcementDesc.value = savedDesc;
-            } else {
-                announcementDate.value = '';
-                announcementTitle.value = '';
-                announcementDesc.value = '';
-            }
-        }
-
-        // Fungsi untuk menyimpan pengumuman
-        function saveAnnouncement() {
-            const selectedId = announcementSelector.value;
-            if (selectedId) {
-                // Update the page
-                const dateElement = document.querySelector(`[data-id="${selectedId}-date"]`);
-                const titleElement = document.querySelector(`[data-id="${selectedId}-title"]`);
-                const descElement = document.querySelector(`[data-id="${selectedId}-desc"]`);
-                
-                if (dateElement) dateElement.textContent = announcementDate.value;
-                if (titleElement) titleElement.textContent = announcementTitle.value;
-                if (descElement) descElement.textContent = announcementDesc.value;
-                
-                // Save to localStorage
-                localStorage.setItem(`${selectedId}-date`, announcementDate.value);
-                localStorage.setItem(`${selectedId}-title`, announcementTitle.value);
-                localStorage.setItem(`${selectedId}-desc`, announcementDesc.value);
-                
-                alert('Pengumuman berhasil disimpan!');
-            } else {
-                alert('Pilih pengumuman yang akan diedit terlebih dahulu!');
-            }
-        }
-
         // Fungsi untuk memuat konten dari localStorage saat halaman dimuat
         function loadSavedContent() {
             // Load text content
@@ -1158,29 +1167,6 @@
                     }
                 }
             });
-            
-            // Load announcements
-            for (let i = 1; i <= 3; i++) {
-                const announcementId = `announcement${i}`;
-                const savedDate = localStorage.getItem(`${announcementId}-date`);
-                const savedTitle = localStorage.getItem(`${announcementId}-title`);
-                const savedDesc = localStorage.getItem(`${announcementId}-desc`);
-                
-                if (savedDate) {
-                    const dateElement = document.querySelector(`[data-id="${announcementId}-date"]`);
-                    if (dateElement) dateElement.textContent = savedDate;
-                }
-                
-                if (savedTitle) {
-                    const titleElement = document.querySelector(`[data-id="${announcementId}-title"]`);
-                    if (titleElement) titleElement.textContent = savedTitle;
-                }
-                
-                if (savedDesc) {
-                    const descElement = document.querySelector(`[data-id="${announcementId}-desc"]`);
-                    if (descElement) descElement.textContent = savedDesc;
-                }
-            }
         }
 
         // Panggil fungsi untuk memuat konten yang disimpan

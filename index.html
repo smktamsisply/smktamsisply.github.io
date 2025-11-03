@@ -3,20 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK FASHIONISTA - Jurusan Tata Busana</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>SMK Tata Busana - Sekolah Menengah Kejuruan</title>
     <style>
-        :root {
-            --primary: #8B4513;
-            --secondary: #D2691E;
-            --accent: #FF69B4;
-            --light: #FFF8DC;
-            --dark: #654321;
-            --success: #4caf50;
-            --danger: #f44336;
-            --gray: #777;
-        }
-        
+        /* Reset dan Styling Dasar */
         * {
             margin: 0;
             padding: 0;
@@ -25,8 +14,8 @@
         }
         
         body {
-            background-color: #fefefe;
-            color: var(--dark);
+            background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
         }
         
@@ -37,23 +26,18 @@
             padding: 0 15px;
         }
         
-        /* Header Styles */
+        /* Header dan Navigasi */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #8B4513, #D2691E);
             color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .header-top {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .logo {
@@ -62,9 +46,8 @@
         }
         
         .logo img {
-            height: 60px;
+            height: 70px;
             margin-right: 15px;
-            border-radius: 5px;
         }
         
         .logo-text h1 {
@@ -73,110 +56,102 @@
         }
         
         .logo-text p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.9;
-        }
-        
-        .search-bar {
-            display: flex;
-        }
-        
-        .search-bar input {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            width: 250px;
-        }
-        
-        .search-bar button {
-            background: var(--accent);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            color: white;
-        }
-        
-        nav {
-            position: relative;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            margin-top: 15px;
         }
         
         nav ul li {
-            margin-right: 20px;
-            position: relative;
+            margin-left: 20px;
         }
         
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 12px;
+            padding: 8px 15px;
             border-radius: 4px;
             transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Admin Bar */
+        .admin-bar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 0;
+            display: none;
+        }
+        
+        .admin-controls {
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
         
-        nav ul li a i {
-            margin-left: 5px;
-        }
-        
-        nav ul li a:hover, nav ul li a.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 200px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .edit-toggle {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
             border-radius: 4px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s;
-            z-index: 1000;
+            cursor: pointer;
+            font-weight: bold;
         }
         
-        .dropdown-menu li {
-            margin: 0;
-            width: 100%;
+        .save-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
         }
         
-        .dropdown-menu li a {
-            color: var(--dark);
-            padding: 10px 15px;
-            display: block;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .dropdown-menu li a:hover {
-            background: var(--light);
-            color: var(--primary);
-        }
-        
-        nav ul li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .logout-btn {
+            background-color: #95a5a6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(210, 105, 30, 0.7)), url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
-            background-size: cover;
-            background-position: center;
+            background: url('https://via.placeholder.com/1200x500') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
             color: white;
-            padding: 100px 0;
             text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
         }
         
         .hero h2 {
@@ -192,175 +167,187 @@
         
         .btn {
             display: inline-block;
-            background: var(--accent);
+            background-color: #D2691E;
             color: white;
             padding: 12px 25px;
-            border-radius: 4px;
+            border-radius: 5px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
         }
         
         .btn:hover {
-            background: #e0529c;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #8B4513;
         }
         
-        /* Main Content */
-        .main-content {
-            padding: 50px 0;
+        /* Section Styling */
+        section {
+            padding: 60px 0;
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: #8B4513;
+            margin-bottom: 10px;
             position: relative;
+            display: inline-block;
         }
         
-        .section-title:after {
+        .section-title h2::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
-            height: 4px;
-            background: var(--primary);
-            margin: 10px auto;
+            height: 3px;
+            background-color: #D2691E;
         }
         
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        /* Profil Section */
+        .profil-content {
+            display: flex;
+            align-items: center;
             gap: 30px;
-            margin-bottom: 50px;
         }
         
-        .feature-card {
-            background: white;
+        .profil-image {
+            flex: 1;
+        }
+        
+        .profil-image img {
+            width: 100%;
             border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            border-top: 4px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .feature-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--secondary);
+        .profil-text {
+            flex: 1;
         }
         
         /* Jurusan Section */
-        .jurusan {
-            background: var(--light);
-            padding: 60px 0;
-            margin: 50px 0;
-        }
-        
-        .jurusan-content {
+        .jurusan-cards {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
-        .jurusan-text h2 {
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .jurusan-text p {
-            margin-bottom: 15px;
-        }
-        
-        .jurusan-image {
+        .card {
+            background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .jurusan-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Programs */
-        .programs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-        
-        .program-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
         
-        .program-card:hover {
-            transform: translateY(-5px);
+        .card:hover {
+            transform: translateY(-10px);
         }
         
-        .program-img {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
         
-        .program-content {
+        .card-content {
             padding: 20px;
         }
         
-        .program-content h3 {
+        .card h3 {
+            color: #8B4513;
             margin-bottom: 10px;
-            color: var(--secondary);
         }
         
-        /* Gallery */
-        .gallery {
+        /* Gallery Section */
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
-            margin-bottom: 50px;
         }
         
         .gallery-item {
-            height: 200px;
-            border-radius: 8px;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 200px;
         }
         
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            transition: transform 0.5s;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
+        }
+        
+        /* Kontak Section */
+        .kontak-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .info-item i {
+            font-size: 2rem;
+            color: #D2691E;
+            margin-bottom: 15px;
+        }
+        
+        .kontak-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
+            background-color: #2c3e50;
             color: white;
-            padding: 50px 0 20px;
+            padding: 40px 0 20px;
         }
         
         .footer-content {
@@ -371,806 +358,520 @@
         }
         
         .footer-section h3 {
+            font-size: 1.3rem;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
         
-        .footer-section h3:after {
+        .footer-section h3::after {
             content: '';
             position: absolute;
-            left: 0;
             bottom: 0;
+            left: 0;
             width: 50px;
             height: 2px;
-            background: var(--accent);
+            background-color: #D2691E;
         }
         
-        .footer-section p {
-            margin-bottom: 15px;
-        }
-        
-        .footer-links ul {
+        .footer-section ul {
             list-style: none;
         }
         
-        .footer-links ul li {
+        .footer-section ul li {
             margin-bottom: 10px;
         }
         
-        .footer-links ul li a {
+        .footer-section ul li a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s;
         }
         
-        .footer-links ul li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
+        .footer-section ul li a:hover {
+            color: #D2691E;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
         
         .social-links a {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 10px;
             color: white;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-5px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Admin Panel */
-        .admin-panel {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin: 50px auto;
-            max-width: 900px;
-            display: none;
-        }
-        
-        .admin-panel.active {
-            display: block;
-        }
-        
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn-admin {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
+            text-decoration: none;
             transition: background 0.3s;
         }
         
-        .btn-admin:hover {
-            background: var(--secondary);
+        .social-links a:hover {
+            background-color: #D2691E;
         }
         
-        .btn-danger {
-            background: var(--danger);
-        }
-        
-        .btn-danger:hover {
-            background: #d32f2f;
-        }
-        
-        .login-form {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .login-form h2 {
+        .copyright {
             text-align: center;
-            margin-bottom: 25px;
-            color: var(--primary);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        /* Modal Login */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .modal h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #8B4513;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        /* Editable Content */
+        .editable {
+            position: relative;
+        }
+        
+        .editable:hover {
+            outline: 2px dashed #e74c3c;
+        }
+        
+        .edit-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #e74c3c;
+            color: white;
+            padding: 2px 5px;
+            font-size: 0.7rem;
+            display: none;
+        }
+        
+        .editable:hover .edit-overlay {
+            display: block;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .header-top {
+            .header-content {
                 flex-direction: column;
                 text-align: center;
             }
             
-            .logo {
-                justify-content: center;
-                margin-bottom: 15px;
-            }
-            
             nav ul {
+                margin-top: 20px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
             nav ul li {
-                margin: 5px 10px;
+                margin: 5px;
+            }
+            
+            .profil-content {
+                flex-direction: column;
             }
             
             .hero h2 {
                 font-size: 2rem;
             }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .jurusan-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .editable {
-            border: 1px dashed transparent;
-            padding: 2px;
-            transition: all 0.3s;
-            min-height: 20px;
-        }
-        
-        .editable:hover {
-            border-color: var(--primary);
-            background-color: rgba(139, 69, 19, 0.05);
-        }
-        
-        .edit-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: none;
-        }
-        
-        .edit-btn:hover {
-            background: var(--secondary);
-        }
-        
-        .image-upload {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        
-        .image-preview {
-            width: 100px;
-            height: 100px;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-right: 15px;
-            border: 1px solid #ddd;
-        }
-        
-        .image-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .tab-container {
-            margin-bottom: 20px;
-        }
-        
-        .tabs {
-            display: flex;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
-        
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .tab.active {
-            border-bottom: 3px solid var(--primary);
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
         }
     </style>
 </head>
 <body>
+    <!-- Admin Bar (Hanya tampil setelah login) -->
+    <div class="admin-bar" id="adminBar">
+        <div class="container admin-controls">
+            <div>
+                <button class="edit-toggle" id="editToggle">Mode Edit: OFF</button>
+                <button class="save-btn" id="saveBtn">Simpan Perubahan</button>
+            </div>
+            <button class="logout-btn" id="logoutBtn">Logout Admin</button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-top">
-                <div class="logo">
-                    <img src="https://via.placeholder.com/60/8B4513/ffffff?text=TB" alt="Logo SMK" class="editable-image" data-id="logo">
-                    <div class="logo-text">
-                        <h1 class="editable" data-id="school-name">SMK FASHIONISTA</h1>
-                        <p class="editable" data-id="school-motto">Jurusan Tata Busana - Kreatif, Inovatif, dan Profesional</p>
-                    </div>
-                </div>
-                <div class="search-bar">
-                    <input type="text" placeholder="Cari informasi...">
-                    <button><i class="fas fa-search"></i></button>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/70" alt="Logo SMK Tata Busana">
+                <div class="logo-text">
+                    <h1>SMK TATA BUSANA</h1>
+                    <p>Sekolah Menengah Kejuruan</p>
                 </div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" class="active"><i class="fas fa-home"></i> Beranda</a></li>
-                    <li>
-                        <a href="#"><i class="fas fa-school"></i> Profil <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Sejarah Sekolah</a></li>
-                            <li><a href="#">Visi & Misi</a></li>
-                            <li><a href="#">Struktur Organisasi</a></li>
-                            <li><a href="#">Sarana & Prasarana</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-tshirt"></i> Jurusan <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Program Keahlian</a></li>
-                            <li><a href="#">Kurikulum</a></li>
-                            <li><a href="#">Guru & Staff</a></li>
-                            <li><a href="#">Prestasi</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-images"></i> Galeri <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Foto Kegiatan</a></li>
-                            <li><a href="#">Karya Siswa</a></li>
-                            <li><a href="#">Fashion Show</a></li>
-                            <li><a href="#">Workshop</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-newspaper"></i> Berita <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Pengumuman</a></li>
-                            <li><a href="#">Agenda Kegiatan</a></li>
-                            <li><a href="#">Artikel</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> Kontak</a></li>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#jurusan">Jurusan</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#" id="loginBtn">Login Admin</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h2 class="editable" data-id="hero-title">Selamat Datang di SMK Fashionista</h2>
-            <p class="editable" data-id="hero-subtitle">Sekolah Menengah Kejuruan dengan Jurusan Tata Busana yang Menghasilkan Desainer dan Perancang Busana Berbakat</p>
-            <a href="#" class="btn">Jelajahi Jurusan Kami</a>
+    <section class="hero" id="beranda">
+        <div class="container hero-content">
+            <h2 class="editable" data-id="hero-title">Selamat Datang di SMK Tata Busana</h2>
+            <p class="editable" data-id="hero-desc">Membentuk generasi kreatif dan profesional di bidang tata busana untuk masa depan yang gemilang.</p>
+            <a href="#profil" class="btn">Pelajari Lebih Lanjut</a>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="container main-content">
-        <!-- Features -->
-        <h2 class="section-title editable" data-id="features-title">Keunggulan Jurusan Tata Busana</h2>
-        <div class="features">
-            <div class="feature-card">
-                <i class="fas fa-ruler-combined"></i>
-                <h3 class="editable" data-id="feature1-title">Pembelajaran Pola & Jahit</h3>
-                <p class="editable" data-id="feature1-desc">Siswa diajarkan teknik membuat pola, memotong bahan, dan menjahit dengan berbagai metode tradisional dan modern.</p>
+    <!-- Profil Section -->
+    <section id="profil">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="editable" data-id="profil-title">Profil Sekolah</h2>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-palette"></i>
-                <h3 class="editable" data-id="feature2-title">Desain & Kreativitas</h3>
-                <p class="editable" data-id="feature2-desc">Pengembangan kemampuan desain, pemilihan warna, tekstur, dan aksesori untuk menciptakan busana yang estetis.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-industry"></i>
-                <h3 class="editable" data-id="feature3-title">Keterampilan Industri</h3>
-                <p class="editable" data-id="feature3-desc">Pembekalan pengetahuan tentang proses produksi garmen, kualitas bahan, dan standar industri fashion.</p>
+            <div class="profil-content">
+                <div class="profil-image">
+                    <img src="https://via.placeholder.com/500x300" alt="Gedung SMK Tata Busana" class="editable" data-id="profil-image">
+                </div>
+                <div class="profil-text">
+                    <h3 class="editable" data-id="profil-subtitle">Tentang Kami</h3>
+                    <p class="editable" data-id="profil-desc1">SMK Tata Busana adalah sekolah menengah kejuruan yang berfokus pada pengembangan keterampilan di bidang tata busana. Kami memiliki visi untuk menghasilkan lulusan yang kompeten, kreatif, dan siap bersaing di dunia industri fashion.</p>
+                    <p class="editable" data-id="profil-desc2">Dengan fasilitas yang lengkap dan tenaga pengajar yang berpengalaman, kami memberikan pendidikan terbaik untuk mengasah bakat dan minat siswa dalam dunia fashion dan tata busana.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Jurusan Section -->
-        <section class="jurusan">
-            <div class="container">
-                <div class="jurusan-content">
-                    <div class="jurusan-text">
-                        <h2 class="editable" data-id="jurusan-title">Jurusan Tata Busana</h2>
-                        <p class="editable" data-id="jurusan-desc1">Jurusan Tata Busana di SMK Fashionista mempersiapkan siswa untuk menjadi tenaga terampil di bidang fashion dan garmen. Dengan kurikulum yang mengintegrasikan teori dan praktik, siswa dibekali kemampuan untuk merancang, membuat pola, dan memproduksi busana yang sesuai dengan kebutuhan pasar.</p>
-                        <p class="editable" data-id="jurusan-desc2">Lulusan jurusan ini memiliki peluang karir yang luas sebagai desainer, pattern maker, tailor, quality control, wirausaha di bidang fashion, dan berbagai profesi lainnya di industri garmen.</p>
-                        <a href="#" class="btn">Lihat Detail Kurikulum</a>
-                    </div>
-                    <div class="jurusan-image">
-                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Jurusan Tata Busana" class="editable-image" data-id="jurusan-image">
+    <!-- Jurusan Section -->
+    <section id="jurusan" style="background-color: #f5f5f5;">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="editable" data-id="jurusan-title">Jurusan Kami</h2>
+            </div>
+            <div class="jurusan-cards">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Tata Busana" class="editable" data-id="jurusan-image1">
+                    <div class="card-content">
+                        <h3 class="editable" data-id="jurusan-name1">Tata Busana</h3>
+                        <p class="editable" data-id="jurusan-desc1">Jurusan Tata Busana mempelajari berbagai aspek dalam pembuatan pakaian, mulai dari desain, pemilihan bahan, pola, menjahit, hingga finishing. Siswa akan diajarkan keterampilan membuat berbagai jenis pakaian sesuai dengan tren fashion terkini.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Programs -->
-        <h2 class="section-title editable" data-id="programs-title">Program Keahlian</h2>
-        <div class="programs">
-            <div class="program-card">
-                <div class="program-img editable-image" data-id="program1-img" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
-                <div class="program-content">
-                    <h3 class="editable" data-id="program1-title">Desain Busana</h3>
-                    <p class="editable" data-id="program1-desc">Mempelajari prinsip-prinsip desain, ilustrasi busana, dan pengembangan koleksi fashion.</p>
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Fashion Design" class="editable" data-id="jurusan-image2">
+                    <div class="card-content">
+                        <h3 class="editable" data-id="jurusan-name2">Fashion Design</h3>
+                        <p class="editable" data-id="jurusan-desc2">Jurusan Fashion Design fokus pada pengembangan kreativitas dalam merancang busana. Siswa akan belajar tentang teori warna, tekstur, prinsip desain, ilustrasi mode, dan pengembangan koleksi busana yang sesuai dengan kebutuhan pasar.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="program-card">
-                <div class="program-img editable-image" data-id="program2-img" style="background-image: url('https://images.unsplash.com/photo-1584467735871-8db9ac8b1f0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
-                <div class="program-content">
-                    <h3 class="editable" data-id="program2-title">Pembuatan Pola</h3>
-                    <p class="editable" data-id="program2-desc">Teknik membuat pola dasar, modifikasi pola, dan grading untuk berbagai ukuran tubuh.</p>
-                </div>
-            </div>
-            <div class="program-card">
-                <div class="program-img editable-image" data-id="program3-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
-                <div class="program-content">
-                    <h3 class="editable" data-id="program3-title">Teknologi Menjahit</h3>
-                    <p class="editable" data-id="program3-desc">Penguasaan mesin jahit, teknik menjahit, dan finishing untuk menghasilkan produk berkualitas.</p>
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Textile Technology" class="editable" data-id="jurusan-image3">
+                    <div class="card-content">
+                        <h3 class="editable" data-id="jurusan-name3">Teknologi Tekstil</h3>
+                        <p class="editable" data-id="jurusan-desc3">Jurusan Teknologi Tekstil mempelajari tentang berbagai jenis bahan tekstil, proses produksi, pengujian kualitas, dan pengolahan bahan tekstil. Siswa akan memahami karakteristik berbagai jenis kain dan aplikasinya dalam industri fashion.</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Gallery -->
-        <h2 class="section-title editable" data-id="gallery-title">Galeri Karya Siswa</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 1" class="editable-image" data-id="gallery1">
+    <!-- Galeri Section -->
+    <section id="galeri">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="editable" data-id="galeri-title">Galeri Kegiatan</h2>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 2" class="editable-image" data-id="gallery2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1585487000125-19e1d3d0b71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 3" class="editable-image" data-id="gallery3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1585109641405-8c57f5db2e80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Karya Siswa 4" class="editable-image" data-id="gallery4">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/250x200" alt="Kegiatan Siswa" class="editable" data-id="galeri-image1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/250x200" alt="Pameran Karya" class="editable" data-id="galeri-image2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/250x200" alt="Praktikum" class="editable" data-id="galeri-image3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/250x200" alt="Workshop" class="editable" data-id="galeri-image4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/250x200" alt="Karya Siswa" class="editable" data-id="galeri-image5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/250x200" alt="Event Sekolah" class="editable" data-id="galeri-image6">
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" style="background-color: #f5f5f5;">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="editable" data-id="kontak-title">Hubungi Kami</h2>
+            </div>
+            <div class="kontak-info">
+                <div class="info-item">
+                    <i>📍</i>
+                    <h3 class="editable" data-id="alamat-title">Alamat</h3>
+                    <p class="editable" data-id="alamat-desc">Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta</p>
+                </div>
+                <div class="info-item">
+                    <i>📞</i>
+                    <h3 class="editable" data-id="telepon-title">Telepon</h3>
+                    <p class="editable" data-id="telepon-desc">(021) 1234-5678</p>
+                </div>
+                <div class="info-item">
+                    <i>✉️</i>
+                    <h3 class="editable" data-id="email-title">Email</h3>
+                    <p class="editable" data-id="email-desc">info@smktatabusana.sch.id</p>
+                </div>
+            </div>
+            <div class="kontak-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjek">Subjek</label>
+                        <input type="text" id="subjek" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan</label>
+                        <textarea id="pesan" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3 class="editable" data-id="footer-about-title">Tentang Kami</h3>
-                    <p class="editable" data-id="footer-about-desc">SMK Fashionista adalah sekolah menengah kejuruan yang berfokus pada pengembangan kompetensi siswa di bidang tata busana dan fashion design.</p>
+                    <h3 class="editable" data-id="footer-about">Tentang Kami</h3>
+                    <p class="editable" data-id="footer-desc">SMK Tata Busana adalah sekolah kejuruan yang berkomitmen untuk menghasilkan lulusan yang kompeten di bidang tata busana dan fashion.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i>f</i></a>
+                        <a href="#"><i>t</i></a>
+                        <a href="#"><i>i</i></a>
+                        <a href="#"><i>y</i></a>
                     </div>
                 </div>
-                <div class="footer-section footer-links">
-                    <h3 class="editable" data-id="footer-links-title">Tautan Cepat</h3>
+                <div class="footer-section">
+                    <h3 class="editable" data-id="footer-links">Tautan Cepat</h3>
                     <ul>
-                        <li><a href="#">Beranda</a></li>
-                        <li><a href="#">Profil Sekolah</a></li>
-                        <li><a href="#">Jurusan Tata Busana</a></li>
-                        <li><a href="#">Galeri</a></li>
-                        <li><a href="#">Kontak</a></li>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#profil">Profil</a></li>
+                        <li><a href="#jurusan">Jurusan</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3 class="editable" data-id="footer-contact-title">Kontak Kami</h3>
-                    <p class="editable" data-id="footer-address">Jl. Fashion Indah No. 123, Jakarta</p>
-                    <p class="editable" data-id="footer-phone">Telepon: (021) 1234-5678</p>
-                    <p class="editable" data-id="footer-email">Email: info@smkfashionista.sch.id</p>
+                    <h3 class="editable" data-id="footer-contact">Kontak</h3>
+                    <ul>
+                        <li class="editable" data-id="footer-alamat">Jl. Pendidikan No. 123, Jakarta Selatan</li>
+                        <li class="editable" data-id="footer-telepon">(021) 1234-5678</li>
+                        <li class="editable" data-id="footer-email">info@smktatabusana.sch.id</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p class="editable" data-id="footer-copyright">&copy; 2023 SMK Fashionista. Semua Hak Dilindungi.</p>
+            <div class="copyright">
+                <p class="editable" data-id="footer-copyright">© 2023 SMK Tata Busana. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Admin Panel -->
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-header">
-            <h2>Panel Admin - Edit Konten Website</h2>
-            <button class="btn-admin btn-danger" id="logoutBtn">Keluar</button>
+    <!-- Modal Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>Login Admin</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+            </form>
         </div>
-        
-        <div class="tab-container">
-            <div class="tabs">
-                <div class="tab active" data-tab="text">Edit Teks</div>
-                <div class="tab" data-tab="images">Edit Gambar</div>
-                <div class="tab" data-tab="announcements">Edit Pengumuman</div>
-            </div>
-            
-            <!-- Tab Edit Teks -->
-            <div class="tab-content active" id="text-tab">
-                <div class="form-group">
-                    <label for="contentSelector">Pilih Konten untuk Diedit:</label>
-                    <select id="contentSelector" class="form-control">
-                        <option value="">-- Pilih Konten Teks --</option>
-                        <option value="school-name">Nama Sekolah</option>
-                        <option value="school-motto">Motto Sekolah</option>
-                        <option value="hero-title">Judul Hero</option>
-                        <option value="hero-subtitle">Subjudul Hero</option>
-                        <option value="features-title">Judul Keunggulan</option>
-                        <option value="feature1-title">Keunggulan 1 - Judul</option>
-                        <option value="feature1-desc">Keunggulan 1 - Deskripsi</option>
-                        <option value="feature2-title">Keunggulan 2 - Judul</option>
-                        <option value="feature2-desc">Keunggulan 2 - Deskripsi</option>
-                        <option value="feature3-title">Keunggulan 3 - Judul</option>
-                        <option value="feature3-desc">Keunggulan 3 - Deskripsi</option>
-                        <option value="jurusan-title">Judul Jurusan</option>
-                        <option value="jurusan-desc1">Deskripsi Jurusan 1</option>
-                        <option value="jurusan-desc2">Deskripsi Jurusan 2</option>
-                        <option value="programs-title">Judul Program</option>
-                        <option value="program1-title">Program 1 - Judul</option>
-                        <option value="program1-desc">Program 1 - Deskripsi</option>
-                        <option value="program2-title">Program 2 - Judul</option>
-                        <option value="program2-desc">Program 2 - Deskripsi</option>
-                        <option value="program3-title">Program 3 - Judul</option>
-                        <option value="program3-desc">Program 3 - Deskripsi</option>
-                        <option value="gallery-title">Judul Galeri</option>
-                        <option value="footer-about-title">Footer - Tentang Kami</option>
-                        <option value="footer-about-desc">Footer - Deskripsi Tentang Kami</option>
-                        <option value="footer-links-title">Footer - Tautan Cepat</option>
-                        <option value="footer-contact-title">Footer - Kontak Kami</option>
-                        <option value="footer-address">Footer - Alamat</option>
-                        <option value="footer-phone">Footer - Telepon</option>
-                        <option value="footer-email">Footer - Email</option>
-                        <option value="footer-copyright">Footer - Hak Cipta</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="contentEditor">Edit Konten:</label>
-                    <textarea id="contentEditor" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn-admin" id="saveContentBtn">Simpan Perubahan Teks</button>
-                </div>
-            </div>
-            
-            <!-- Tab Edit Gambar -->
-            <div class="tab-content" id="images-tab">
-                <div class="form-group">
-                    <label for="imageSelector">Pilih Gambar untuk Diedit:</label>
-                    <select id="imageSelector" class="form-control">
-                        <option value="">-- Pilih Gambar --</option>
-                        <option value="logo">Logo Sekolah</option>
-                        <option value="jurusan-image">Gambar Jurusan</option>
-                        <option value="program1-img">Program 1 - Gambar</option>
-                        <option value="program2-img">Program 2 - Gambar</option>
-                        <option value="program3-img">Program 3 - Gambar</option>
-                        <option value="gallery1">Galeri 1</option>
-                        <option value="gallery2">Galeri 2</option>
-                        <option value="gallery3">Galeri 3</option>
-                        <option value="gallery4">Galeri 4</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Pratinjau Gambar:</label>
-                    <div class="image-upload">
-                        <div class="image-preview">
-                            <img id="imagePreview" src="" alt="Pratinjau">
-                        </div>
-                        <div>
-                            <input type="file" id="imageUpload" accept="image/*">
-                            <p class="help-text">Unggah gambar baru (max 2MB)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="imageUrl">Atau masukkan URL gambar:</label>
-                    <input type="text" id="imageUrl" class="form-control" placeholder="https://example.com/image.jpg">
-                </div>
-                <div class="form-group">
-                    <button class="btn-admin" id="saveImageBtn">Simpan Perubahan Gambar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Login Form -->
-    <div class="login-form" id="loginForm">
-        <h2>Login Admin</h2>
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" class="form-control" placeholder="Masukkan username">
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" class="form-control" placeholder="Masukkan password">
-        </div>
-        <div class="form-group">
-            <button class="btn-admin" id="loginBtn">Login</button>
-        </div>
-        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
-            <strong>Default login:</strong> admin / tata123
-        </p>
-    </div>
-
-    <!-- Edit Button -->
-    <div class="edit-btn" id="editBtn">
-        <i class="fas fa-edit"></i>
     </div>
 
     <script>
-        // Data login admin
+        // Data kredensial admin
         const adminCredentials = {
             username: "admin",
-            password: "tata123"
+            password: "admin123"
         };
 
-        // Status login
+        // Status login dan edit mode
         let isLoggedIn = false;
+        let isEditMode = false;
 
-        // Elemen DOM
-        const loginForm = document.getElementById('loginForm');
-        const adminPanel = document.getElementById('adminPanel');
-        const editBtn = document.getElementById('editBtn');
+        // DOM Elements
         const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const closeModal = document.getElementById('closeModal');
+        const loginForm = document.getElementById('loginForm');
+        const adminBar = document.getElementById('adminBar');
+        const editToggle = document.getElementById('editToggle');
+        const saveBtn = document.getElementById('saveBtn');
         const logoutBtn = document.getElementById('logoutBtn');
-        const contentSelector = document.getElementById('contentSelector');
-        const contentEditor = document.getElementById('contentEditor');
-        const saveContentBtn = document.getElementById('saveContentBtn');
-        const imageSelector = document.getElementById('imageSelector');
-        const imageUpload = document.getElementById('imageUpload');
-        const imagePreview = document.getElementById('imagePreview');
-        const imageUrl = document.getElementById('imageUrl');
-        const saveImageBtn = document.getElementById('saveImageBtn');
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
+        const editableElements = document.querySelectorAll('.editable');
 
         // Event Listeners
-        loginBtn.addEventListener('click', handleLogin);
-        logoutBtn.addEventListener('click', handleLogout);
-        editBtn.addEventListener('click', toggleAdminPanel);
-        contentSelector.addEventListener('change', loadContentToEditor);
-        saveContentBtn.addEventListener('click', saveContent);
-        imageSelector.addEventListener('change', loadImageToEditor);
-        imageUpload.addEventListener('change', handleImageUpload);
-        saveImageBtn.addEventListener('click', saveImage);
-        
-        // Tab switching
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-tab');
-                
-                // Update active tab
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Show corresponding content
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.id === `${tabId}-tab`) {
-                        content.classList.add('active');
-                    }
-                });
-            });
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginModal.style.display = 'flex';
         });
 
-        // Fungsi untuk menangani login
-        function handleLogin() {
+        closeModal.addEventListener('click', function() {
+            loginModal.style.display = 'none';
+        });
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
             if (username === adminCredentials.username && password === adminCredentials.password) {
                 isLoggedIn = true;
-                loginForm.style.display = 'none';
-                adminPanel.classList.add('active');
-                editBtn.style.display = 'flex';
+                adminBar.style.display = 'block';
+                loginModal.style.display = 'none';
                 alert('Login berhasil!');
             } else {
                 alert('Username atau password salah!');
             }
-        }
+        });
 
-        // Fungsi untuk menangani logout
-        function handleLogout() {
-            isLoggedIn = false;
-            adminPanel.classList.remove('active');
-            loginForm.style.display = 'block';
-            editBtn.style.display = 'none';
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-        }
-
-        // Fungsi untuk menampilkan/sembunyikan panel admin
-        function toggleAdminPanel() {
-            if (adminPanel.classList.contains('active')) {
-                adminPanel.classList.remove('active');
-            } else {
-                adminPanel.classList.add('active');
+        editToggle.addEventListener('click', function() {
+            if (!isLoggedIn) {
+                alert('Silakan login terlebih dahulu!');
+                return;
             }
-        }
-
-        // Fungsi untuk memuat konten ke editor
-        function loadContentToEditor() {
-            const selectedId = contentSelector.value;
-            if (selectedId) {
-                const element = document.querySelector(`[data-id="${selectedId}"]`);
-                if (element) {
-                    contentEditor.value = element.textContent;
+            
+            isEditMode = !isEditMode;
+            editToggle.textContent = `Mode Edit: ${isEditMode ? 'ON' : 'OFF'}`;
+            
+            // Tampilkan atau sembunyikan indikator edit
+            editableElements.forEach(el => {
+                if (isEditMode) {
+                    el.setAttribute('contenteditable', 'true');
+                    el.style.outline = '2px dashed #e74c3c';
+                } else {
+                    el.setAttribute('contenteditable', 'false');
+                    el.style.outline = 'none';
                 }
-            } else {
-                contentEditor.value = '';
-            }
-        }
+            });
+        });
 
-        // Fungsi untuk menyimpan konten
-        function saveContent() {
-            const selectedId = contentSelector.value;
-            if (selectedId) {
-                const element = document.querySelector(`[data-id="${selectedId}"]`);
-                if (element) {
-                    element.textContent = contentEditor.value;
-                    // Simpan ke localStorage untuk penyimpanan permanen
-                    localStorage.setItem(selectedId, contentEditor.value);
-                    alert('Konten berhasil disimpan!');
-                }
-            } else {
-                alert('Pilih konten yang akan diedit terlebih dahulu!');
+        saveBtn.addEventListener('click', function() {
+            if (!isLoggedIn) {
+                alert('Silakan login terlebih dahulu!');
+                return;
             }
-        }
-
-        // Fungsi untuk memuat gambar ke editor
-        function loadImageToEditor() {
-            const selectedId = imageSelector.value;
-            if (selectedId) {
-                const element = document.querySelector(`[data-id="${selectedId}"]`);
-                if (element) {
-                    if (element.tagName === 'IMG') {
-                        imagePreview.src = element.src;
+            
+            // Simpan data ke localStorage
+            const contentData = {};
+            editableElements.forEach(el => {
+                const id = el.getAttribute('data-id');
+                if (id) {
+                    if (el.tagName === 'IMG') {
+                        contentData[id] = el.getAttribute('src');
                     } else {
-                        // For background images
-                        const bgImage = element.style.backgroundImage;
-                        if (bgImage) {
-                            imagePreview.src = bgImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
-                        }
+                        contentData[id] = el.innerHTML;
                     }
-                    
-                    // Load saved image URL if exists
-                    const savedImage = localStorage.getItem(selectedId);
-                    if (savedImage) {
-                        imageUrl.value = savedImage;
-                    }
-                }
-            } else {
-                imagePreview.src = '';
-                imageUrl.value = '';
-            }
-        }
-
-        // Fungsi untuk menangani upload gambar
-        function handleImageUpload(e) {
-            const file = e.target.files[0];
-            if (file) {
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('Ukuran file terlalu besar. Maksimal 2MB.');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    imagePreview.src = event.target.result;
-                    imageUrl.value = event.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Fungsi untuk menyimpan gambar
-        function saveImage() {
-            const selectedId = imageSelector.value;
-            if (selectedId && imageUrl.value) {
-                const element = document.querySelector(`[data-id="${selectedId}"]`);
-                if (element) {
-                    if (element.tagName === 'IMG') {
-                        element.src = imageUrl.value;
-                    } else {
-                        // For background images
-                        element.style.backgroundImage = `url('${imageUrl.value}')`;
-                    }
-                    
-                    // Simpan ke localStorage untuk penyimpanan permanen
-                    localStorage.setItem(selectedId, imageUrl.value);
-                    alert('Gambar berhasil disimpan!');
-                }
-            } else {
-                alert('Pilih gambar dan masukkan URL atau unggah gambar terlebih dahulu!');
-            }
-        }
-
-        // Fungsi untuk memuat konten dari localStorage saat halaman dimuat
-        function loadSavedContent() {
-            // Load text content
-            const editableElements = document.querySelectorAll('.editable');
-            editableElements.forEach(element => {
-                const id = element.getAttribute('data-id');
-                const savedContent = localStorage.getItem(id);
-                if (savedContent) {
-                    element.textContent = savedContent;
                 }
             });
             
-            // Load images
-            const editableImages = document.querySelectorAll('.editable-image');
-            editableImages.forEach(element => {
-                const id = element.getAttribute('data-id');
-                const savedImage = localStorage.getItem(id);
-                if (savedImage) {
-                    if (element.tagName === 'IMG') {
-                        element.src = savedImage;
-                    } else {
-                        // For background images
-                        element.style.backgroundImage = `url('${savedImage}')`;
-                    }
-                }
-            });
-        }
+            localStorage.setItem('smkContent', JSON.stringify(contentData));
+            alert('Perubahan berhasil disimpan!');
+        });
 
-        // Panggil fungsi untuk memuat konten yang disimpan
-        window.addEventListener('DOMContentLoaded', loadSavedContent);
+        logoutBtn.addEventListener('click', function() {
+            isLoggedIn = false;
+            isEditMode = false;
+            adminBar.style.display = 'none';
+            editToggle.textContent = 'Mode Edit: OFF';
+            
+            // Nonaktifkan mode edit
+            editableElements.forEach(el => {
+                el.setAttribute('contenteditable', 'false');
+                el.style.outline = 'none';
+            });
+            
+            alert('Anda telah logout!');
+        });
+
+        // Muat data yang disimpan dari localStorage
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedContent = localStorage.getItem('smkContent');
+            if (savedContent) {
+                const contentData = JSON.parse(savedContent);
+                
+                editableElements.forEach(el => {
+                    const id = el.getAttribute('data-id');
+                    if (id && contentData[id]) {
+                        if (el.tagName === 'IMG') {
+                            el.setAttribute('src', contentData[id]);
+                        } else {
+                            el.innerHTML = contentData[id];
+                        }
+                    }
+                });
+            }
+        });
+
+        // Form kontak
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan Anda telah terkirim! Terima kasih.');
+            this.reset();
+        });
     </script>
 </body>
 </html>

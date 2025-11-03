@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK Tata Busana - Sekolah Menengah Kejuruan</title>
+    <title>SMK FASHION - Jurusan Tata Busana</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #8a2be2;
-            --secondary: #ff6b6b;
-            --accent: #4ecdc4;
-            --dark: #2c3e50;
+            --primary: #e91e63;
+            --primary-dark: #c2185b;
+            --secondary: #9c27b0;
             --light: #f8f9fa;
+            --dark: #343a40;
             --gray: #6c757d;
+            --success: #28a745;
         }
         
         * {
@@ -32,14 +33,14 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
-        /* Header Styles */
+        /* Header */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1rem 0;
+            padding: 15px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -87,30 +88,38 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 8px 12px;
-            border-radius: 4px;
+            padding: 8px 0;
+            position: relative;
         }
         
         nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffeb3b;
         }
         
-        .admin-btn {
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffeb3b;
+            transition: width 0.3s ease;
         }
         
-        .admin-btn:hover {
-            background-color: #3db8af;
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558769132-cb25e5b8351f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558769132-cb1a5f9c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -119,38 +128,38 @@
         }
         
         .hero h2 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
         
-        .cta-button {
+        .btn {
             display: inline-block;
-            background-color: var(--secondary);
+            background-color: var(--primary);
             color: white;
             padding: 12px 30px;
-            border-radius: 50px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            border: none;
+            cursor: pointer;
         }
         
-        .cta-button:hover {
-            background-color: #ff5252;
+        .btn:hover {
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* Section Styles */
+        /* Sections */
         section {
             padding: 80px 0;
         }
@@ -161,7 +170,7 @@
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 15px;
             position: relative;
@@ -176,8 +185,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 2px;
+            background-color: var(--primary);
         }
         
         .section-title p {
@@ -188,10 +196,13 @@
         
         /* About Section */
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            display: flex;
             align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
         }
         
         .about-text h3 {
@@ -200,15 +211,11 @@
             color: var(--dark);
         }
         
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--gray);
-        }
-        
         .about-image {
+            flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .about-image img {
@@ -223,11 +230,7 @@
         }
         
         /* Programs Section */
-        .programs {
-            background-color: var(--light);
-        }
-        
-        .program-cards {
+        .programs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
@@ -237,13 +240,13 @@
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .program-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
         
         .program-image {
@@ -262,33 +265,14 @@
             transform: scale(1.1);
         }
         
-        .program-info {
+        .program-content {
             padding: 25px;
         }
         
-        .program-info h3 {
-            font-size: 1.4rem;
+        .program-content h3 {
+            font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--primary);
-        }
-        
-        .program-info p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-        
-        .read-more {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .read-more:hover {
-            gap: 10px;
         }
         
         /* Gallery Section */
@@ -301,8 +285,8 @@
         .gallery-item {
             border-radius: 10px;
             overflow: hidden;
-            height: 250px;
             position: relative;
+            height: 250px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -319,52 +303,99 @@
         
         .gallery-overlay {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
+            opacity: 1;
         }
         
-        /* Contact Section */
-        .contact {
-            background-color: var(--light);
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
         }
         
-        .contact-content {
+        /* Teachers Section */
+        .teachers-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+        .teacher-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .teacher-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .teacher-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .teacher-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .teacher-info {
+            padding: 20px;
+        }
+        
+        .teacher-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
             color: var(--dark);
         }
         
-        .contact-details {
-            margin-bottom: 30px;
+        .teacher-info p {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
         }
         
-        .contact-item {
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .info-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
-        .contact-icon {
+        .info-icon {
             background-color: var(--primary);
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -373,27 +404,13 @@
             flex-shrink: 0;
         }
         
-        .contact-text h4 {
+        .info-text h3 {
+            font-size: 1.2rem;
             margin-bottom: 5px;
-            color: var(--dark);
-        }
-        
-        .contact-form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .form-group {
             margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
         }
         
         .form-control {
@@ -402,35 +419,17 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease;
         }
         
         .form-control:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
         }
         
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         /* Footer */
@@ -448,7 +447,7 @@
         }
         
         .footer-column h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
@@ -460,8 +459,8 @@
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            height: 2px;
+            background-color: var(--primary);
         }
         
         .footer-links {
@@ -469,18 +468,17 @@
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .footer-links a {
             color: #bbb;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
+            color: var(--primary);
         }
         
         .social-links {
@@ -498,13 +496,12 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
-            text-decoration: none;
             transition: all 0.3s ease;
         }
         
         .social-links a:hover {
             background-color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         
         .copyright {
@@ -515,83 +512,88 @@
             font-size: 0.9rem;
         }
         
-        /* Admin Panel Styles */
+        /* Admin Panel */
         .admin-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .admin-btn {
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        .admin-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 2000;
-            overflow-y: auto;
+            align-items: center;
+            justify-content: center;
         }
         
-        .admin-container {
+        .admin-content {
             background-color: white;
             width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
+            max-width: 500px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
         }
         
         .admin-header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
         }
         
         .admin-header h2 {
             font-size: 1.8rem;
         }
         
-        .close-admin {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .close-admin:hover {
-            transform: scale(1.2);
-        }
-        
-        .admin-content {
+        .admin-body {
             padding: 30px;
         }
         
         .admin-tabs {
             display: flex;
-            border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
         }
         
         .admin-tab {
-            padding: 12px 20px;
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: 500;
+            padding: 10px 20px;
             cursor: pointer;
+            font-weight: 500;
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
         }
         
         .admin-tab.active {
             color: var(--primary);
-            border-bottom: 3px solid var(--primary);
-        }
-        
-        .admin-tab:hover:not(.active) {
-            background-color: #f5f5f5;
+            border-bottom-color: var(--primary);
         }
         
         .tab-content {
@@ -602,184 +604,82 @@
             display: block;
         }
         
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            margin-top: 10px;
+            display: none;
+        }
+        
         .editable {
             border: 1px dashed #ddd;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            position: relative;
+            padding: 5px;
+            margin: 5px 0;
+            min-height: 20px;
         }
         
-        .editable:hover {
-            border-color: var(--primary);
-            background-color: rgba(138, 43, 226, 0.05);
+        .editable:focus {
+            outline: 2px solid var(--primary);
+            border-color: transparent;
         }
         
-        .edit-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            padding: 3px 8px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .editable:hover .edit-btn {
-            opacity: 1;
-        }
-        
-        .image-editable {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        
-        .image-editable img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        
-        .image-edit-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .image-editable:hover .image-edit-btn {
-            opacity: 1;
-        }
-        
-        .save-changes {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .save-changes:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Login Form */
-        .login-form {
-            background-color: white;
-            width: 90%;
-            max-width: 400px;
-            margin: 100px auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .login-form h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-        
-        .login-form .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .login-btn {
-            width: 100%;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .login-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Responsive Styles */
+        /* Responsive */
         @media (max-width: 992px) {
             .about-content, .contact-content {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
             
-            .about-image {
-                order: -1;
+            .about-image, .about-text, .contact-info, .contact-form {
+                width: 100%;
             }
         }
         
         @media (max-width: 768px) {
-            .header-content {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
                 flex-direction: column;
-                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
             
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+            nav ul.show {
+                display: flex;
             }
             
             nav ul li {
-                margin: 5px 10px;
+                margin: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
             }
             
             .hero h2 {
                 font-size: 2.2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
-            }
-            
             .section-title h2 {
-                font-size: 1.8rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .program-cards, .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .admin-tabs {
-                flex-wrap: wrap;
-            }
-            
-            .admin-tab {
-                flex: 1;
-                min-width: 120px;
-                text-align: center;
+                font-size: 2rem;
             }
         }
     </style>
@@ -787,33 +687,38 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-content">
-            <div class="logo">
-                <img src="https://via.placeholder.com/60x60/8a2be2/ffffff?text=TB" alt="Logo SMK Tata Busana">
-                <div class="logo-text">
-                    <h1>SMK TATA BUSANA</h1>
-                    <p>Sekolah Menengah Kejuruan</p>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/60" alt="Logo SMK Fashion">
+                    <div class="logo-text">
+                        <h1>SMK FASHION</h1>
+                        <p>Jurusan Tata Busana</p>
+                    </div>
                 </div>
+                <nav>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#programs">Program</a></li>
+                        <li><a href="#gallery">Galeri</a></li>
+                        <li><a href="#teachers">Guru</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#programs">Program</a></li>
-                    <li><a href="#gallery">Galeri</a></li>
-                    <li><a href="#contact">Kontak</a></li>
-                    <li><a href="#" class="admin-btn" id="open-admin">Admin</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h2 id="hero-title">Selamat Datang di SMK Tata Busana</h2>
-            <p id="hero-subtitle">Menciptakan Generasi Unggul di Bidang Fashion dan Desain Busana</p>
-            <a href="#programs" class="cta-button">Lihat Program Kami</a>
+            <h2 class="editable" data-id="hero-title">Selamat Datang di SMK Fashion</h2>
+            <p class="editable" data-id="hero-subtitle">Kembangkan bakat dan kreativitas Anda dalam dunia fashion bersama kami. Kami menyediakan pendidikan terbaik di bidang tata busana dengan kurikulum yang sesuai dengan industri.</p>
+            <a href="#programs" class="btn">Lihat Program Kami</a>
         </div>
     </section>
 
@@ -821,58 +726,56 @@
     <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2 id="about-title">Tentang Kami</h2>
-                <p id="about-subtitle">SMK Tata Busana adalah sekolah kejuruan yang berfokus pada pengembangan bakat dan keterampilan di bidang fashion dan desain busana.</p>
+                <h2 class="editable" data-id="about-title">Tentang Kami</h2>
+                <p class="editable" data-id="about-subtitle">SMK Fashion adalah sekolah menengah kejuruan yang berfokus pada pengembangan bakat dan keterampilan siswa di bidang tata busana dan fashion.</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3 id="about-heading">Visi dan Misi</h3>
-                    <p id="about-text-1">Menjadi sekolah kejuruan terdepan dalam menghasilkan lulusan yang kompeten, kreatif, dan berkarakter di bidang tata busana.</p>
-                    <p id="about-text-2">Misi kami adalah memberikan pendidikan dan pelatihan yang berkualitas, mengembangkan kurikulum yang relevan dengan industri, serta membangun kerjasama dengan dunia usaha dan industri.</p>
+                    <h3 class="editable" data-id="about-heading">Mengapa Memilih Jurusan Tata Busana?</h3>
+                    <p class="editable" data-id="about-content1">Jurusan Tata Busana di SMK Fashion dirancang untuk memberikan siswa pemahaman mendalam tentang desain busana, teknik menjahit, dan industri fashion. Kami menggabungkan teori dengan praktik langsung untuk mempersiapkan siswa menghadapi dunia kerja.</p>
+                    <p class="editable" data-id="about-content2">Dengan fasilitas lengkap dan guru yang berpengalaman, siswa akan belajar berbagai aspek tata busana mulai dari desain, pola, menjahit, hingga pemasaran produk fashion.</p>
+                    <a href="#contact" class="btn">Hubungi Kami</a>
                 </div>
                 <div class="about-image">
-                    <img id="about-image" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Siswa SMK Tata Busana">
+                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80" alt="Tentang SMK Fashion">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Programs Section -->
-    <section class="programs" id="programs">
+    <section id="programs" style="background-color: #f8f9fa;">
         <div class="container">
             <div class="section-title">
-                <h2 id="programs-title">Program Keahlian</h2>
-                <p id="programs-subtitle">Kami menawarkan berbagai program keahlian untuk mengembangkan bakat dan keterampilan siswa di bidang tata busana.</p>
+                <h2 class="editable" data-id="programs-title">Program Kami</h2>
+                <p class="editable" data-id="programs-subtitle">Kami menawarkan berbagai program unggulan untuk mengembangkan keterampilan siswa di bidang tata busana.</p>
             </div>
-            <div class="program-cards">
+            <div class="programs-grid">
                 <div class="program-card">
                     <div class="program-image">
-                        <img id="program-image-1" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Desain Busana">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Desain Busana">
                     </div>
-                    <div class="program-info">
-                        <h3 id="program-title-1">Desain Busana</h3>
-                        <p id="program-desc-1">Program ini mengajarkan siswa tentang prinsip-prinsip desain busana, teknik menggambar desain, dan pengembangan koleksi fashion.</p>
-                        <a href="#" class="read-more">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    <div class="program-content">
+                        <h3 class="editable" data-id="program1-title">Desain Busana</h3>
+                        <p class="editable" data-id="program1-desc">Belajar merancang busana dari konsep hingga produk jadi, termasuk teknik menggambar desain, pemilihan bahan, dan warna.</p>
                     </div>
                 </div>
                 <div class="program-card">
                     <div class="program-image">
-                        <img id="program-image-2" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Teknologi Menjahit">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Teknik Menjahit">
                     </div>
-                    <div class="program-info">
-                        <h3 id="program-title-2">Teknologi Menjahit</h3>
-                        <p id="program-desc-2">Siswa mempelajari berbagai teknik menjahit, penggunaan mesin jahit, dan produksi pakaian dengan standar industri.</p>
-                        <a href="#" class="read-more">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    <div class="program-content">
+                        <h3 class="editable" data-id="program2-title">Teknik Menjahit</h3>
+                        <p class="editable" data-id="program2-desc">Menguasai berbagai teknik menjahit mulai dari dasar hingga tingkat lanjut, termasuk penggunaan mesin jahit modern.</p>
                     </div>
                 </div>
                 <div class="program-card">
                     <div class="program-image">
-                        <img id="program-image-3" src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fashion Marketing">
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1a5f9c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Fashion Marketing">
                     </div>
-                    <div class="program-info">
-                        <h3 id="program-title-3">Pemasaran Fashion</h3>
-                        <p id="program-desc-3">Program ini fokus pada strategi pemasaran di industri fashion, manajemen merek, dan pengembangan bisnis fashion.</p>
-                        <a href="#" class="read-more">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    <div class="program-content">
+                        <h3 class="editable" data-id="program3-title">Fashion Marketing</h3>
+                        <p class="editable" data-id="program3-desc">Memahami strategi pemasaran dalam industri fashion, termasuk branding, visual merchandising, dan penjualan produk.</p>
                     </div>
                 </div>
             </div>
@@ -883,32 +786,74 @@
     <section id="gallery">
         <div class="container">
             <div class="section-title">
-                <h2 id="gallery-title">Galeri Kegiatan</h2>
-                <p id="gallery-subtitle">Lihat momen-momen menarik dari kegiatan belajar mengajar dan karya siswa SMK Tata Busana.</p>
+                <h2 class="editable" data-id="gallery-title">Galeri Karya</h2>
+                <p class="editable" data-id="gallery-subtitle">Lihat hasil karya terbaik dari siswa-siswi SMK Fashion jurusan Tata Busana.</p>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img id="gallery-image-1" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Kegiatan Belajar">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Karya 1">
                     <div class="gallery-overlay">
-                        <h4 id="gallery-caption-1">Kegiatan Belajar di Kelas</h4>
+                        <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img id="gallery-image-2" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Praktikum Menjahit">
+                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80" alt="Karya 2">
                     <div class="gallery-overlay">
-                        <h4 id="gallery-caption-2">Praktikum Menjahit</h4>
+                        <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img id="gallery-image-3" src="https://images.unsplash.com/photo-1581094794355-eb7c2ed398e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Pameran Karya">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Karya 3">
                     <div class="gallery-overlay">
-                        <h4 id="gallery-caption-3">Pameran Karya Siswa</h4>
+                        <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img id="gallery-image-4" src="https://images.unsplash.com/photo-1581094794363-989d93d79a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Kompetisi Fashion">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1a5f9c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Karya 4">
                     <div class="gallery-overlay">
-                        <h4 id="gallery-caption-4">Kompetisi Fashion Show</h4>
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section id="teachers" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="editable" data-id="teachers-title">Guru & Staff</h2>
+                <p class="editable" data-id="teachers-subtitle">Kenali tim pengajar profesional kami yang berpengalaman di industri fashion.</p>
+            </div>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-image">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Guru 1">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="editable" data-id="teacher1-name">Sari Indah, S.Pd.</h3>
+                        <p class="editable" data-id="teacher1-role">Guru Desain Busana</p>
+                        <p class="editable" data-id="teacher1-desc">Berpengalaman lebih dari 10 tahun di industri fashion dan telah menghasilkan banyak desainer muda berbakat.</p>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Guru 2">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="editable" data-id="teacher2-name">Budi Santoso, S.T.</h3>
+                        <p class="editable" data-id="teacher2-role">Guru Teknik Menjahit</p>
+                        <p class="editable" data-id="teacher2-desc">Ahli dalam berbagai teknik menjahit dan penggunaan mesin jahit industri dengan pengalaman 15 tahun.</p>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-image">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Guru 3">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="editable" data-id="teacher3-name">Maya Sari, M.Pd.</h3>
+                        <p class="editable" data-id="teacher3-role">Guru Fashion Marketing</p>
+                        <p class="editable" data-id="teacher3-desc">Spesialis dalam pemasaran fashion dengan latar belakang bisnis dan pengalaman di retail fashion ternama.</p>
                     </div>
                 </div>
             </div>
@@ -916,70 +861,66 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact">
         <div class="container">
             <div class="section-title">
-                <h2 id="contact-title">Hubungi Kami</h2>
-                <p id="contact-subtitle">Jika Anda memiliki pertanyaan atau ingin mengetahui lebih lanjut tentang SMK Tata Busana, jangan ragu untuk menghubungi kami.</p>
+                <h2 class="editable" data-id="contact-title">Hubungi Kami</h2>
+                <p class="editable" data-id="contact-subtitle">Silakan hubungi kami untuk informasi lebih lanjut tentang program dan pendaftaran.</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3 id="contact-heading">Informasi Kontak</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4 id="address-title">Alamat</h4>
-                                <p id="address-text">Jl. Pendidikan No. 123, Jakarta Selatan, Indonesia</p>
-                            </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4 id="phone-title">Telepon</h4>
-                                <p id="phone-text">(021) 1234-5678</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4 id="email-title">Email</h4>
-                                <p id="email-text">info@smktatabusana.sch.id</p>
-                            </div>
+                        <div class="info-text">
+                            <h3 class="editable" data-id="address-title">Alamat</h3>
+                            <p class="editable" data-id="address">Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12560</p>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3 class="editable" data-id="phone-title">Telepon</h3>
+                            <p class="editable" data-id="phone">(021) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3 class="editable" data-id="email-title">Email</h3>
+                            <p class="editable" data-id="email">info@smkfashion.sch.id</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3 class="editable" data-id="hours-title">Jam Operasional</h3>
+                            <p class="editable" data-id="hours">Senin - Jumat: 07.00 - 16.00 WIB</p>
+                        </div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" class="form-control" placeholder="Nama Lengkap" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input type="email" class="form-control" placeholder="Alamat Email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subjek</label>
-                            <input type="text" id="subject" class="form-control" required>
+                            <input type="text" class="form-control" placeholder="Subjek" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Pesan</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <textarea class="form-control" placeholder="Pesan" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Kirim Pesan</button>
+                        <button type="submit" class="btn">Kirim Pesan</button>
                     </form>
                 </div>
             </div>
@@ -991,8 +932,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 id="footer-about-title">Tentang SMK Tata Busana</h3>
-                    <p id="footer-about-text">SMK Tata Busana adalah sekolah kejuruan yang berfokus pada pengembangan bakat dan keterampilan di bidang fashion dan desain busana.</p>
+                    <h3 class="editable" data-id="footer-about-title">Tentang SMK Fashion</h3>
+                    <p class="editable" data-id="footer-about">SMK Fashion adalah sekolah menengah kejuruan yang berfokus pada pengembangan bakat dan keterampilan siswa di bidang tata busana dan fashion.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1001,470 +942,313 @@
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Menu Cepat</h3>
+                    <h3 class="editable" data-id="footer-links-title">Tautan Cepat</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Beranda</a></li>
-                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#about">Tentang</a></li>
                         <li><a href="#programs">Program</a></li>
                         <li><a href="#gallery">Galeri</a></li>
+                        <li><a href="#teachers">Guru</a></li>
                         <li><a href="#contact">Kontak</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Program Keahlian</h3>
+                    <h3 class="editable" data-id="footer-contact-title">Kontak</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Desain Busana</a></li>
-                        <li><a href="#">Teknologi Menjahit</a></li>
-                        <li><a href="#">Pemasaran Fashion</a></li>
-                        <li><a href="#">Kewirausahaan</a></li>
-                        <li><a href="#">Magang Industri</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 id="footer-contact-title">Kontak</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> <span id="footer-address">Jl. Pendidikan No. 123, Jakarta Selatan</span></li>
-                        <li><i class="fas fa-phone"></i> <span id="footer-phone">(021) 1234-5678</span></li>
-                        <li><i class="fas fa-envelope"></i> <span id="footer-email">info@smktatabusana.sch.id</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span class="editable" data-id="footer-address">Jl. Pendidikan No. 123, Jakarta Selatan</span></li>
+                        <li><i class="fas fa-phone"></i> <span class="editable" data-id="footer-phone">(021) 1234-5678</span></li>
+                        <li><i class="fas fa-envelope"></i> <span class="editable" data-id="footer-email">info@smkfashion.sch.id</span></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 SMK Tata Busana. Semua Hak Cipta Dilindungi.</p>
+                <p class="editable" data-id="copyright">&copy; 2023 SMK Fashion. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
 
     <!-- Admin Panel -->
-    <div class="admin-panel" id="admin-panel">
-        <div class="admin-container">
+    <div class="admin-panel">
+        <div class="admin-btn" id="adminBtn">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-content">
             <div class="admin-header">
-                <h2>Panel Admin - Edit Konten Website</h2>
-                <button class="close-admin" id="close-admin"><i class="fas fa-times"></i></button>
+                <h2>Panel Admin</h2>
             </div>
-            <div class="admin-content">
+            <div class="admin-body">
                 <div class="admin-tabs">
-                    <button class="admin-tab active" data-tab="home">Beranda</button>
-                    <button class="admin-tab" data-tab="about">Tentang</button>
-                    <button class="admin-tab" data-tab="programs">Program</button>
-                    <button class="admin-tab" data-tab="gallery">Galeri</button>
-                    <button class="admin-tab" data-tab="contact">Kontak</button>
+                    <div class="admin-tab active" data-tab="login">Login</div>
+                    <div class="admin-tab" data-tab="edit">Edit Konten</div>
                 </div>
                 
-                <div class="tab-content active" id="home-tab">
-                    <h3>Edit Konten Beranda</h3>
-                    <div class="editable">
-                        <label>Judul Hero</label>
-                        <div class="edit-content" id="edit-hero-title">Selamat Datang di SMK Tata Busana</div>
-                        <button class="edit-btn" data-target="hero-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Subjudul Hero</label>
-                        <div class="edit-content" id="edit-hero-subtitle">Menciptakan Generasi Unggul di Bidang Fashion dan Desain Busana</div>
-                        <button class="edit-btn" data-target="hero-subtitle">Edit</button>
-                    </div>
+                <div class="tab-content active" id="login-tab">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="closeModal">Tutup</button>
+                            <button type="submit" class="btn">Login</button>
+                        </div>
+                    </form>
                 </div>
                 
-                <div class="tab-content" id="about-tab">
-                    <h3>Edit Konten Tentang</h3>
-                    <div class="editable">
-                        <label>Judul Section</label>
-                        <div class="edit-content" id="edit-about-title">Tentang Kami</div>
-                        <button class="edit-btn" data-target="about-title">Edit</button>
+                <div class="tab-content" id="edit-tab">
+                    <div class="form-group">
+                        <label for="content-select">Pilih Konten</label>
+                        <select class="form-control" id="content-select">
+                            <option value="">-- Pilih Konten --</option>
+                            <option value="hero-title">Judul Hero</option>
+                            <option value="hero-subtitle">Subjudul Hero</option>
+                            <option value="about-title">Judul Tentang</option>
+                            <option value="about-subtitle">Subjudul Tentang</option>
+                            <option value="about-heading">Heading Tentang</option>
+                            <option value="about-content1">Konten Tentang 1</option>
+                            <option value="about-content2">Konten Tentang 2</option>
+                            <option value="programs-title">Judul Program</option>
+                            <option value="programs-subtitle">Subjudul Program</option>
+                            <option value="program1-title">Judul Program 1</option>
+                            <option value="program1-desc">Deskripsi Program 1</option>
+                            <option value="program2-title">Judul Program 2</option>
+                            <option value="program2-desc">Deskripsi Program 2</option>
+                            <option value="program3-title">Judul Program 3</option>
+                            <option value="program3-desc">Deskripsi Program 3</option>
+                            <option value="gallery-title">Judul Galeri</option>
+                            <option value="gallery-subtitle">Subjudul Galeri</option>
+                            <option value="teachers-title">Judul Guru</option>
+                            <option value="teachers-subtitle">Subjudul Guru</option>
+                            <option value="teacher1-name">Nama Guru 1</option>
+                            <option value="teacher1-role">Peran Guru 1</option>
+                            <option value="teacher1-desc">Deskripsi Guru 1</option>
+                            <option value="teacher2-name">Nama Guru 2</option>
+                            <option value="teacher2-role">Peran Guru 2</option>
+                            <option value="teacher2-desc">Deskripsi Guru 2</option>
+                            <option value="teacher3-name">Nama Guru 3</option>
+                            <option value="teacher3-role">Peran Guru 3</option>
+                            <option value="teacher3-desc">Deskripsi Guru 3</option>
+                            <option value="contact-title">Judul Kontak</option>
+                            <option value="contact-subtitle">Subjudul Kontak</option>
+                            <option value="address-title">Judul Alamat</option>
+                            <option value="address">Alamat</option>
+                            <option value="phone-title">Judul Telepon</option>
+                            <option value="phone">Telepon</option>
+                            <option value="email-title">Judul Email</option>
+                            <option value="email">Email</option>
+                            <option value="hours-title">Judul Jam Operasional</option>
+                            <option value="hours">Jam Operasional</option>
+                            <option value="footer-about-title">Judul Footer Tentang</option>
+                            <option value="footer-about">Konten Footer Tentang</option>
+                            <option value="footer-links-title">Judul Footer Tautan</option>
+                            <option value="footer-contact-title">Judul Footer Kontak</option>
+                            <option value="footer-address">Alamat Footer</option>
+                            <option value="footer-phone">Telepon Footer</option>
+                            <option value="footer-email">Email Footer</option>
+                            <option value="copyright">Hak Cipta</option>
+                        </select>
                     </div>
-                    <div class="editable">
-                        <label>Subjudul Section</label>
-                        <div class="edit-content" id="edit-about-subtitle">SMK Tata Busana adalah sekolah kejuruan yang berfokus pada pengembangan bakat dan keterampilan di bidang fashion dan desain busana.</div>
-                        <button class="edit-btn" data-target="about-subtitle">Edit</button>
+                    <div class="form-group">
+                        <label for="content-text">Edit Konten</label>
+                        <textarea class="form-control" id="content-text" rows="5"></textarea>
                     </div>
-                    <div class="editable">
-                        <label>Heading Tentang</label>
-                        <div class="edit-content" id="edit-about-heading">Visi dan Misi</div>
-                        <button class="edit-btn" data-target="about-heading">Edit</button>
+                    <div class="form-group">
+                        <label for="image-upload">Upload Gambar (jika diperlukan)</label>
+                        <input type="file" class="form-control" id="image-upload" accept="image/*">
+                        <img id="image-preview" class="image-preview" src="" alt="Preview">
                     </div>
-                    <div class="editable">
-                        <label>Paragraf 1</label>
-                        <div class="edit-content" id="edit-about-text-1">Menjadi sekolah kejuruan terdepan dalam menghasilkan lulusan yang kompeten, kreatif, dan berkarakter di bidang tata busana.</div>
-                        <button class="edit-btn" data-target="about-text-1">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Paragraf 2</label>
-                        <div class="edit-content" id="edit-about-text-2">Misi kami adalah memberikan pendidikan dan pelatihan yang berkualitas, mengembangkan kurikulum yang relevan dengan industri, serta membangun kerjasama dengan dunia usaha dan industri.</div>
-                        <button class="edit-btn" data-target="about-text-2">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Tentang</label>
-                        <img id="edit-about-image" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Siswa SMK Tata Busana">
-                        <button class="image-edit-btn" data-target="about-image">Ganti Gambar</button>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="programs-tab">
-                    <h3>Edit Konten Program</h3>
-                    <div class="editable">
-                        <label>Judul Section</label>
-                        <div class="edit-content" id="edit-programs-title">Program Keahlian</div>
-                        <button class="edit-btn" data-target="programs-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Subjudul Section</label>
-                        <div class="edit-content" id="edit-programs-subtitle">Kami menawarkan berbagai program keahlian untuk mengembangkan bakat dan keterampilan siswa di bidang tata busana.</div>
-                        <button class="edit-btn" data-target="programs-subtitle">Edit</button>
-                    </div>
-                    
-                    <h4>Program 1</h4>
-                    <div class="editable">
-                        <label>Judul Program</label>
-                        <div class="edit-content" id="edit-program-title-1">Desain Busana</div>
-                        <button class="edit-btn" data-target="program-title-1">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Deskripsi Program</label>
-                        <div class="edit-content" id="edit-program-desc-1">Program ini mengajarkan siswa tentang prinsip-prinsip desain busana, teknik menggambar desain, dan pengembangan koleksi fashion.</div>
-                        <button class="edit-btn" data-target="program-desc-1">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Program</label>
-                        <img id="edit-program-image-1" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Desain Busana">
-                        <button class="image-edit-btn" data-target="program-image-1">Ganti Gambar</button>
-                    </div>
-                    
-                    <h4>Program 2</h4>
-                    <div class="editable">
-                        <label>Judul Program</label>
-                        <div class="edit-content" id="edit-program-title-2">Teknologi Menjahit</div>
-                        <button class="edit-btn" data-target="program-title-2">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Deskripsi Program</label>
-                        <div class="edit-content" id="edit-program-desc-2">Siswa mempelajari berbagai teknik menjahit, penggunaan mesin jahit, dan produksi pakaian dengan standar industri.</div>
-                        <button class="edit-btn" data-target="program-desc-2">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Program</label>
-                        <img id="edit-program-image-2" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Teknologi Menjahit">
-                        <button class="image-edit-btn" data-target="program-image-2">Ganti Gambar</button>
-                    </div>
-                    
-                    <h4>Program 3</h4>
-                    <div class="editable">
-                        <label>Judul Program</label>
-                        <div class="edit-content" id="edit-program-title-3">Pemasaran Fashion</div>
-                        <button class="edit-btn" data-target="program-title-3">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Deskripsi Program</label>
-                        <div class="edit-content" id="edit-program-desc-3">Program ini fokus pada strategi pemasaran di industri fashion, manajemen merek, dan pengembangan bisnis fashion.</div>
-                        <button class="edit-btn" data-target="program-desc-3">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Program</label>
-                        <img id="edit-program-image-3" src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fashion Marketing">
-                        <button class="image-edit-btn" data-target="program-image-3">Ganti Gambar</button>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="logoutBtn">Logout</button>
+                        <button type="button" class="btn" id="saveContent">Simpan Perubahan</button>
                     </div>
                 </div>
-                
-                <div class="tab-content" id="gallery-tab">
-                    <h3>Edit Konten Galeri</h3>
-                    <div class="editable">
-                        <label>Judul Section</label>
-                        <div class="edit-content" id="edit-gallery-title">Galeri Kegiatan</div>
-                        <button class="edit-btn" data-target="gallery-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Subjudul Section</label>
-                        <div class="edit-content" id="edit-gallery-subtitle">Lihat momen-momen menarik dari kegiatan belajar mengajar dan karya siswa SMK Tata Busana.</div>
-                        <button class="edit-btn" data-target="gallery-subtitle">Edit</button>
-                    </div>
-                    
-                    <h4>Gambar 1</h4>
-                    <div class="editable">
-                        <label>Keterangan Gambar</label>
-                        <div class="edit-content" id="edit-gallery-caption-1">Kegiatan Belajar di Kelas</div>
-                        <button class="edit-btn" data-target="gallery-caption-1">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Galeri</label>
-                        <img id="edit-gallery-image-1" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Kegiatan Belajar">
-                        <button class="image-edit-btn" data-target="gallery-image-1">Ganti Gambar</button>
-                    </div>
-                    
-                    <h4>Gambar 2</h4>
-                    <div class="editable">
-                        <label>Keterangan Gambar</label>
-                        <div class="edit-content" id="edit-gallery-caption-2">Praktikum Menjahit</div>
-                        <button class="edit-btn" data-target="gallery-caption-2">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Galeri</label>
-                        <img id="edit-gallery-image-2" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Praktikum Menjahit">
-                        <button class="image-edit-btn" data-target="gallery-image-2">Ganti Gambar</button>
-                    </div>
-                    
-                    <h4>Gambar 3</h4>
-                    <div class="editable">
-                        <label>Keterangan Gambar</label>
-                        <div class="edit-content" id="edit-gallery-caption-3">Pameran Karya Siswa</div>
-                        <button class="edit-btn" data-target="gallery-caption-3">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Galeri</label>
-                        <img id="edit-gallery-image-3" src="https://images.unsplash.com/photo-1581094794355-eb7c2ed398e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Pameran Karya">
-                        <button class="image-edit-btn" data-target="gallery-image-3">Ganti Gambar</button>
-                    </div>
-                    
-                    <h4>Gambar 4</h4>
-                    <div class="editable">
-                        <label>Keterangan Gambar</label>
-                        <div class="edit-content" id="edit-gallery-caption-4">Kompetisi Fashion Show</div>
-                        <button class="edit-btn" data-target="gallery-caption-4">Edit</button>
-                    </div>
-                    <div class="image-editable">
-                        <label>Gambar Galeri</label>
-                        <img id="edit-gallery-image-4" src="https://images.unsplash.com/photo-1581094794363-989d93d79a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Kompetisi Fashion">
-                        <button class="image-edit-btn" data-target="gallery-image-4">Ganti Gambar</button>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="contact-tab">
-                    <h3>Edit Konten Kontak</h3>
-                    <div class="editable">
-                        <label>Judul Section</label>
-                        <div class="edit-content" id="edit-contact-title">Hubungi Kami</div>
-                        <button class="edit-btn" data-target="contact-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Subjudul Section</label>
-                        <div class="edit-content" id="edit-contact-subtitle">Jika Anda memiliki pertanyaan atau ingin mengetahui lebih lanjut tentang SMK Tata Busana, jangan ragu untuk menghubungi kami.</div>
-                        <button class="edit-btn" data-target="contact-subtitle">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Heading Kontak</label>
-                        <div class="edit-content" id="edit-contact-heading">Informasi Kontak</div>
-                        <button class="edit-btn" data-target="contact-heading">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Judul Alamat</label>
-                        <div class="edit-content" id="edit-address-title">Alamat</div>
-                        <button class="edit-btn" data-target="address-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Alamat</label>
-                        <div class="edit-content" id="edit-address-text">Jl. Pendidikan No. 123, Jakarta Selatan, Indonesia</div>
-                        <button class="edit-btn" data-target="address-text">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Judul Telepon</label>
-                        <div class="edit-content" id="edit-phone-title">Telepon</div>
-                        <button class="edit-btn" data-target="phone-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Nomor Telepon</label>
-                        <div class="edit-content" id="edit-phone-text">(021) 1234-5678</div>
-                        <button class="edit-btn" data-target="phone-text">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Judul Email</label>
-                        <div class="edit-content" id="edit-email-title">Email</div>
-                        <button class="edit-btn" data-target="email-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Alamat Email</label>
-                        <div class="edit-content" id="edit-email-text">info@smktatabusana.sch.id</div>
-                        <button class="edit-btn" data-target="email-text">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Judul Footer Tentang</label>
-                        <div class="edit-content" id="edit-footer-about-title">Tentang SMK Tata Busana</div>
-                        <button class="edit-btn" data-target="footer-about-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Deskripsi Footer</label>
-                        <div class="edit-content" id="edit-footer-about-text">SMK Tata Busana adalah sekolah kejuruan yang berfokus pada pengembangan bakat dan keterampilan di bidang fashion dan desain busana.</div>
-                        <button class="edit-btn" data-target="footer-about-text">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Judul Footer Kontak</label>
-                        <div class="edit-content" id="edit-footer-contact-title">Kontak</div>
-                        <button class="edit-btn" data-target="footer-contact-title">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Alamat Footer</label>
-                        <div class="edit-content" id="edit-footer-address">Jl. Pendidikan No. 123, Jakarta Selatan</div>
-                        <button class="edit-btn" data-target="footer-address">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Telepon Footer</label>
-                        <div class="edit-content" id="edit-footer-phone">(021) 1234-5678</div>
-                        <button class="edit-btn" data-target="footer-phone">Edit</button>
-                    </div>
-                    <div class="editable">
-                        <label>Email Footer</label>
-                        <div class="edit-content" id="edit-footer-email">info@smktatabusana.sch.id</div>
-                        <button class="edit-btn" data-target="footer-email">Edit</button>
-                    </div>
-                </div>
-                
-                <button class="save-changes" id="save-changes">Simpan Perubahan</button>
             </div>
         </div>
     </div>
 
-    <!-- Login Form -->
-    <div class="login-form" id="login-form" style="display: none;">
-        <h2>Login Admin</h2>
-        <form id="adminLoginForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" class="form-control" required>
-            </div>
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-    </div>
-
     <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
         // Admin Panel Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if admin is logged in
-            const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+        const adminBtn = document.getElementById('adminBtn');
+        const adminModal = document.getElementById('adminModal');
+        const closeModal = document.getElementById('closeModal');
+        const loginForm = document.getElementById('loginForm');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const adminTabs = document.querySelectorAll('.admin-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const contentSelect = document.getElementById('content-select');
+        const contentText = document.getElementById('content-text');
+        const imageUpload = document.getElementById('image-upload');
+        const imagePreview = document.getElementById('image-preview');
+        const saveContentBtn = document.getElementById('saveContent');
+
+        let isLoggedIn = false;
+
+        // Open Admin Modal
+        adminBtn.addEventListener('click', function() {
+            adminModal.style.display = 'flex';
+        });
+
+        // Close Admin Modal
+        closeModal.addEventListener('click', function() {
+            adminModal.style.display = 'none';
+        });
+
+        // Tab Switching
+        adminTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update active tab
+                adminTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-tab`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Login Functionality
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            // Show admin panel if logged in
-            if (isLoggedIn) {
-                document.getElementById('admin-panel').style.display = 'block';
+            // Simple authentication (in a real app, this would be server-side)
+            if (username === 'admin' && password === 'admin123') {
+                isLoggedIn = true;
+                document.querySelector('.admin-tab[data-tab="edit"]').click();
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                alert('Login berhasil!');
+            } else {
+                alert('Username atau password salah!');
+            }
+        });
+
+        // Logout Functionality
+        logoutBtn.addEventListener('click', function() {
+            isLoggedIn = false;
+            document.querySelector('.admin-tab[data-tab="login"]').click();
+            alert('Anda telah logout.');
+        });
+
+        // Content Selection
+        contentSelect.addEventListener('change', function() {
+            const contentId = this.value;
+            if (contentId) {
+                const contentElement = document.querySelector(`[data-id="${contentId}"]`);
+                if (contentElement) {
+                    contentText.value = contentElement.textContent;
+                }
+            } else {
+                contentText.value = '';
+            }
+        });
+
+        // Image Upload Preview
+        imageUpload.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Save Content
+        saveContentBtn.addEventListener('click', function() {
+            if (!isLoggedIn) {
+                alert('Anda harus login terlebih dahulu!');
+                return;
             }
             
-            // Open admin panel
-            document.getElementById('open-admin').addEventListener('click', function(e) {
-                e.preventDefault();
-                if (isLoggedIn) {
-                    document.getElementById('admin-panel').style.display = 'block';
-                } else {
-                    document.getElementById('login-form').style.display = 'block';
+            const contentId = contentSelect.value;
+            if (!contentId) {
+                alert('Pilih konten yang akan diedit!');
+                return;
+            }
+            
+            const contentElement = document.querySelector(`[data-id="${contentId}"]`);
+            if (contentElement) {
+                contentElement.textContent = contentText.value;
+                
+                // If it's an image element, update the src
+                if (contentElement.tagName === 'IMG' && imagePreview.src) {
+                    contentElement.src = imagePreview.src;
                 }
-            });
-            
-            // Close admin panel
-            document.getElementById('close-admin').addEventListener('click', function() {
-                document.getElementById('admin-panel').style.display = 'none';
-            });
-            
-            // Tab functionality
-            const tabs = document.querySelectorAll('.admin-tab');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('active'));
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    // Hide all tab content
-                    document.querySelectorAll('.tab-content').forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    
-                    // Show corresponding tab content
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(`${tabId}-tab`).classList.add('active');
-                });
-            });
-            
-            // Edit button functionality
-            document.querySelectorAll('.edit-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-target');
-                    const contentElement = document.getElementById(`edit-${targetId}`);
-                    const currentContent = contentElement.textContent;
-                    
-                    const newContent = prompt('Edit konten:', currentContent);
-                    if (newContent !== null) {
-                        contentElement.textContent = newContent;
-                        // Update the actual content on the page
-                        document.getElementById(targetId).textContent = newContent;
-                    }
-                });
-            });
-            
-            // Image edit button functionality
-            document.querySelectorAll('.image-edit-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-target');
-                    const currentSrc = document.getElementById(`edit-${targetId}`).getAttribute('src');
-                    
-                    const newSrc = prompt('Masukkan URL gambar baru:', currentSrc);
-                    if (newSrc !== null && newSrc.trim() !== '') {
-                        document.getElementById(`edit-${targetId}`).setAttribute('src', newSrc);
-                        document.getElementById(targetId).setAttribute('src', newSrc);
-                    }
-                });
-            });
-            
-            // Save changes
-            document.getElementById('save-changes').addEventListener('click', function() {
-                // Collect all editable content
-                const contentData = {};
-                
-                document.querySelectorAll('.edit-content').forEach(element => {
-                    const id = element.id.replace('edit-', '');
-                    contentData[id] = element.textContent;
-                });
-                
-                // Collect all editable images
-                document.querySelectorAll('.image-editable img').forEach(element => {
-                    const id = element.id.replace('edit-', '');
-                    contentData[id] = element.getAttribute('src');
-                });
-                
-                // Save to localStorage
-                localStorage.setItem('websiteContent', JSON.stringify(contentData));
                 
                 alert('Perubahan berhasil disimpan!');
-            });
-            
-            // Load saved content
-            const savedContent = localStorage.getItem('websiteContent');
-            if (savedContent) {
-                const contentData = JSON.parse(savedContent);
                 
-                // Apply saved content
-                for (const [id, content] of Object.entries(contentData)) {
-                    const element = document.getElementById(id);
-                    if (element) {
-                        if (element.tagName === 'IMG') {
-                            element.setAttribute('src', content);
-                            document.getElementById(`edit-${id}`).setAttribute('src', content);
-                        } else {
-                            element.textContent = content;
-                            document.getElementById(`edit-${id}`).textContent = content;
-                        }
-                    }
+                // Save to localStorage for persistence
+                saveToLocalStorage(contentId, contentText.value);
+                
+                // If image was uploaded, save that too
+                if (imagePreview.src) {
+                    saveToLocalStorage(`${contentId}-image`, imagePreview.src);
                 }
             }
-            
-            // Login form functionality
-            document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
+        });
+
+        // Save to localStorage
+        function saveToLocalStorage(key, value) {
+            localStorage.setItem(key, value);
+        }
+
+        // Load from localStorage on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const editableElements = document.querySelectorAll('.editable');
+            editableElements.forEach(element => {
+                const contentId = element.getAttribute('data-id');
+                const savedContent = localStorage.getItem(contentId);
+                if (savedContent) {
+                    element.textContent = savedContent;
+                }
                 
-                // Simple authentication (in a real app, this would be server-side)
-                if (username === 'admin' && password === 'admin123') {
-                    localStorage.setItem('adminLoggedIn', 'true');
-                    document.getElementById('login-form').style.display = 'none';
-                    document.getElementById('admin-panel').style.display = 'block';
-                } else {
-                    alert('Username atau password salah!');
+                // Check for saved images
+                const savedImage = localStorage.getItem(`${contentId}-image`);
+                if (savedImage && element.tagName === 'IMG') {
+                    element.src = savedImage;
                 }
             });
-            
-            // Contact form submission
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                alert('Pesan Anda telah berhasil dikirim!');
-                this.reset();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('nav ul').classList.remove('show');
+                }
             });
         });
     </script>

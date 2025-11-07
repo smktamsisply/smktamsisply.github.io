@@ -3,397 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK FASHION - Jurusan Tata Busana</title>
+    <title>SMK Taman Siswa Playen - Jurusan Tata Busana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #e91e63;
-            --primary-dark: #c2185b;
-            --secondary: #9c27b0;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --gray: #6c757d;
-            --success: #28a745;
+            --primary-blue: #1a3a8f;
+            --secondary-blue: #2a4db7;
+            --light-blue: #e8f0fe;
+            --white: #ffffff;
+            --gold: #d4af37;
+            --dark-gold: #b8941f;
+            --gray: #f5f5f5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background-color: #f5f5f5;
-            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden;
         }
-        
+
+        h1, h2, h3, h4, h5 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
-        /* Header */
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--gold);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-gold);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-blue {
+            background-color: var(--primary-blue);
+        }
+
+        .btn-blue:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
         }
-        
-        .header-content {
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
-        
+
         .logo img {
-            height: 60px;
-            width: auto;
+            height: 50px;
+            margin-right: 10px;
         }
-        
+
         .logo-text h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            color: var(--primary-blue);
         }
-        
+
         .logo-text p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.8rem;
+            margin-bottom: 0;
+            color: var(--text-color);
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
         }
-        
+
         nav ul li {
             margin-left: 25px;
         }
-        
+
         nav ul li a {
-            color: white;
             text-decoration: none;
+            color: var(--text-color);
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 8px 0;
+            transition: color 0.3s ease;
             position: relative;
         }
-        
+
         nav ul li a:hover {
-            color: #ffeb3b;
+            color: var(--primary-blue);
         }
-        
+
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 0;
             height: 2px;
-            background-color: #ffeb3b;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
             transition: width 0.3s ease;
         }
-        
+
         nav ul li a:hover::after {
             width: 100%;
         }
-        
+
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558769132-cb1a5f9c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background: linear-gradient(rgba(26, 58, 143, 0.8), rgba(26, 58, 143, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 100px 0;
+            color: var(--white);
+            padding: 150px 0 100px;
             text-align: center;
         }
-        
-        .hero h2 {
-            font-size: 3rem;
+
+        .hero h1 {
+            font-size: 2.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            animation: fadeInUp 1s ease;
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
         }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+
+        .hero-buttons {
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
         }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+        .hero-buttons .btn {
+            margin: 0 10px;
         }
-        
-        /* Sections */
+
+        /* Section Styles */
         section {
             padding: 80px 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
             position: relative;
-            display: inline-block;
         }
-        
-        .section-title h2::after {
+
+        .section-title::after {
             content: '';
             position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
         }
-        
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
+
+        /* Welcome Section */
+        .welcome {
+            background-color: var(--gray);
         }
-        
-        /* About Section */
-        .about-content {
+
+        .welcome-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
         }
-        
-        .about-text {
+
+        .welcome-text {
             flex: 1;
         }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .about-image {
+
+        .welcome-image {
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
         }
-        
-        .about-image img {
+
+        .welcome-image img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.5s ease;
         }
-        
-        .about-image:hover img {
+
+        .welcome-image:hover img {
             transform: scale(1.05);
         }
-        
-        /* Programs Section */
-        .programs-grid {
+
+        /* Jurusan Section */
+        .jurusan-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
-        .program-card {
-            background-color: white;
+
+        .jurusan-card {
+            background-color: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
         }
-        
-        .program-card:hover {
+
+        .jurusan-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
-        .program-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .program-image img {
+
+        .jurusan-card img {
             width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
-        
-        .program-card:hover .program-image img {
-            transform: scale(1.1);
+
+        .jurusan-card-content {
+            padding: 20px;
         }
-        
-        .program-content {
-            padding: 25px;
+
+        .jurusan-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
         }
-        
-        .program-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
+
+        /* News Section */
+        .news {
+            background-color: var(--gray);
         }
-        
+
+        .news-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-card-content {
+            padding: 20px;
+        }
+
+        .news-date {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
         /* Gallery Section */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 15px;
         }
-        
+
         .gallery-item {
             border-radius: 10px;
             overflow: hidden;
+            height: 200px;
             position: relative;
-            height: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
-        
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-        
+
         .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(26, 58, 143, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
-        
+
         .gallery-overlay i {
-            color: white;
+            color: var(--white);
             font-size: 2rem;
         }
-        
+
         /* Teachers Section */
-        .teachers-grid {
+        .teachers {
+            background-color: var(--gray);
+        }
+
+        .teacher-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
-        
+
         .teacher-card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.3s ease;
         }
-        
+
         .teacher-card:hover {
             transform: translateY(-10px);
         }
-        
+
         .teacher-image {
             height: 250px;
             overflow: hidden;
         }
-        
+
         .teacher-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        
+
+        .teacher-card:hover .teacher-image img {
+            transform: scale(1.1);
+        }
+
         .teacher-info {
             padding: 20px;
         }
-        
+
         .teacher-info h3 {
-            font-size: 1.3rem;
             margin-bottom: 5px;
-            color: var(--dark);
         }
-        
-        .teacher-info p {
-            color: var(--primary);
+
+        .teacher-subject {
+            color: var(--gold);
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
-        
+
         /* Contact Section */
         .contact-content {
             display: flex;
-            gap: 50px;
+            gap: 40px;
         }
-        
+
         .contact-info {
             flex: 1;
         }
-        
-        .contact-form {
-            flex: 1;
-        }
-        
-        .info-item {
+
+        .contact-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        
-        .info-icon {
-            background-color: var(--primary);
-            color: white;
+
+        .contact-icon {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -403,91 +448,105 @@
             margin-right: 15px;
             flex-shrink: 0;
         }
-        
-        .info-text h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
         .form-control {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
             transition: border-color 0.3s ease;
         }
-        
+
         .form-control:focus {
-            border-color: var(--primary);
+            border-color: var(--primary-blue);
             outline: none;
         }
-        
+
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
         }
-        
+
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--primary-blue);
+            color: var(--white);
             padding: 60px 0 20px;
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-        
-        .footer-column h3 {
-            font-size: 1.3rem;
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            color: var(--white);
             margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
+            font-size: 1.2rem;
         }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-        
-        .footer-links {
+
+        .footer-links ul {
             list-style: none;
         }
-        
-        .footer-links li {
+
+        .footer-links ul li {
             margin-bottom: 10px;
         }
-        
-        .footer-links a {
-            color: #bbb;
+
+        .footer-links ul li a {
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
-        .footer-links a:hover {
-            color: var(--primary);
+
+        .footer-links ul li a:hover {
+            color: var(--gold);
         }
-        
-        .social-links {
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        .social-icons {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
-        
-        .social-links a {
+
+        .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -495,158 +554,44 @@
             height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
+            color: var(--white);
             transition: all 0.3s ease;
         }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
+
+        .social-icons a:hover {
+            background-color: var(--gold);
             transform: translateY(-5px);
         }
-        
-        .copyright {
+
+        .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbb;
-            font-size: 0.9rem;
         }
-        
-        /* Admin Panel */
-        .admin-panel {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        .admin-btn {
-            background-color: var(--primary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .admin-btn:hover {
-            background-color: var(--primary-dark);
-            transform: scale(1.1);
-        }
-        
-        .admin-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .admin-content {
-            background-color: white;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-        }
-        
-        .admin-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .admin-header h2 {
-            font-size: 1.8rem;
-        }
-        
-        .admin-body {
-            padding: 30px;
-        }
-        
-        .admin-tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .admin-tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .admin-tab.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .form-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        
-        .btn-secondary {
-            background-color: var(--gray);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-        
-        .image-preview {
-            max-width: 100%;
-            margin-top: 10px;
-            display: none;
-        }
-        
-        .editable {
-            border: 1px dashed #ddd;
-            padding: 5px;
-            margin: 5px 0;
-            min-height: 20px;
-        }
-        
-        .editable:focus {
-            outline: 2px solid var(--primary);
-            border-color: transparent;
-        }
-        
-        /* Responsive */
+
+        /* Responsive Styles */
         @media (max-width: 992px) {
-            .about-content, .contact-content {
+            .welcome-content, .contact-content {
                 flex-direction: column;
             }
             
-            .about-image, .about-text, .contact-info, .contact-form {
+            .welcome-image, .welcome-text, .contact-info, .contact-form {
                 width: 100%;
             }
         }
-        
+
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -654,128 +599,304 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--primary);
+                background-color: var(--white);
                 flex-direction: column;
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                box-shadow: var(--shadow);
             }
-            
+
             nav ul.show {
                 display: flex;
             }
-            
+
             nav ul li {
-                margin: 0;
-                text-align: center;
-                padding: 10px 0;
+                margin: 10px 0;
             }
-            
+
             .mobile-menu {
                 display: block;
             }
-            
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title h2 {
+
+            .hero h1 {
                 font-size: 2rem;
             }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            background-color: var(--light-blue);
+            padding: 100px 0 50px;
+            min-height: 100vh;
+        }
+
+        .admin-container {
+            display: flex;
+            min-height: calc(100vh - 150px);
+        }
+
+        .admin-sidebar {
+            width: 250px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px 0;
+        }
+
+        .admin-logo {
+            text-align: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .admin-logo h2 {
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .admin-menu {
+            list-style: none;
+        }
+
+        .admin-menu li {
+            margin-bottom: 5px;
+        }
+
+        .admin-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .admin-menu a:hover, .admin-menu a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--gold);
+        }
+
+        .admin-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .admin-content {
+            flex: 1;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            margin-left: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-table th {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: var(--white);
+        }
+
+        .action-btn:hover {
+            opacity: 0.8;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="https://via.placeholder.com/60" alt="Logo SMK Fashion">
-                    <div class="logo-text">
-                        <h1>SMK FASHION</h1>
-                        <p>Jurusan Tata Busana</p>
-                    </div>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/50x50/1a3a8f/ffffff?text=TS" alt="Logo SMK Taman Siswa Playen">
+                <div class="logo-text">
+                    <h1>SMK TAMAN SISWA PLAYEN</h1>
+                    <p>Jurusan Tata Busana</p>
                 </div>
-                <nav>
-                    <div class="mobile-menu">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                    <ul>
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#about">Tentang</a></li>
-                        <li><a href="#programs">Program</a></li>
-                        <li><a href="#gallery">Galeri</a></li>
-                        <li><a href="#teachers">Guru</a></li>
-                        <li><a href="#contact">Kontak</a></li>
-                    </ul>
-                </nav>
             </div>
+            <nav>
+                <ul id="main-menu">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#jurusan">Jurusan</a></li>
+                    <li><a href="#berita">Berita</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#guru">Guru & Staf</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#" id="admin-login-link">Admin</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h2 class="editable" data-id="hero-title">Selamat Datang di SMK Fashion</h2>
-            <p class="editable" data-id="hero-subtitle">Kembangkan bakat dan kreativitas Anda dalam dunia fashion bersama kami. Kami menyediakan pendidikan terbaik di bidang tata busana dengan kurikulum yang sesuai dengan industri.</p>
-            <a href="#programs" class="btn">Lihat Program Kami</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="editable" data-id="about-title">Tentang Kami</h2>
-                <p class="editable" data-id="about-subtitle">SMK Fashion adalah sekolah menengah kejuruan yang berfokus pada pengembangan bakat dan keterampilan siswa di bidang tata busana dan fashion.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3 class="editable" data-id="about-heading">Mengapa Memilih Jurusan Tata Busana?</h3>
-                    <p class="editable" data-id="about-content1">Jurusan Tata Busana di SMK Fashion dirancang untuk memberikan siswa pemahaman mendalam tentang desain busana, teknik menjahit, dan industri fashion. Kami menggabungkan teori dengan praktik langsung untuk mempersiapkan siswa menghadapi dunia kerja.</p>
-                    <p class="editable" data-id="about-content2">Dengan fasilitas lengkap dan guru yang berpengalaman, siswa akan belajar berbagai aspek tata busana mulai dari desain, pola, menjahit, hingga pemasaran produk fashion.</p>
-                    <a href="#contact" class="btn">Hubungi Kami</a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80" alt="Tentang SMK Fashion">
-                </div>
+            <h1>SMK Taman Siswa Playen</h1>
+            <p>Menghasilkan lulusan kompeten di bidang Tata Busana yang siap bersaing di dunia kerja dan industri fashion.</p>
+            <div class="hero-buttons">
+                <a href="#jurusan" class="btn">Lihat Jurusan</a>
+                <a href="#profil" class="btn btn-blue">Tentang Kami</a>
             </div>
         </div>
     </section>
 
-    <!-- Programs Section -->
-    <section id="programs" style="background-color: #f8f9fa;">
+    <!-- Welcome Section -->
+    <section class="welcome">
         <div class="container">
-            <div class="section-title">
-                <h2 class="editable" data-id="programs-title">Program Kami</h2>
-                <p class="editable" data-id="programs-subtitle">Kami menawarkan berbagai program unggulan untuk mengembangkan keterampilan siswa di bidang tata busana.</p>
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h2>Sambutan Kepala Sekolah</h2>
+                    <p>Selamat datang di SMK Taman Siswa Playen, sekolah kejuruan yang berkomitmen untuk menghasilkan lulusan yang kompeten dan berkarakter. Dengan fokus pada jurusan Tata Busana, kami membekali siswa dengan keterampilan praktis dan pengetahuan teoritis yang diperlukan untuk sukses di industri fashion.</p>
+                    <p>Kami percaya bahwa setiap siswa memiliki potensi untuk menjadi desainer dan pengusaha fashion yang handal. Dengan fasilitas yang memadai dan guru-guru yang berpengalaman, kami siap mewujudkan impian siswa menjadi kenyataan.</p>
+                    <p>Terima kasih atas kunjungan Anda ke website kami. Mari bersama-sama membangun generasi muda yang kreatif dan inovatif.</p>
+                    <p><strong>Drs. Budi Santoso, M.Pd.</strong><br>Kepala Sekolah SMK Taman Siswa Playen</p>
+                </div>
+                <div class="welcome-image">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Kepala Sekolah SMK Taman Siswa Playen">
+                </div>
             </div>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Desain Busana">
-                    </div>
-                    <div class="program-content">
-                        <h3 class="editable" data-id="program1-title">Desain Busana</h3>
-                        <p class="editable" data-id="program1-desc">Belajar merancang busana dari konsep hingga produk jadi, termasuk teknik menggambar desain, pemilihan bahan, dan warna.</p>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Teknik Menjahit">
-                    </div>
-                    <div class="program-content">
-                        <h3 class="editable" data-id="program2-title">Teknik Menjahit</h3>
-                        <p class="editable" data-id="program2-desc">Menguasai berbagai teknik menjahit mulai dari dasar hingga tingkat lanjut, termasuk penggunaan mesin jahit modern.</p>
+        </div>
+    </section>
+
+    <!-- Jurusan Section -->
+    <section id="jurusan">
+        <div class="container">
+            <h2 class="section-title">Jurusan Kami</h2>
+            <div class="jurusan-cards">
+                <div class="jurusan-card">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Tata Busana">
+                    <div class="jurusan-card-content">
+                        <h3>Tata Busana</h3>
+                        <p>Jurusan Tata Busana mempelajari teknik mendesain, memotong, menjahit, dan menyelesaikan pakaian. Siswa diajarkan untuk membuat berbagai jenis busana mulai dari pakaian sehari-hari hingga busana formal.</p>
+                        <a href="#" class="btn">Selengkapnya</a>
                     </div>
                 </div>
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1558769132-cb1a5f9c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Fashion Marketing">
+                <div class="jurusan-card">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Desain Fashion">
+                    <div class="jurusan-card-content">
+                        <h3>Desain Fashion</h3>
+                        <p>Jurusan Desain Fashion fokus pada pengembangan kreativitas dalam merancang busana. Siswa belajar tentang tren fashion, pemilihan bahan, dan teknik presentasi koleksi busana.</p>
+                        <a href="#" class="btn">Selengkapnya</a>
                     </div>
-                    <div class="program-content">
-                        <h3 class="editable" data-id="program3-title">Fashion Marketing</h3>
-                        <p class="editable" data-id="program3-desc">Memahami strategi pemasaran dalam industri fashion, termasuk branding, visual merchandising, dan penjualan produk.</p>
+                </div>
+                <div class="jurusan-card">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Busana Custom">
+                    <div class="jurusan-card-content">
+                        <h3>Busana Custom</h3>
+                        <p>Jurusan Busana Custom mengajarkan teknik pembuatan pakaian sesuai pesanan dengan memperhatikan detail dan kualitas. Siswa dilatih untuk memahami kebutuhan klien dan menghasilkan busana yang sesuai.</p>
+                        <a href="#" class="btn">Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news" id="berita">
+        <div class="container">
+            <h2 class="section-title">Berita & Pengumuman</h2>
+            <div class="news-cards">
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pameran Karya Siswa">
+                    <div class="news-card-content">
+                        <div class="news-date">15 Juni 2023</div>
+                        <h3>Pameran Karya Siswa Jurusan Tata Busana</h3>
+                        <p>SMK Taman Siswa Playen mengadakan pameran karya siswa jurusan Tata Busana yang menampilkan berbagai desain busana kreatif dan inovatif.</p>
+                        <a href="#" class="btn">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Workshop Fashion">
+                    <div class="news-card-content">
+                        <div class="news-date">5 Juni 2023</div>
+                        <h3>Workshop Fashion bersama Desainer Terkenal</h3>
+                        <p>SMK Taman Siswa Playen menyelenggarakan workshop fashion dengan menghadirkan desainer terkenal untuk berbagi pengalaman dan pengetahuan.</p>
+                        <a href="#" class="btn">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Penerimaan Siswa Baru">
+                    <div class="news-card-content">
+                        <div class="news-date">1 Juni 2023</div>
+                        <h3>Pendaftaran Siswa Baru Tahun Ajaran 2023/2024</h3>
+                        <p>SMK Taman Siswa Playen membuka pendaftaran siswa baru untuk tahun ajaran 2023/2024. Segera daftarkan diri Anda!</p>
+                        <a href="#" class="btn">Baca Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -783,33 +904,42 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery">
+    <section id="galeri">
         <div class="container">
-            <div class="section-title">
-                <h2 class="editable" data-id="gallery-title">Galeri Karya</h2>
-                <p class="editable" data-id="gallery-subtitle">Lihat hasil karya terbaik dari siswa-siswi SMK Fashion jurusan Tata Busana.</p>
-            </div>
+            <h2 class="section-title">Galeri Kegiatan</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Karya 1">
+                    <img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80" alt="Karya 2">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Kegiatan Sekolah">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Karya 3">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1558769132-cb1a5f9c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Karya 4">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Kegiatan Sekolah">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
@@ -819,41 +949,48 @@
     </section>
 
     <!-- Teachers Section -->
-    <section id="teachers" style="background-color: #f8f9fa;">
+    <section class="teachers" id="guru">
         <div class="container">
-            <div class="section-title">
-                <h2 class="editable" data-id="teachers-title">Guru & Staff</h2>
-                <p class="editable" data-id="teachers-subtitle">Kenali tim pengajar profesional kami yang berpengalaman di industri fashion.</p>
-            </div>
-            <div class="teachers-grid">
+            <h2 class="section-title">Guru & Staf</h2>
+            <div class="teacher-cards">
                 <div class="teacher-card">
                     <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Guru 1">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Drs. Budi Santoso, M.Pd.">
                     </div>
                     <div class="teacher-info">
-                        <h3 class="editable" data-id="teacher1-name">Sari Indah, S.Pd.</h3>
-                        <p class="editable" data-id="teacher1-role">Guru Desain Busana</p>
-                        <p class="editable" data-id="teacher1-desc">Berpengalaman lebih dari 10 tahun di industri fashion dan telah menghasilkan banyak desainer muda berbakat.</p>
+                        <h3>Drs. Budi Santoso, M.Pd.</h3>
+                        <div class="teacher-subject">Kepala Sekolah</div>
+                        <p>Memimpin SMK Taman Siswa Playen dengan visi menghasilkan lulusan yang kompeten dan berkarakter.</p>
                     </div>
                 </div>
                 <div class="teacher-card">
                     <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Guru 2">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Siti Rahayu, S.Pd.">
                     </div>
                     <div class="teacher-info">
-                        <h3 class="editable" data-id="teacher2-name">Budi Santoso, S.T.</h3>
-                        <p class="editable" data-id="teacher2-role">Guru Teknik Menjahit</p>
-                        <p class="editable" data-id="teacher2-desc">Ahli dalam berbagai teknik menjahit dan penggunaan mesin jahit industri dengan pengalaman 15 tahun.</p>
+                        <h3>Siti Rahayu, S.Pd.</h3>
+                        <div class="teacher-subject">Guru Tata Busana</div>
+                        <p>Ahli dalam teknik menjahit dan pembuatan pola dengan pengalaman lebih dari 10 tahun.</p>
                     </div>
                 </div>
                 <div class="teacher-card">
                     <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Guru 3">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ahmad Fauzi, S.Sn.">
                     </div>
                     <div class="teacher-info">
-                        <h3 class="editable" data-id="teacher3-name">Maya Sari, M.Pd.</h3>
-                        <p class="editable" data-id="teacher3-role">Guru Fashion Marketing</p>
-                        <p class="editable" data-id="teacher3-desc">Spesialis dalam pemasaran fashion dengan latar belakang bisnis dan pengalaman di retail fashion ternama.</p>
+                        <h3>Ahmad Fauzi, S.Sn.</h3>
+                        <div class="teacher-subject">Guru Desain Fashion</div>
+                        <p>Desainer berpengalaman dengan spesialisasi dalam tren fashion kontemporer.</p>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80" alt="Dewi Sartika, S.Pd.">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Dewi Sartika, S.Pd.</h3>
+                        <div class="teacher-subject">Guru Busana Custom</div>
+                        <p>Spesialis dalam pembuatan busana sesuai pesanan dengan perhatian pada detail.</p>
                     </div>
                 </div>
             </div>
@@ -861,66 +998,72 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="kontak">
         <div class="container">
-            <div class="section-title">
-                <h2 class="editable" data-id="contact-title">Hubungi Kami</h2>
-                <p class="editable" data-id="contact-subtitle">Silakan hubungi kami untuk informasi lebih lanjut tentang program dan pendaftaran.</p>
-            </div>
+            <h2 class="section-title">Kontak & Lokasi</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="info-item">
-                        <div class="info-icon">
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div class="info-text">
-                            <h3 class="editable" data-id="address-title">Alamat</h3>
-                            <p class="editable" data-id="address">Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12560</p>
+                        <div>
+                            <h3>Alamat</h3>
+                            <p>Jl. Pendidikan No. 123, Playen, Gunungkidul, Yogyakarta</p>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <div class="info-text">
-                            <h3 class="editable" data-id="phone-title">Telepon</h3>
-                            <p class="editable" data-id="phone">(021) 1234-5678</p>
+                        <div>
+                            <h3>Telepon</h3>
+                            <p>(0274) 123456</p>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="info-text">
-                            <h3 class="editable" data-id="email-title">Email</h3>
-                            <p class="editable" data-id="email">info@smkfashion.sch.id</p>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@smktamansisaplayen.sch.id</p>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <div class="info-text">
-                            <h3 class="editable" data-id="hours-title">Jam Operasional</h3>
-                            <p class="editable" data-id="hours">Senin - Jumat: 07.00 - 16.00 WIB</p>
+                        <div>
+                            <h3>Jam Operasional</h3>
+                            <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
+                            <p>Sabtu: 07.00 - 12.00 WIB</p>
                         </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.215337300935!2d110.59772277499616!3d-7.873858078051573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a442e4d9db3a5%3A0x6fc6ef5f2c8d6c0!2sPlayen%2C%20Kec.%20Playen%2C%20Gunung%20Kidul%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1686752345678!5m2!1sid!2sid" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Alamat Email" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subjek" required>
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Pesan" required></textarea>
+                            <label for="message">Pesan</label>
+                            <textarea id="message" class="form-control" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
+                        <button type="submit" class="btn btn-blue">Kirim Pesan</button>
                     </form>
                 </div>
             </div>
@@ -931,323 +1074,212 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3 class="editable" data-id="footer-about-title">Tentang SMK Fashion</h3>
-                    <p class="editable" data-id="footer-about">SMK Fashion adalah sekolah menengah kejuruan yang berfokus pada pengembangan bakat dan keterampilan siswa di bidang tata busana dan fashion.</p>
-                    <div class="social-links">
+                <div class="footer-logo">
+                    <img src="https://via.placeholder.com/60x60/ffffff/1a3a8f?text=TS" alt="Logo SMK Taman Siswa Playen">
+                    <h2>SMK TAMAN SISWA PLAYEN</h2>
+                    <p>Menghasilkan lulusan kompeten di bidang Tata Busana yang siap bersaing di dunia kerja dan industri fashion.</p>
+                    <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3 class="editable" data-id="footer-links-title">Tautan Cepat</h3>
-                    <ul class="footer-links">
+                <div class="footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
                         <li><a href="#home">Beranda</a></li>
-                        <li><a href="#about">Tentang</a></li>
-                        <li><a href="#programs">Program</a></li>
-                        <li><a href="#gallery">Galeri</a></li>
-                        <li><a href="#teachers">Guru</a></li>
-                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="#profil">Profil Sekolah</a></li>
+                        <li><a href="#jurusan">Jurusan</a></li>
+                        <li><a href="#berita">Berita & Pengumuman</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                        <li><a href="#guru">Guru & Staf</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3 class="editable" data-id="footer-contact-title">Kontak</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> <span class="editable" data-id="footer-address">Jl. Pendidikan No. 123, Jakarta Selatan</span></li>
-                        <li><i class="fas fa-phone"></i> <span class="editable" data-id="footer-phone">(021) 1234-5678</span></li>
-                        <li><i class="fas fa-envelope"></i> <span class="editable" data-id="footer-email">info@smkfashion.sch.id</span></li>
-                    </ul>
+                <div class="footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 123, Playen, Gunungkidul</p>
+                    <p><i class="fas fa-phone"></i> (0274) 123456</p>
+                    <p><i class="fas fa-envelope"></i> info@smktamansisaplayen.sch.id</p>
                 </div>
             </div>
-            <div class="copyright">
-                <p class="editable" data-id="copyright">&copy; 2023 SMK Fashion. Semua Hak Dilindungi.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2023 SMK Taman Siswa Playen. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Admin Panel -->
-    <div class="admin-panel">
-        <div class="admin-btn" id="adminBtn">
-            <i class="fas fa-cog"></i>
+    <!-- Admin Login Modal -->
+    <div class="admin-login" id="admin-login">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-blue">Login</button>
+                <button type="button" class="btn" id="close-login">Batal</button>
+            </form>
         </div>
     </div>
 
-    <!-- Admin Modal -->
-    <div class="admin-modal" id="adminModal">
-        <div class="admin-content">
-            <div class="admin-header">
-                <h2>Panel Admin</h2>
+    <!-- Admin Panel -->
+    <section class="admin-panel" id="admin-panel">
+        <div class="admin-container">
+            <div class="admin-sidebar">
+                <div class="admin-logo">
+                    <h2>Admin Panel</h2>
+                    <p>SMK Taman Siswa Playen</p>
+                </div>
+                <ul class="admin-menu">
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-newspaper"></i> Berita</a></li>
+                    <li><a href="#"><i class="fas fa-images"></i> Galeri</a></li>
+                    <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> Guru & Staf</a></li>
+                    <li><a href="#"><i class="fas fa-school"></i> Profil Sekolah</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Pengaturan</a></li>
+                    <li><a href="#" id="admin-logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
             </div>
-            <div class="admin-body">
-                <div class="admin-tabs">
-                    <div class="admin-tab active" data-tab="login">Login</div>
-                    <div class="admin-tab" data-tab="edit">Edit Konten</div>
+            <div class="admin-content">
+                <div class="admin-header">
+                    <h2>Dashboard</h2>
+                    <div class="admin-user">
+                        <span>Selamat datang, Admin</span>
+                    </div>
                 </div>
-                
-                <div class="tab-content active" id="login-tab">
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" required>
+                <div class="admin-card">
+                    <h3>Statistik</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h4>Jumlah Berita</h4>
+                            <p>15</p>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" required>
+                        <div class="stat-item">
+                            <h4>Jumlah Guru</h4>
+                            <p>24</p>
                         </div>
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" id="closeModal">Tutup</button>
-                            <button type="submit" class="btn">Login</button>
+                        <div class="stat-item">
+                            <h4>Jumlah Foto Galeri</h4>
+                            <p>48</p>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                
-                <div class="tab-content" id="edit-tab">
-                    <div class="form-group">
-                        <label for="content-select">Pilih Konten</label>
-                        <select class="form-control" id="content-select">
-                            <option value="">-- Pilih Konten --</option>
-                            <option value="hero-title">Judul Hero</option>
-                            <option value="hero-subtitle">Subjudul Hero</option>
-                            <option value="about-title">Judul Tentang</option>
-                            <option value="about-subtitle">Subjudul Tentang</option>
-                            <option value="about-heading">Heading Tentang</option>
-                            <option value="about-content1">Konten Tentang 1</option>
-                            <option value="about-content2">Konten Tentang 2</option>
-                            <option value="programs-title">Judul Program</option>
-                            <option value="programs-subtitle">Subjudul Program</option>
-                            <option value="program1-title">Judul Program 1</option>
-                            <option value="program1-desc">Deskripsi Program 1</option>
-                            <option value="program2-title">Judul Program 2</option>
-                            <option value="program2-desc">Deskripsi Program 2</option>
-                            <option value="program3-title">Judul Program 3</option>
-                            <option value="program3-desc">Deskripsi Program 3</option>
-                            <option value="gallery-title">Judul Galeri</option>
-                            <option value="gallery-subtitle">Subjudul Galeri</option>
-                            <option value="teachers-title">Judul Guru</option>
-                            <option value="teachers-subtitle">Subjudul Guru</option>
-                            <option value="teacher1-name">Nama Guru 1</option>
-                            <option value="teacher1-role">Peran Guru 1</option>
-                            <option value="teacher1-desc">Deskripsi Guru 1</option>
-                            <option value="teacher2-name">Nama Guru 2</option>
-                            <option value="teacher2-role">Peran Guru 2</option>
-                            <option value="teacher2-desc">Deskripsi Guru 2</option>
-                            <option value="teacher3-name">Nama Guru 3</option>
-                            <option value="teacher3-role">Peran Guru 3</option>
-                            <option value="teacher3-desc">Deskripsi Guru 3</option>
-                            <option value="contact-title">Judul Kontak</option>
-                            <option value="contact-subtitle">Subjudul Kontak</option>
-                            <option value="address-title">Judul Alamat</option>
-                            <option value="address">Alamat</option>
-                            <option value="phone-title">Judul Telepon</option>
-                            <option value="phone">Telepon</option>
-                            <option value="email-title">Judul Email</option>
-                            <option value="email">Email</option>
-                            <option value="hours-title">Judul Jam Operasional</option>
-                            <option value="hours">Jam Operasional</option>
-                            <option value="footer-about-title">Judul Footer Tentang</option>
-                            <option value="footer-about">Konten Footer Tentang</option>
-                            <option value="footer-links-title">Judul Footer Tautan</option>
-                            <option value="footer-contact-title">Judul Footer Kontak</option>
-                            <option value="footer-address">Alamat Footer</option>
-                            <option value="footer-phone">Telepon Footer</option>
-                            <option value="footer-email">Email Footer</option>
-                            <option value="copyright">Hak Cipta</option>
-                        </select>
+                <div class="admin-card">
+                    <h3>Kelola Berita</h3>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Judul</th>
+                                    <th>Tanggal</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pameran Karya Siswa Jurusan Tata Busana</td>
+                                    <td>15 Juni 2023</td>
+                                    <td>Published</td>
+                                    <td class="action-buttons">
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Hapus</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Workshop Fashion bersama Desainer Terkenal</td>
+                                    <td>5 Juni 2023</td>
+                                    <td>Published</td>
+                                    <td class="action-buttons">
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Hapus</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Pendaftaran Siswa Baru Tahun Ajaran 2023/2024</td>
+                                    <td>1 Juni 2023</td>
+                                    <td>Published</td>
+                                    <td class="action-buttons">
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Hapus</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="form-group">
-                        <label for="content-text">Edit Konten</label>
-                        <textarea class="form-control" id="content-text" rows="5"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="image-upload">Upload Gambar (jika diperlukan)</label>
-                        <input type="file" class="form-control" id="image-upload" accept="image/*">
-                        <img id="image-preview" class="image-preview" src="" alt="Preview">
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" id="logoutBtn">Logout</button>
-                        <button type="button" class="btn" id="saveContent">Simpan Perubahan</button>
-                    </div>
+                    <button class="btn" style="margin-top: 20px;">Tambah Berita Baru</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
         // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('show');
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('main-menu').classList.toggle('show');
         });
 
-        // Admin Panel Functionality
-        const adminBtn = document.getElementById('adminBtn');
-        const adminModal = document.getElementById('adminModal');
-        const closeModal = document.getElementById('closeModal');
-        const loginForm = document.getElementById('loginForm');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const adminTabs = document.querySelectorAll('.admin-tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-        const contentSelect = document.getElementById('content-select');
-        const contentText = document.getElementById('content-text');
-        const imageUpload = document.getElementById('image-upload');
-        const imagePreview = document.getElementById('image-preview');
-        const saveContentBtn = document.getElementById('saveContent');
-
-        let isLoggedIn = false;
-
-        // Open Admin Modal
-        adminBtn.addEventListener('click', function() {
-            adminModal.style.display = 'flex';
+        // Admin Login
+        document.getElementById('admin-login-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('admin-login').style.display = 'block';
         });
 
-        // Close Admin Modal
-        closeModal.addEventListener('click', function() {
-            adminModal.style.display = 'none';
+        document.getElementById('close-login').addEventListener('click', function() {
+            document.getElementById('admin-login').style.display = 'none';
         });
 
-        // Tab Switching
-        adminTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
-                
-                // Update active tab
-                adminTabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show corresponding content
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.id === `${tabId}-tab`) {
-                        content.classList.add('active');
-                    }
-                });
-            });
-        });
-
-        // Login Functionality
-        loginForm.addEventListener('submit', function(e) {
+        // Login Form Submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            // Simple authentication (in a real app, this would be server-side)
+            // Simple validation (in a real application, this would be handled by a backend)
             if (username === 'admin' && password === 'admin123') {
-                isLoggedIn = true;
-                document.querySelector('.admin-tab[data-tab="edit"]').click();
-                document.getElementById('username').value = '';
-                document.getElementById('password').value = '';
-                alert('Login berhasil!');
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                // Scroll to top
+                window.scrollTo(0, 0);
             } else {
                 alert('Username atau password salah!');
             }
         });
 
-        // Logout Functionality
-        logoutBtn.addEventListener('click', function() {
-            isLoggedIn = false;
-            document.querySelector('.admin-tab[data-tab="login"]').click();
-            alert('Anda telah logout.');
+        // Admin Logout
+        document.getElementById('admin-logout').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('admin-panel').style.display = 'none';
         });
 
-        // Content Selection
-        contentSelect.addEventListener('change', function() {
-            const contentId = this.value;
-            if (contentId) {
-                const contentElement = document.querySelector(`[data-id="${contentId}"]`);
-                if (contentElement) {
-                    contentText.value = contentElement.textContent;
-                }
-            } else {
-                contentText.value = '';
-            }
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pesan Anda telah terkirim! Kami akan membalas secepatnya.');
+            document.getElementById('contactForm').reset();
         });
 
-        // Image Upload Preview
-        imageUpload.addEventListener('change', function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Save Content
-        saveContentBtn.addEventListener('click', function() {
-            if (!isLoggedIn) {
-                alert('Anda harus login terlebih dahulu!');
-                return;
-            }
-            
-            const contentId = contentSelect.value;
-            if (!contentId) {
-                alert('Pilih konten yang akan diedit!');
-                return;
-            }
-            
-            const contentElement = document.querySelector(`[data-id="${contentId}"]`);
-            if (contentElement) {
-                contentElement.textContent = contentText.value;
-                
-                // If it's an image element, update the src
-                if (contentElement.tagName === 'IMG' && imagePreview.src) {
-                    contentElement.src = imagePreview.src;
-                }
-                
-                alert('Perubahan berhasil disimpan!');
-                
-                // Save to localStorage for persistence
-                saveToLocalStorage(contentId, contentText.value);
-                
-                // If image was uploaded, save that too
-                if (imagePreview.src) {
-                    saveToLocalStorage(`${contentId}-image`, imagePreview.src);
-                }
-            }
-        });
-
-        // Save to localStorage
-        function saveToLocalStorage(key, value) {
-            localStorage.setItem(key, value);
-        }
-
-        // Load from localStorage on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            const editableElements = document.querySelectorAll('.editable');
-            editableElements.forEach(element => {
-                const contentId = element.getAttribute('data-id');
-                const savedContent = localStorage.getItem(contentId);
-                if (savedContent) {
-                    element.textContent = savedContent;
-                }
-                
-                // Check for saved images
-                const savedImage = localStorage.getItem(`${contentId}-image`);
-                if (savedImage && element.tagName === 'IMG') {
-                    element.src = savedImage;
-                }
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
                 
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
-                    document.querySelector('nav ul').classList.remove('show');
                 }
             });
         });

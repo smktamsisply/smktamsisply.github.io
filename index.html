@@ -4,89 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMK Taman Siswa Playen - Jurusan Tata Busana</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="SMK Taman Siswa Playen - Sekolah kejuruan dengan program unggulan Tata Busana yang menghasilkan desainer dan ahli busana profesional.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #1a3a8f;
-            --secondary-blue: #2a4db7;
-            --light-blue: #e8f0fe;
-            --white: #ffffff;
-            --gold: #d4af37;
-            --dark-gold: #b8941f;
-            --gray: #f5f5f5;
-            --dark-gray: #333333;
-            --text-color: #444444;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --primary-light: #F5F1E8;
+            --primary-dark: #2C1A1D;
+            --accent-maroon: #8B2635;
+            --accent-light: #E8D5C4;
+            --accent-gray: #A3A3A3;
+            --text-light: #333333;
+            --text-dark: #F5F1E8;
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --bg-primary: var(--primary-light);
+            --bg-secondary: white;
+            --text-primary: var(--text-light);
+            --text-secondary: var(--accent-maroon);
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            --bg-primary: var(--primary-dark);
+            --bg-secondary: #3A2A2D;
+            --text-primary: var(--text-dark);
+            --text-secondary: var(--accent-light);
+            --shadow: rgba(0, 0, 0, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition);
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5 {
-            color: var(--primary-blue);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: var(--gold);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background-color: var(--dark-gold);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-blue {
-            background-color: var(--primary-blue);
-        }
-
-        .btn-blue:hover {
-            background-color: var(--secondary-blue);
-        }
-
-        /* Header Styles */
+        /* Header & Navigation */
         header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
         }
 
         .header-container {
@@ -99,59 +76,75 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
 
         .logo img {
             height: 50px;
-            margin-right: 10px;
+            width: auto;
         }
 
         .logo-text h1 {
             font-size: 1.5rem;
-            margin-bottom: 0;
-            color: var(--primary-blue);
+            color: var(--text-secondary);
+            margin-bottom: 5px;
         }
 
         .logo-text p {
-            font-size: 0.8rem;
-            margin-bottom: 0;
-            color: var(--text-color);
+            font-size: 0.9rem;
+            color: var(--text-primary);
         }
 
         nav ul {
             display: flex;
             list-style: none;
+            gap: 25px;
         }
 
-        nav ul li {
-            margin-left: 25px;
-        }
-
-        nav ul li a {
+        nav a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text-primary);
             font-weight: 500;
-            transition: color 0.3s ease;
             position: relative;
+            transition: var(--transition);
         }
 
-        nav ul li a:hover {
-            color: var(--primary-blue);
+        nav a:hover {
+            color: var(--accent-maroon);
         }
 
-        nav ul li a::after {
+        nav a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--gold);
-            transition: width 0.3s ease;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-maroon);
+            transition: var(--transition);
         }
 
-        nav ul li a:hover::after {
+        nav a:hover::after {
             width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-maroon);
         }
 
         .mobile-menu {
@@ -162,39 +155,53 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 58, 143, 0.8), rgba(26, 58, 143, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
-            color: var(--white);
-            padding: 150px 0 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
-            color: var(--white);
-            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            animation: fadeInUp 1s ease 0.3s forwards;
-            opacity: 0;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
         }
 
-        .hero-buttons {
-            animation: fadeInUp 1s ease 0.6s forwards;
-            opacity: 0;
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-maroon);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: var(--transition);
+            border: 2px solid var(--accent-maroon);
         }
 
-        .hero-buttons .btn {
-            margin: 0 10px;
+        .cta-button:hover {
+            background-color: transparent;
+            border-color: white;
         }
 
-        /* Section Styles */
+        /* Section Styling */
         section {
             padding: 80px 0;
         }
@@ -205,116 +212,85 @@
             position: relative;
         }
 
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-secondary);
+            display: inline-block;
+        }
+
         .section-title::after {
             content: '';
-            position: absolute;
+            display: block;
             width: 80px;
             height: 3px;
-            background-color: var(--gold);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+            background-color: var(--accent-maroon);
+            margin: 15px auto;
         }
 
-        /* Welcome Section */
-        .welcome {
-            background-color: var(--gray);
-        }
-
-        .welcome-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .welcome-text {
-            flex: 1;
-        }
-
-        .welcome-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .welcome-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .welcome-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Jurusan Section */
-        .jurusan-cards {
+        /* About Section */
+        .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        .jurusan-card {
-            background-color: var(--white);
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .about-image {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px var(--shadow);
+            transition: var(--transition);
         }
 
-        .jurusan-card:hover {
+        .about-image:hover {
             transform: translateY(-10px);
         }
 
-        .jurusan-card img {
+        .about-image img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
 
-        .jurusan-card-content {
-            padding: 20px;
-        }
-
-        .jurusan-card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 10px;
-        }
-
-        /* News Section */
-        .news {
-            background-color: var(--gray);
-        }
-
-        .news-cards {
+        /* Program Section */
+        .program-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .news-card {
-            background-color: var(--white);
+        .program-card {
+            background-color: var(--bg-secondary);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: var(--transition);
         }
 
-        .news-card img {
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
 
-        .news-card-content {
+        .program-info {
             padding: 20px;
         }
 
-        .news-date {
-            color: var(--gold);
-            font-size: 0.9rem;
+        .program-info h3 {
+            font-size: 1.5rem;
             margin-bottom: 10px;
+            color: var(--text-secondary);
         }
 
         /* Gallery Section */
@@ -325,18 +301,17 @@
         }
 
         .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            height: 200px;
             position: relative;
-            cursor: pointer;
+            overflow: hidden;
+            border-radius: 5px;
+            height: 250px;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
         }
 
         .gallery-item:hover img {
@@ -349,12 +324,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(26, 58, 143, 0.7);
+            background: rgba(139, 38, 53, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: var(--transition);
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -362,99 +337,18 @@
         }
 
         .gallery-overlay i {
-            color: var(--white);
+            color: white;
             font-size: 2rem;
         }
 
-        /* Teachers Section */
-        .teachers {
-            background-color: var(--gray);
-        }
-
-        .teacher-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .teacher-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .teacher-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .teacher-image {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .teacher-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .teacher-card:hover .teacher-image img {
-            transform: scale(1.1);
-        }
-
-        .teacher-info {
-            padding: 20px;
-        }
-
-        .teacher-info h3 {
-            margin-bottom: 5px;
-        }
-
-        .teacher-subject {
-            color: var(--gold);
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: flex;
-            gap: 40px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .contact-icon {
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-
-        .contact-form {
-            flex: 1;
-            background-color: var(--white);
+        /* Registration Section */
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-secondary);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px var(--shadow);
         }
 
         .form-group {
@@ -463,41 +357,114 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 500;
         }
 
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--accent-gray);
             border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s ease;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition);
         }
 
         .form-control:focus {
-            border-color: var(--primary-blue);
             outline: none;
+            border-color: var(--accent-maroon);
         }
 
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .submit-btn {
+            background-color: var(--accent-maroon);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #6a1e2a;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--accent-maroon);
+            margin-top: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-maroon);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background-color: #6a1e2a;
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            height: 300px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 60px 0 20px;
+            background-color: var(--bg-secondary);
+            padding: 40px 0 20px;
+            text-align: center;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-logo img {
@@ -506,397 +473,331 @@
         }
 
         .footer-links h3, .footer-contact h3 {
-            color: var(--white);
-            margin-bottom: 20px;
             font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
         }
 
         .footer-links ul {
             list-style: none;
         }
 
-        .footer-links ul li {
-            margin-bottom: 10px;
+        .footer-links li {
+            margin-bottom: 8px;
         }
 
-        .footer-links ul li a {
-            color: var(--white);
+        .footer-links a {
+            color: var(--text-primary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
         }
 
-        .footer-links ul li a:hover {
-            color: var(--gold);
+        .footer-links a:hover {
+            color: var(--accent-maroon);
         }
 
-        .footer-contact p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid var(--accent-gray);
+            font-size: 0.9rem;
         }
 
-        .footer-contact i {
-            margin-right: 10px;
-            color: var(--gold);
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-maroon);
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
         }
 
-        .social-icons a:hover {
-            background-color: var(--gold);
-            transform: translateY(-5px);
+        .chat-button:hover {
+            transform: scale(1.1);
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .chat-box {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            overflow: hidden;
+            display: none;
+        }
+
+        .chat-header {
+            background-color: var(--accent-maroon);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            font-size: 1.1rem;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chat-body {
+            padding: 15px;
+            height: 250px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .bot-message {
+            background-color: var(--accent-light);
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background-color: var(--accent-maroon);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid var(--accent-gray);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--accent-gray);
+            border-radius: 5px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .chat-input button {
+            background-color: var(--accent-maroon);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
         @media (max-width: 992px) {
-            .welcome-content, .contact-content {
-                flex-direction: column;
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
             }
             
-            .welcome-image, .welcome-text, .contact-info, .contact-form {
-                width: 100%;
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 768px) {
             nav ul {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: var(--shadow);
             }
-
-            nav ul.show {
-                display: flex;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
+            
             .mobile-menu {
                 display: block;
             }
-
+            
             .hero h1 {
                 font-size: 2rem;
             }
-
-            .hero p {
-                font-size: 1rem;
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .program-cards {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Admin Panel Styles */
-        .admin-panel {
-            display: none;
-            background-color: var(--light-blue);
-            padding: 100px 0 50px;
-            min-height: 100vh;
-        }
-
-        .admin-container {
-            display: flex;
-            min-height: calc(100vh - 150px);
-        }
-
-        .admin-sidebar {
-            width: 250px;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 20px 0;
-        }
-
-        .admin-logo {
-            text-align: center;
-            padding: 0 20px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .admin-logo h2 {
-            color: var(--white);
-            font-size: 1.2rem;
-        }
-
-        .admin-menu {
-            list-style: none;
-        }
-
-        .admin-menu li {
-            margin-bottom: 5px;
-        }
-
-        .admin-menu a {
-            display: block;
-            padding: 12px 20px;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .admin-menu a:hover, .admin-menu a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-left: 3px solid var(--gold);
-        }
-
-        .admin-menu i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .admin-content {
-            flex: 1;
-            padding: 20px;
-            background-color: var(--white);
-            border-radius: 10px;
-            margin-left: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .admin-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .admin-table th, .admin-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .admin-table th {
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .action-btn {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .edit-btn {
-            background-color: var(--gold);
-            color: var(--white);
-        }
-
-        .delete-btn {
-            background-color: #e74c3c;
-            color: var(--white);
-        }
-
-        .action-btn:hover {
-            opacity: 0.8;
-        }
-
-        .login-form {
-            max-width: 400px;
-            margin: 100px auto;
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .login-form h2 {
-            text-align: center;
-            margin-bottom: 30px;
+        @media (max-width: 576px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero {
+                margin-top: 140px;
+            }
+            
+            .chat-box {
+                width: 280px;
+            }
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
+<body class="light-mode">
+    <!-- Header & Navigation -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="https://via.placeholder.com/50x50/1a3a8f/ffffff?text=TS" alt="Logo SMK Taman Siswa Playen">
+                <div class="logo-icon">
+                    <!-- Placeholder for logo -->
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="50" height="50" rx="10" fill="#8B2635"/>
+                        <path d="M25 15L30 20L35 15H25Z" fill="#F5F1E8"/>
+                        <path d="M20 25L25 30L30 25H20Z" fill="#F5F1E8"/>
+                        <path d="M15 35L20 40L25 35H15Z" fill="#F5F1E8"/>
+                    </svg>
+                </div>
                 <div class="logo-text">
-                    <h1>SMK TAMAN SISWA PLAYEN</h1>
+                    <h1>SMK Taman Siswa Playen</h1>
                     <p>Jurusan Tata Busana</p>
                 </div>
             </div>
+            
             <nav>
-                <ul id="main-menu">
+                <ul>
                     <li><a href="#home">Beranda</a></li>
-                    <li><a href="#profil">Profil</a></li>
-                    <li><a href="#jurusan">Jurusan</a></li>
-                    <li><a href="#berita">Berita</a></li>
-                    <li><a href="#galeri">Galeri</a></li>
-                    <li><a href="#guru">Guru & Staf</a></li>
-                    <li><a href="#kontak">Kontak</a></li>
-                    <li><a href="#" id="admin-login-link">Admin</a></li>
+                    <li><a href="#about">Profil</a></li>
+                    <li><a href="#program">Program</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#registration">Pendaftaran</a></li>
+                    <li><a href="#contact">Kontak</a></li>
                 </ul>
-                <div class="mobile-menu" id="mobile-menu">
+            </nav>
+            
+            <div class="nav-buttons">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <h1>SMK Taman Siswa Playen</h1>
-            <p>Menghasilkan lulusan kompeten di bidang Tata Busana yang siap bersaing di dunia kerja dan industri fashion.</p>
-            <div class="hero-buttons">
-                <a href="#jurusan" class="btn">Lihat Jurusan</a>
-                <a href="#profil" class="btn btn-blue">Tentang Kami</a>
-            </div>
+        <div class="hero-content">
+            <h1>Kreatif, Mandiri, dan Berprestasi dalam Dunia Fashion</h1>
+            <p>SMK Taman Siswa Playen - Membentuk Desainer Muda Berbakat</p>
+            <a href="#program" class="cta-button">Jelajahi Program Kami</a>
         </div>
     </section>
 
-    <!-- Welcome Section -->
-    <section class="welcome">
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <div class="welcome-content">
-                <div class="welcome-text">
-                    <h2>Sambutan Kepala Sekolah</h2>
-                    <p>Selamat datang di SMK Taman Siswa Playen, sekolah kejuruan yang berkomitmen untuk menghasilkan lulusan yang kompeten dan berkarakter. Dengan fokus pada jurusan Tata Busana, kami membekali siswa dengan keterampilan praktis dan pengetahuan teoritis yang diperlukan untuk sukses di industri fashion.</p>
-                    <p>Kami percaya bahwa setiap siswa memiliki potensi untuk menjadi desainer dan pengusaha fashion yang handal. Dengan fasilitas yang memadai dan guru-guru yang berpengalaman, kami siap mewujudkan impian siswa menjadi kenyataan.</p>
-                    <p>Terima kasih atas kunjungan Anda ke website kami. Mari bersama-sama membangun generasi muda yang kreatif dan inovatif.</p>
-                    <p><strong>Drs. Budi Santoso, M.Pd.</strong><br>Kepala Sekolah SMK Taman Siswa Playen</p>
-                </div>
-                <div class="welcome-image">
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Kepala Sekolah SMK Taman Siswa Playen">
-                </div>
+            <div class="section-title">
+                <h2>Profil Sekolah</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Jurusan Section -->
-    <section id="jurusan">
-        <div class="container">
-            <h2 class="section-title">Jurusan Kami</h2>
-            <div class="jurusan-cards">
-                <div class="jurusan-card">
-                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Tata Busana">
-                    <div class="jurusan-card-content">
-                        <h3>Tata Busana</h3>
-                        <p>Jurusan Tata Busana mempelajari teknik mendesain, memotong, menjahit, dan menyelesaikan pakaian. Siswa diajarkan untuk membuat berbagai jenis busana mulai dari pakaian sehari-hari hingga busana formal.</p>
-                        <a href="#" class="btn">Selengkapnya</a>
-                    </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Sejarah Singkat</h3>
+                    <p>SMK Taman Siswa Playen didirikan pada tahun 1985 dengan komitmen untuk memberikan pendidikan kejuruan yang berkualitas. Jurusan Tata Busana menjadi program unggulan sejak tahun 1990, menghasilkan lulusan yang kompeten di industri fashion.</p>
+                    <p>Kami percaya bahwa setiap siswa memiliki potensi kreatif yang dapat dikembangkan melalui pendidikan yang tepat, praktik langsung, dan bimbingan dari pengajar yang berpengalaman.</p>
+                    
+                    <h3>Visi & Misi</h3>
+                    <p><strong>Visi:</strong> Menjadi pusat pendidikan kejuruan terdepan dalam bidang tata busana yang menghasilkan lulusan kreatif, mandiri, dan berdaya saing global.</p>
+                    <p><strong>Misi:</strong> 
+                        <ul>
+                            <li>Menyelenggarakan pendidikan kejuruan yang berkualitas dengan kurikulum berbasis industri</li>
+                            <li>Mengembangkan kreativitas dan keterampilan siswa melalui praktik langsung</li>
+                            <li>Membangun kerjasama dengan industri fashion untuk meningkatkan kompetensi lulusan</li>
+                        </ul>
+                    </p>
                 </div>
-                <div class="jurusan-card">
-                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Desain Fashion">
-                    <div class="jurusan-card-content">
-                        <h3>Desain Fashion</h3>
-                        <p>Jurusan Desain Fashion fokus pada pengembangan kreativitas dalam merancang busana. Siswa belajar tentang tren fashion, pemilihan bahan, dan teknik presentasi koleksi busana.</p>
-                        <a href="#" class="btn">Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="jurusan-card">
-                    <img src="https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Busana Custom">
-                    <div class="jurusan-card-content">
-                        <h3>Busana Custom</h3>
-                        <p>Jurusan Busana Custom mengajarkan teknik pembuatan pakaian sesuai pesanan dengan memperhatikan detail dan kualitas. Siswa dilatih untuk memahami kebutuhan klien dan menghasilkan busana yang sesuai.</p>
-                        <a href="#" class="btn">Selengkapnya</a>
-                    </div>
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Siswa SMK Taman Siswa Playen sedang praktik menjahit">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section class="news" id="berita">
+    <!-- Program Section -->
+    <section id="program" class="program">
         <div class="container">
-            <h2 class="section-title">Berita & Pengumuman</h2>
-            <div class="news-cards">
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pameran Karya Siswa">
-                    <div class="news-card-content">
-                        <div class="news-date">15 Juni 2023</div>
-                        <h3>Pameran Karya Siswa Jurusan Tata Busana</h3>
-                        <p>SMK Taman Siswa Playen mengadakan pameran karya siswa jurusan Tata Busana yang menampilkan berbagai desain busana kreatif dan inovatif.</p>
-                        <a href="#" class="btn">Baca Selengkapnya</a>
+            <div class="section-title">
+                <h2>Program Keahlian Tata Busana</h2>
+            </div>
+            <div class="program-cards">
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Praktik Menjahit">
+                    <div class="program-info">
+                        <h3>Kurikulum Terpadu</h3>
+                        <p>Kurikulum kami dirancang untuk memberikan pemahaman mendalam tentang desain busana, pola, teknik menjahit, dan bisnis fashion.</p>
                     </div>
                 </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Workshop Fashion">
-                    <div class="news-card-content">
-                        <div class="news-date">5 Juni 2023</div>
-                        <h3>Workshop Fashion bersama Desainer Terkenal</h3>
-                        <p>SMK Taman Siswa Playen menyelenggarakan workshop fashion dengan menghadirkan desainer terkenal untuk berbagi pengalaman dan pengetahuan.</p>
-                        <a href="#" class="btn">Baca Selengkapnya</a>
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Show">
+                    <div class="program-info">
+                        <h3>Fashion Show & Pameran</h3>
+                        <p>Setiap tahun, siswa mengadakan fashion show untuk menampilkan karya terbaik mereka dan mendapatkan pengalaman nyata di industri.</p>
                     </div>
                 </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Penerimaan Siswa Baru">
-                    <div class="news-card-content">
-                        <div class="news-date">1 Juni 2023</div>
-                        <h3>Pendaftaran Siswa Baru Tahun Ajaran 2023/2024</h3>
-                        <p>SMK Taman Siswa Playen membuka pendaftaran siswa baru untuk tahun ajaran 2023/2024. Segera daftarkan diri Anda!</p>
-                        <a href="#" class="btn">Baca Selengkapnya</a>
+                <div class="program-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kerja Sama Industri">
+                    <div class="program-info">
+                        <h3>Kerja Sama Industri</h3>
+                        <p>Kami bekerja sama dengan berbagai brand fashion lokal untuk memberikan kesempatan magang dan peluang karir bagi siswa.</p>
                     </div>
                 </div>
             </div>
@@ -904,42 +805,44 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="galeri">
+    <section id="gallery" class="gallery">
         <div class="container">
-            <h2 class="section-title">Galeri Kegiatan</h2>
+            <div class="section-title">
+                <h2>Galeri Karya Siswa</h2>
+            </div>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Karya Siswa 1">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Kegiatan Sekolah">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Karya Siswa 2">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Karya Siswa 3">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Kegiatan Sekolah">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Karya Siswa 4">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1558769132-cb25c5d11e85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Karya Siswa 5">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Sekolah">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Karya Siswa 6">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
@@ -948,123 +851,91 @@
         </div>
     </section>
 
-    <!-- Teachers Section -->
-    <section class="teachers" id="guru">
+    <!-- Registration Section -->
+    <section id="registration" class="registration">
         <div class="container">
-            <h2 class="section-title">Guru & Staf</h2>
-            <div class="teacher-cards">
-                <div class="teacher-card">
-                    <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Drs. Budi Santoso, M.Pd.">
+            <div class="section-title">
+                <h2>Pendaftaran Online</h2>
+            </div>
+            <div class="registration-form fade-in">
+                <form id="ppdbForm">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" class="form-control" required>
                     </div>
-                    <div class="teacher-info">
-                        <h3>Drs. Budi Santoso, M.Pd.</h3>
-                        <div class="teacher-subject">Kepala Sekolah</div>
-                        <p>Memimpin SMK Taman Siswa Playen dengan visi menghasilkan lulusan yang kompeten dan berkarakter.</p>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
                     </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Siti Rahayu, S.Pd.">
+                    <div class="form-group">
+                        <label for="telepon">Nomor Telepon/WhatsApp</label>
+                        <input type="tel" id="telepon" class="form-control" required>
                     </div>
-                    <div class="teacher-info">
-                        <h3>Siti Rahayu, S.Pd.</h3>
-                        <div class="teacher-subject">Guru Tata Busana</div>
-                        <p>Ahli dalam teknik menjahit dan pembuatan pola dengan pengalaman lebih dari 10 tahun.</p>
+                    <div class="form-group">
+                        <label for="sekolah">Asal Sekolah</label>
+                        <input type="text" id="sekolah" class="form-control" required>
                     </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ahmad Fauzi, S.Sn.">
+                    <div class="form-group">
+                        <label for="jurusan">Jurusan yang Diminati</label>
+                        <select id="jurusan" class="form-control" required>
+                            <option value="">Pilih Jurusan</option>
+                            <option value="tata-busana">Tata Busana</option>
+                            <option value="tata-boga">Tata Boga</option>
+                            <option value="multimedia">Multimedia</option>
+                        </select>
                     </div>
-                    <div class="teacher-info">
-                        <h3>Ahmad Fauzi, S.Sn.</h3>
-                        <div class="teacher-subject">Guru Desain Fashion</div>
-                        <p>Desainer berpengalaman dengan spesialisasi dalam tren fashion kontemporer.</p>
-                    </div>
-                </div>
-                <div class="teacher-card">
-                    <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80" alt="Dewi Sartika, S.Pd.">
-                    </div>
-                    <div class="teacher-info">
-                        <h3>Dewi Sartika, S.Pd.</h3>
-                        <div class="teacher-subject">Guru Busana Custom</div>
-                        <p>Spesialis dalam pembuatan busana sesuai pesanan dengan perhatian pada detail.</p>
-                    </div>
-                </div>
+                    <button type="submit" class="submit-btn">Daftar Sekarang</button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="kontak">
+    <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Kontak & Lokasi</h2>
+            <div class="section-title">
+                <h2>Kontak & Lokasi</h2>
+            </div>
             <div class="contact-content">
-                <div class="contact-info">
+                <div class="contact-info fade-in">
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
+                        <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3>Alamat</h3>
                             <p>Jl. Pendidikan No. 123, Playen, Gunungkidul, Yogyakarta</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
+                        <i class="fas fa-phone"></i>
                         <div>
                             <h3>Telepon</h3>
-                            <p>(0274) 123456</p>
+                            <p>(0274) 1234567</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
+                        <i class="fas fa-envelope"></i>
                         <div>
                             <h3>Email</h3>
                             <p>info@smktamansisaplayen.sch.id</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
+                        <i class="fas fa-clock"></i>
                         <div>
                             <h3>Jam Operasional</h3>
                             <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
-                            <p>Sabtu: 07.00 - 12.00 WIB</p>
+                            <p>Sabtu: 08.00 - 12.00 WIB</p>
                         </div>
                     </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.215337300935!2d110.59772277499616!3d-7.873858078051573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a442e4d9db3a5%3A0x6fc6ef5f2c8d6c0!2sPlayen%2C%20Kec.%20Playen%2C%20Gunung%20Kidul%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1686752345678!5m2!1sid!2sid" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Kirim Pesan</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subjek</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Pesan</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-blue">Kirim Pesan</button>
-                    </form>
+                <div class="map-container fade-in">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.215867379763!2d110.59772277484862!3d-7.873888092153777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a442d2e8c0c3f%3A0x5b4b7b8c9c8d9e0f!2sPlayen%2C%20Gunungkidul%2C%20Yogyakarta!5e0!3m2!1sen!2sid!4v1621234567890!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -1075,213 +946,162 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://via.placeholder.com/60x60/ffffff/1a3a8f?text=TS" alt="Logo SMK Taman Siswa Playen">
-                    <h2>SMK TAMAN SISWA PLAYEN</h2>
-                    <p>Menghasilkan lulusan kompeten di bidang Tata Busana yang siap bersaing di dunia kerja dan industri fashion.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    <div class="logo-icon">
+                        <svg width="60" height="60" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="50" height="50" rx="10" fill="#8B2635"/>
+                            <path d="M25 15L30 20L35 15H25Z" fill="#F5F1E8"/>
+                            <path d="M20 25L25 30L30 25H20Z" fill="#F5F1E8"/>
+                            <path d="M15 35L20 40L25 35H15Z" fill="#F5F1E8"/>
+                        </svg>
                     </div>
+                    <p>SMK Taman Siswa Playen - Jurusan Tata Busana</p>
                 </div>
                 <div class="footer-links">
                     <h3>Tautan Cepat</h3>
                     <ul>
                         <li><a href="#home">Beranda</a></li>
-                        <li><a href="#profil">Profil Sekolah</a></li>
-                        <li><a href="#jurusan">Jurusan</a></li>
-                        <li><a href="#berita">Berita & Pengumuman</a></li>
-                        <li><a href="#galeri">Galeri</a></li>
-                        <li><a href="#guru">Guru & Staf</a></li>
-                        <li><a href="#kontak">Kontak</a></li>
+                        <li><a href="#about">Profil Sekolah</a></li>
+                        <li><a href="#program">Program Keahlian</a></li>
+                        <li><a href="#gallery">Galeri</a></li>
+                        <li><a href="#registration">Pendaftaran</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>Kontak Kami</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 123, Playen, Gunungkidul</p>
-                    <p><i class="fas fa-phone"></i> (0274) 123456</p>
-                    <p><i class="fas fa-envelope"></i> info@smktamansisaplayen.sch.id</p>
+                    <p>Jl. Pendidikan No. 123, Playen, Gunungkidul</p>
+                    <p>Telepon: (0274) 1234567</p>
+                    <p>Email: info@smktamansisaplayen.sch.id</p>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="copyright">
                 <p>&copy; 2023 SMK Taman Siswa Playen. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Admin Login Modal -->
-    <div class="admin-login" id="admin-login">
-        <div class="login-form">
-            <h2>Admin Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" class="form-control" required>
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h3>Tanya Jawab</h3>
+                <button class="close-chat" id="closeChat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot-message">
+                    Halo! Ada yang bisa kami bantu? Silakan tanyakan informasi tentang pendaftaran atau program kami.
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-blue">Login</button>
-                <button type="button" class="btn" id="close-login">Batal</button>
-            </form>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ketik pesan Anda...">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
 
-    <!-- Admin Panel -->
-    <section class="admin-panel" id="admin-panel">
-        <div class="admin-container">
-            <div class="admin-sidebar">
-                <div class="admin-logo">
-                    <h2>Admin Panel</h2>
-                    <p>SMK Taman Siswa Playen</p>
-                </div>
-                <ul class="admin-menu">
-                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-newspaper"></i> Berita</a></li>
-                    <li><a href="#"><i class="fas fa-images"></i> Galeri</a></li>
-                    <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> Guru & Staf</a></li>
-                    <li><a href="#"><i class="fas fa-school"></i> Profil Sekolah</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Pengaturan</a></li>
-                    <li><a href="#" id="admin-logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                </ul>
-            </div>
-            <div class="admin-content">
-                <div class="admin-header">
-                    <h2>Dashboard</h2>
-                    <div class="admin-user">
-                        <span>Selamat datang, Admin</span>
-                    </div>
-                </div>
-                <div class="admin-card">
-                    <h3>Statistik</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <h4>Jumlah Berita</h4>
-                            <p>15</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>Jumlah Guru</h4>
-                            <p>24</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>Jumlah Foto Galeri</h4>
-                            <p>48</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="admin-card">
-                    <h3>Kelola Berita</h3>
-                    <div class="table-responsive">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>Judul</th>
-                                    <th>Tanggal</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Pameran Karya Siswa Jurusan Tata Busana</td>
-                                    <td>15 Juni 2023</td>
-                                    <td>Published</td>
-                                    <td class="action-buttons">
-                                        <button class="action-btn edit-btn">Edit</button>
-                                        <button class="action-btn delete-btn">Hapus</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Workshop Fashion bersama Desainer Terkenal</td>
-                                    <td>5 Juni 2023</td>
-                                    <td>Published</td>
-                                    <td class="action-buttons">
-                                        <button class="action-btn edit-btn">Edit</button>
-                                        <button class="action-btn delete-btn">Hapus</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Pendaftaran Siswa Baru Tahun Ajaran 2023/2024</td>
-                                    <td>1 Juni 2023</td>
-                                    <td>Published</td>
-                                    <td class="action-buttons">
-                                        <button class="action-btn edit-btn">Edit</button>
-                                        <button class="action-btn delete-btn">Hapus</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <button class="btn" style="margin-top: 20px;">Tambah Berita Baru</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu').addEventListener('click', function() {
-            document.getElementById('main-menu').classList.toggle('show');
-        });
-
-        // Admin Login
-        document.getElementById('admin-login-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('admin-login').style.display = 'block';
-        });
-
-        document.getElementById('close-login').addEventListener('click', function() {
-            document.getElementById('admin-login').style.display = 'none';
-        });
-
-        // Login Form Submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Simple validation (in a real application, this would be handled by a backend)
-            if (username === 'admin' && password === 'admin123') {
-                document.getElementById('admin-login').style.display = 'none';
-                document.getElementById('admin-panel').style.display = 'block';
-                // Scroll to top
-                window.scrollTo(0, 0);
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             } else {
-                alert('Username atau password salah!');
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             }
         });
 
-        // Admin Logout
-        document.getElementById('admin-logout').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('admin-panel').style.display = 'none';
-        });
-
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Pesan Anda telah terkirim! Kami akan membalas secepatnya.');
-            document.getElementById('contactForm').reset();
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+        // Scroll Animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Chat Widget
+        const chatButton = document.getElementById('chatButton');
+        const chatBox = document.getElementById('chatBox');
+        const closeChat = document.getElementById('closeChat');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatInput = document.getElementById('chatInput');
+        const chatBody = document.getElementById('chatBody');
+        
+        chatButton.addEventListener('click', () => {
+            chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        closeChat.addEventListener('click', () => {
+            chatBox.style.display = 'none';
+        });
+        
+        sendMessage.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatInput.value = '';
+                
+                // Auto reply after a short delay
+                setTimeout(() => {
+                    addMessage('Terima kasih atas pertanyaannya. Tim kami akan segera merespons melalui WhatsApp.', 'bot');
+                }, 1000);
+            }
+        });
+        
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Form Submission
+        const ppdbForm = document.getElementById('ppdbForm');
+        
+        ppdbForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                nama: document.getElementById('nama').value,
+                email: document.getElementById('email').value,
+                telepon: document.getElementById('telepon').value,
+                sekolah: document.getElementById('sekolah').value,
+                jurusan: document.getElementById('jurusan').value
+            };
+            
+            // In a real implementation, you would send this data to a server
+            // For demo purposes, we'll just show an alert
+            alert(`Terima kasih ${formData.nama}! Data pendaftaran Anda telah diterima. Tim kami akan menghubungi Anda melalui WhatsApp.`);
+            
+            // Reset form
+            ppdbForm.reset();
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenu.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>

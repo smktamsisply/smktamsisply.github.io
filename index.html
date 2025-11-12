@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --soft-pink: #F4C2C2;
-            --peach: #FFD1BA;
-            --light-beige: #F9F3E5;
+            --soft-pink: #FADADD;
+            --light-pink: #FFF5F5;
+            --beige: #F9F3E5;
             --white: #FFFFFF;
-            --dark-text: #222222;
-            --light-gray: #F5F5F5;
+            --dark-text: #1E1E1E;
+            --light-gray: #E5E5E5;
             --transition: all 0.3s ease;
         }
 
@@ -86,6 +86,7 @@
         }
 
         nav ul li {
+            position: relative;
             margin-left: 25px;
         }
 
@@ -95,6 +96,13 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-left: 5px;
+            font-size: 0.8rem;
         }
 
         nav ul li a:hover {
@@ -114,6 +122,43 @@
 
         nav ul li a:hover::after {
             width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        nav ul li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            width: 100%;
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 20px;
+            display: block;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
         }
 
         .mobile-menu {
@@ -167,7 +212,8 @@
         }
 
         .btn:hover {
-            background-color: var(--peach);
+            background-color: var(--light-pink);
+            color: var(--dark-text);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -219,7 +265,7 @@
 
         /* About Section */
         .about {
-            background-color: var(--light-beige);
+            background-color: var(--light-pink);
         }
 
         .about-content {
@@ -256,6 +302,91 @@
 
         .about-text p {
             margin-bottom: 20px;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--soft-pink);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1.2rem;
+        }
+
+        /* Teachers Section */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .teacher-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .teacher-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .teacher-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .teacher-card:hover .teacher-img img {
+            transform: scale(1.1);
+        }
+
+        .teacher-content {
+            padding: 20px;
+        }
+
+        .teacher-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .teacher-role {
+            color: var(--soft-pink);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .teacher-quote {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
         }
 
         /* Programs Section */
@@ -305,7 +436,7 @@
 
         /* Gallery Section */
         .gallery {
-            background-color: var(--light-gray);
+            background-color: var(--light-pink);
         }
 
         .gallery-grid {
@@ -339,7 +470,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(244, 194, 194, 0.8);
+            background: rgba(250, 218, 221, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -354,71 +485,6 @@
         .gallery-overlay i {
             font-size: 2rem;
             color: var(--white);
-        }
-
-        /* Testimonials Section */
-        .testimonials-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            display: none;
-        }
-
-        .testimonial.active {
-            display: block;
-            animation: fadeIn 1s ease;
-        }
-
-        .testimonial-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-        }
-
-        .testimonial-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-        }
-
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background-color: var(--soft-pink);
         }
 
         /* Facilities Section */
@@ -462,7 +528,7 @@
 
         /* News Section */
         .news {
-            background-color: var(--light-beige);
+            background-color: var(--light-pink);
         }
 
         .news-grid {
@@ -521,7 +587,7 @@
         }
 
         .read-more:hover {
-            color: var(--peach);
+            color: var(--dark-text);
         }
 
         /* Contact Section */
@@ -743,6 +809,7 @@
                 justify-content: flex-start;
                 padding-top: 50px;
                 transition: var(--transition);
+                z-index: 999;
             }
             
             nav ul.active {
@@ -751,6 +818,25 @@
             
             nav ul li {
                 margin: 15px 0;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                display: none;
+            }
+            
+            nav ul li:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-menu li a {
+                padding: 10px 0;
+                border-bottom: none;
             }
             
             .hero h2 {
@@ -788,7 +874,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjRjRDMkMyIiBkPSJNNDQ4IDk2SDY0QzI4LjcgOTYgMCAxMjQuNyAwIDE2MHYxOTJjMCAzNS4zIDI4LjcgNjQgNjQgNjRoMTM4LjZsMjUuMyA4OC40YzQuOSAxNy4xIDIyLjYgMjcuNiAzOS4zIDIyLjdzMjcuNi0yMi42IDIyLjctMzkuM0wyNzQuNCA0MTZINDQ4YzM1LjMgMCA2NC0yOC43IDY0LTY0VjE2MGMwLTM1LjMtMjguNy02NC02NC02NHpNMjU2IDM2OGMtNDQuMiAwLTgwLTM1LjgtODAtODBzMzUuOC04MCA4MC04MCA4MCAzNS44IDgwIDgwLTM1LjggODAtODAgODB6Ii8+PC9zdmc+" alt="Logo SMK Taman Siswa">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjRkFEQUREIiBkPSJNNDQ4IDk2SDY0QzI4LjcgOTYgMCAxMjQuNyAwIDE2MHYxOTJjMCAzNS4zIDI4LjcgNjQgNjQgNjRoMTM4LjZsMjUuMyA4OC40YzQuOSAxNy4xIDIyLjYgMjcuNiAzOS4zIDIyLjdzMjcuNi0yMi42IDIyLjctMzkuM0wyNzQuNCA0MTZINDQ4YzM1LjMgMCA2NC0yOC43IDY0LTY0VjE2MGMwLTM1LjMtMjguNy02NC02NC02NHpNMjU2IDM2OGMtNDQuMiAwLTgwLTM1LjgtODAtODBzMzUuOC04MCA4MC04MCA4MCAzNS44IDgwIDgwLTM1LjggODAtODAgODB6Ii8+PC9zdmc+" alt="Logo SMK Taman Siswa">
                 <h1>SMK <span>Taman Siswa</span> Playen</h1>
             </div>
             <div class="mobile-menu">
@@ -797,11 +883,46 @@
             <nav>
                 <ul>
                     <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Profil</a></li>
-                    <li><a href="#programs">Jurusan</a></li>
-                    <li><a href="#gallery">Galeri</a></li>
-                    <li><a href="#facilities">Fasilitas</a></li>
+                    <li>
+                        <a href="#about">Profil <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#about">Sejarah Sekolah</a></li>
+                            <li><a href="#about">Visi & Misi</a></li>
+                            <li><a href="#about">Struktur Organisasi</a></li>
+                            <li><a href="#about">Profil Kepala Sekolah</a></li>
+                            <li><a href="#about">Akreditasi & Penghargaan</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#teachers">Guru & Tendik <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#teachers">Daftar Guru</a></li>
+                            <li><a href="#teachers">Daftar Tenaga Kependidikan</a></li>
+                            <li><a href="#teachers">Profil Guru</a></li>
+                            <li><a href="#teachers">Galeri Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#programs">Jurusan <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#programs">Deskripsi Jurusan</a></li>
+                            <li><a href="#programs">Kompetensi Keahlian</a></li>
+                            <li><a href="#programs">Fasilitas Praktik</a></li>
+                            <li><a href="#gallery">Galeri Karya Siswa</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#facilities">Fasilitas <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#facilities">Ruang Praktik Tata Busana</a></li>
+                            <li><a href="#facilities">Laboratorium Komputer</a></li>
+                            <li><a href="#facilities">Ruang Kelas</a></li>
+                            <li><a href="#facilities">Perpustakaan</a></li>
+                            <li><a href="#facilities">Sarana Olahraga & Asrama</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#news">Berita</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
             </nav>
@@ -811,10 +932,10 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h2>Mencetak Desainer Muda Berprestasi dan Kreatif</h2>
+            <h2>Mencetak Desainer Muda yang Kreatif, Inovatif, dan Mandiri</h2>
             <p>SMK Taman Siswa Playen - Jurusan Tata Busana, membentuk generasi muda yang kompeten di bidang fashion dan siap bersaing di industri kreatif.</p>
-            <a href="#contact" class="btn">Daftar Sekarang</a>
             <a href="#gallery" class="btn btn-outline">Lihat Karya Kami</a>
+            <a href="#contact" class="btn">Daftar Sekarang</a>
         </div>
     </section>
 
@@ -843,6 +964,72 @@
                             <li>Menanamkan nilai-nilai kewirausahaan</li>
                         </ul>
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">850+</div>
+                    <div class="stat-text">Siswa Aktif</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">45+</div>
+                    <div class="stat-text">Tenaga Pengajar</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-text">Prestasi Nasional</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-text">Tingkat Kelulusan</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section id="teachers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Guru & Tenaga Kependidikan</h2>
+                <p>Tenaga pendidik profesional yang berdedikasi tinggi dalam membimbing siswa</p>
+            </div>
+            <div class="teachers-grid">
+                <div class="teacher-card fade-in">
+                    <div class="teacher-img">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ibu Sari Dewi">
+                    </div>
+                    <div class="teacher-content">
+                        <h3>Ibu Sari Dewi, S.Pd.</h3>
+                        <div class="teacher-role">Guru Tata Busana</div>
+                        <p class="teacher-quote">"Fashion adalah seni yang dapat dipelajari dan dikuasai oleh siapa saja dengan ketekunan dan kreativitas."</p>
+                    </div>
+                </div>
+                <div class="teacher-card fade-in">
+                    <div class="teacher-img">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Bapak Ahmad Wijaya">
+                    </div>
+                    <div class="teacher-content">
+                        <h3>Bapak Ahmad Wijaya, M.Pd.</h3>
+                        <div class="teacher-role">Kepala Jurusan Tata Busana</div>
+                        <p class="teacher-quote">"Kami berkomitmen untuk menghasilkan lulusan yang tidak hanya terampil tetapi juga memiliki jiwa entrepreneur."</p>
+                    </div>
+                </div>
+                <div class="teacher-card fade-in">
+                    <div class="teacher-img">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ibu Maya Sari">
+                    </div>
+                    <div class="teacher-content">
+                        <h3>Ibu Maya Sari, S.Pd.</h3>
+                        <div class="teacher-role">Guru Desain Busana</div>
+                        <p class="teacher-quote">"Setiap siswa memiliki potensi kreatif yang unik, tugas kami adalah membantu mereka menemukan dan mengembangkannya."</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -935,56 +1122,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Testimoni Alumni</h2>
-                <p>Kisah sukses lulusan SMK Taman Siswa Playen Jurusan Tata Busana</p>
-            </div>
-            <div class="testimonials-slider">
-                <div class="testimonial active">
-                    <div class="testimonial-img">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Alumni 1">
-                    </div>
-                    <div class="testimonial-text">
-                        <p>"Pendidikan di SMK Taman Siswa Playen memberikan saya bekal yang sangat berguna dalam berkarir di industri fashion. Saya sekarang memiliki butik sendiri dan terus berkembang berkat pengetahuan yang saya dapatkan selama sekolah."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <p>Dewi Sartika - Pemilik Butik "Dewi Fashion"</p>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-img">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alumni 2">
-                    </div>
-                    <div class="testimonial-text">
-                        <p>"Saya sangat berterima kasih kepada para guru di SMK Taman Siswa yang telah membimbing saya dengan sabar. Keterampilan menjahit dan desain yang saya pelajari menjadi modal berharga untuk bekerja di perusahaan garment ternama."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <p>Rina Wijaya - Desainer di PT. Fashion Indonesia</p>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-img">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alumni 3">
-                    </div>
-                    <div class="testimonial-text">
-                        <p>"Sebagai lulusan Tata Busana, saya tidak hanya belajar tentang fashion tetapi juga kewirausahaan. Sekarang saya memiliki brand pakaian pria yang sudah dikenal di berbagai kota di Indonesia."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <p>Andi Pratama - Founder "Andi's Cloth"</p>
-                    </div>
-                </div>
-                <div class="slider-controls">
-                    <div class="slider-dot active" data-slide="0"></div>
-                    <div class="slider-dot" data-slide="1"></div>
-                    <div class="slider-dot" data-slide="2"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Facilities Section -->
     <section class="facilities" id="facilities">
         <div class="container">
@@ -1028,7 +1165,7 @@
     <section class="news" id="news">
         <div class="container">
             <div class="section-title">
-                <h2>Berita & Prestasi</h2>
+                <h2>Berita & Informasi</h2>
                 <p>Informasi terbaru tentang kegiatan dan prestasi siswa SMK Taman Siswa Playen</p>
             </div>
             <div class="news-grid">
@@ -1166,9 +1303,9 @@
                     <ul class="footer-links">
                         <li><a href="#home">Beranda</a></li>
                         <li><a href="#about">Profil Sekolah</a></li>
+                        <li><a href="#teachers">Guru & Tendik</a></li>
                         <li><a href="#programs">Jurusan</a></li>
                         <li><a href="#gallery">Galeri</a></li>
-                        <li><a href="#facilities">Fasilitas</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1220,32 +1357,6 @@
                 mobileMenu.querySelector('i').classList.remove('fa-times');
             });
         });
-
-        // Testimonial Slider
-        const testimonials = document.querySelectorAll('.testimonial');
-        const dots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-
-        function showSlide(n) {
-            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (n + testimonials.length) % testimonials.length;
-            
-            testimonials[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-
-        // Auto slide testimonials
-        setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
 
         // Scroll Animation
         const fadeElements = document.querySelectorAll('.fade-in');
